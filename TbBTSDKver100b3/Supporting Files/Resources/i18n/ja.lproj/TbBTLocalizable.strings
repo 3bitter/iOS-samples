@@ -1,0 +1,37 @@
+/* 
+  TbBTLocalizable.strings
+  TbBTSDK
+
+  Created by Takefumi Ueda on 2014/11/13.
+  Copyright (c) 2014年 3bitter, Inc. All rights reserved.
+*/
+"Service agreement" = "サービス規約";
+"Agree button" = "同意する";
+"Disagree button" = "後で確認";
+"Data temporary unavailable" = "一時的なエラー";
+"Notification title" = "特別なお知らせ";
+"Check button" = "見る";
+"Later button" = "後で";
+"Agreement not found" = "申し訳ありません。規約文の取得に失敗しました。後ほどご確認いただけますと幸いです";
+"Property [status] load failed" = "申し訳ありません。対象の動画の情報が見つかりません";
+"Region update time interval not passed" = "前回の取得から再取得可能時間が経過していないので、更新をスキップします";
+"Interaction time interval not passed" = "前回の通知から再送可能時間が経過していません";
+"Notification setting off" = "プッシュ通知のユーザ設定がオフです";
+"User interaction required" = "告知内容のユーザ確認が必要です";
+"Page could not found" = "申し訳ありません。現在対象のページが一時的に見つかりません";
+"Item cannot be played" = "申し訳ありません。対象の動画が再生できません";
+"Movie temporary unavailable" = "申し訳ありません。対象の動画の読み込みに失敗しました";
+"Banner temporary unavailable" = "申し訳ありません。現在対象のバナーが一時的に見つかりません";
+"Zero given beacons" = "ビーコンの数が0です";
+"Given beacons are not ours" = "渡されたビーコンはサービス側提供のものではないので、マッチするキーコードはありません";
+"Service region monitoring started" = "3bitterサービスのビーコン領域のモニタリングを開始しました。対象ID：";
+"Service region monitoring stopped" = "3bitterサービスのビーコン領域のモニタリングを停止しました。対象ID：";
+"Designatable region over" = "登録可能なビーコン領域の上限数を超えています";
+"Designatable region limit" = "登録可能なビーコン領域の上限数に達しました。上限まで登録します";
+"Invalid Segment Value" = "セグメントとして不当な値です";
+"Invalid Key Value" = "キーの文字として不当な値です";
+"Zero given keycodes" = "キーコードの数が0です";
+"Given region is not ours" = "渡された領域はサービス側提供のものではないので、使用制限の設定の対象外です";
+"Failed to update" = "更新に失敗しました";
+"Unusable beacon" = "ユーザが指定していない使用不可ビーコンです";
+"Non-swticher beacon not found" = "スイッチング用でないビーコンが見つかりません";

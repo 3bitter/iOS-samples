@@ -1,0 +1,37 @@
+/* 
+  TbBTLocalizable.strings
+  TbBTSDK
+
+  Created by Takefumi Ueda on 2014/11/13.
+  Copyright (c) 2014年 3bitter, Inc. All rights reserved.
+*/
+"Service agreement" = "Service Agreement";
+"Agree button" = "Agree";
+"Disagree button" = "Check Later";
+"Data temporary unavailable" = "Temporary Unavailable";
+"Notification title" = "Special Information";
+"Check button" = "Check";
+"Later button" = "Later";
+"Agreement not found" = "We sincerely apologize for temporary unavailability of agreement statement. Please check later";
+"Property [status] load failed" = "We sincerely apologize for failure to find the target movie";
+"Region update time interval not passed" = "Skip update beacause time interval not passed since previous region update";
+"Interaction time interval not passed" = "Time interval not passed since previous notification";
+"Notification setting off" = "Push Notification for this app is off";
+"User interaction required" = "User interaction required";
+"Page could not found" = "We sincerely apologize for temporary unavailability of target page";
+"Item cannot be played" = "We sincerely apologize for temporary unavailability of target movie";
+"Movie temporary unavailable" = "We sincerely apologize for reading movie is timed out";
+"Banner temporary unavailable" = "We sincerely apologize for temporary unavailability of target banner";
+"Zero given beacons" = "No. of given beacons is 0";
+"Given beacons are not ours" = "No match keycodes beacause the given beacons are not provided for our services";
+"Service region monitoring started" = "Region monitoring of 3bitter's beacon. Target ID：";
+"Service region monitoring stopped" = "Region monitoring of 3bitter's beacon. Target ID：";
+"Designatable region over" = "Limit over of designatable beacon region";
+"Designatable region limit" = "Reached to the limit of beacon region. Beacons will be registered to the upper limit";
+"Invalid Segment Value" = "Invalid value for the segment";
+"Invalid Key Value" = "Invalid format value for the key";
+"Zero given keycodes" = "No. of given keycode is 0";
+"Given region is not ours" = "Cannot control the region beacause the region is out of our support";
+"Failed to update" = "Failed to update";
+"Unusable beacon" = "Unusable beacon that user have not designated";
+"Non-swticher beacon not found" = "Any beacon that is not switcher type not found";
