@@ -12,6 +12,7 @@
 "Notification title" = "特別なお知らせ";
 "Check button" = "見る";
 "Later button" = "後で";
+"Service use disagreed" = "SDKに必要な条件の同意拒否が提示されています。準備を中止します";
 "Agreement not found" = "申し訳ありません。規約文の取得に失敗しました。後ほどご確認いただけますと幸いです";
 "Property [status] load failed" = "申し訳ありません。対象の動画の情報が見つかりません";
 "Region update time interval not passed" = "前回の取得から再取得可能時間が経過していないので、更新をスキップします";
@@ -35,3 +36,11 @@
 "Failed to update" = "更新に失敗しました";
 "Unusable beacon" = "ユーザが指定していない使用不可ビーコンです";
 "Non-swticher beacon not found" = "スイッチング用でないビーコンが見つかりません";
+"Invalid major or minor value" = "majorまたはminorの値が許容範囲外の値です";
+"Service not allowed" = "使用に必要な条件の同意がSDK側に与えられていません。準備を中止します";
+"Required region not found" = "必要な領域情報が取得できませんでした";
+"BLE Unsupported" = "現在のプラットフォームでBluetooth Low Energy関連の要件が満たされていません";
+"BLE Unauthorized" = "アプリにBluetooth Low Energy関連の権限が与えられていません";
+"BLE Not Available" = "Bluetoothの設定がオフのようです";
+"Cannot Activate Beacon Mode" = "現在の実行環境でビーコンモードを有効にできません";
+"Region Creation Failure" = "自身の領域が準備できませんでした";

@@ -12,6 +12,7 @@
 "Notification title" = "Special Information";
 "Check button" = "Check";
 "Later button" = "Later";
+"Service use disagreed" = "Disagreement has given against SDK use conditions. Abort preparation";
 "Agreement not found" = "We sincerely apologize for temporary unavailability of agreement statement. Please check later";
 "Property [status] load failed" = "We sincerely apologize for failure to find the target movie";
 "Region update time interval not passed" = "Skip update beacause time interval not passed since previous region update";
@@ -35,3 +36,11 @@
 "Failed to update" = "Failed to update";
 "Unusable beacon" = "Unusable beacon that user have not designated";
 "Non-swticher beacon not found" = "Any beacon that is not switcher type not found";
+"Invalid major or minor value" = "Ether major or minor value is out of bounds";
+"Service not allowed" = "Agreement for condition has not given yet. Abort preparation";
+"Required region not found" = "Required region could not retrieved";
+"BLE Unsupported" = "Bluetooth Low Energy condition is not supported on this platform";
+"BLE Unauthorized" = "App is not authorized to use Bluethooth Low Energy";
+"BLE Not Available" = "Bluetooth setting may be off";
+"Cannot Activate Beacon Mode" = "Could not enable beacon mode on current environment";
+"Region Creation Failure" = "Could not prepare the region to use";
