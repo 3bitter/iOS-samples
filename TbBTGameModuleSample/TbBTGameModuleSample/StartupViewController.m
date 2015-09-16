@@ -33,20 +33,20 @@ extern NSString *kTwoThirdIconsDownloaded;
     _nickNameField.returnKeyType = UIReturnKeyDone;
     _nickNameField.delegate = self;
     _closeButton.hidden = YES;
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
     NSString *appToken = [[TbSandboxCredential myCredential] appToken];
     if (appToken.length == 0) {
         _nickNameField.enabled = NO;
         _startButton.enabled = NO;
-    }
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"本アプリの使用にはデモ環境用の試用キーが必要です" preferredStyle:UIAlertControllerStyleAlert];
-    [alertVC addAction:[UIAlertAction actionWithTitle:@"O.K." style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"本アプリの使用にはデモ環境用の試用キーが必要です" preferredStyle:UIAlertControllerStyleAlert];
+        [alertVC addAction:[UIAlertAction actionWithTitle:@"O.K." style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             [self dismissViewControllerAnimated:YES completion:nil];
         }]];
-    [self presentViewController:alertVC animated:YES completion:nil];
+        [self presentViewController:alertVC animated:YES completion:nil];
+    }
     
     [super viewDidAppear:animated];
 }
