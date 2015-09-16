@@ -22,7 +22,7 @@
 @property (assign, nonatomic) BOOL monitoringAndSDKServiceDisagreed;
 
 @property (weak, nonatomic) IBOutlet UISwitch *beaconFunctionSwitch;
-@property (weak, nonatomic) IBOutlet UISwitch *targetMonitoringSwich;
+@property (weak, nonatomic) IBOutlet UISwitch *targetMonitoringSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *stateDescriptionLabel;
 
 - (IBAction)beaconFunctionSwitched:(id)sender;

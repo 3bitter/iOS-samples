@@ -85,17 +85,17 @@ NSString *kRegionLabel = @"Region";
     BOOL usingBeaconFunc = [[defaults valueForKey:kUsingBeaconFlag] boolValue];
     if (!usingBeaconFunc) {
         _beaconFunctionSwitch.on = NO;
-        _targetMonitoringSwich.on = NO;
-        _targetMonitoringSwich.enabled = NO;
+        _targetMonitoringSwitch.on = NO;
+        _targetMonitoringSwitch.enabled = NO;
     } else {
         _beaconFunctionSwitch.on = YES;
-        _targetMonitoringSwich.enabled = YES;
+        _targetMonitoringSwitch.enabled = YES;
     }
     BOOL monitoringIsOn = [[defaults valueForKey:kMonitoringStateFlag] boolValue];
     if (monitoringIsOn && _appLocManager.monitoredRegions.count > 0) {
-        _targetMonitoringSwich.on = YES;
+        _targetMonitoringSwitch.on = YES;
     } else {
-        _targetMonitoringSwich.on = NO;
+        _targetMonitoringSwitch.on = NO;
     }
 }
 
@@ -118,28 +118,26 @@ NSString *kRegionLabel = @"Region";
 
 // Show description & my beacon registration view
 - (IBAction)beaconFunctionSwitched:(id)sender {
-    BOOL usingBeacon = NO;
     if ([(UISwitch *)sender isOn]) {
-        usingBeacon = YES;
         /* ビーコン（領域）ベースのイベントに反応するかチェックします */
         BOOL canUse = [TbBTManager isBeaconEventConditionMet];
         if (!canUse) {
             [self checkAgreementAndContinue];
         } else {
-            _targetMonitoringSwich.enabled = YES;
-            _targetMonitoringSwich.on = NO;
+            _targetMonitoringSwitch.enabled = YES;
+            _targetMonitoringSwitch.on = NO;
         }
     } else {
         /* 3bitterビーコン領域のイベント関連に反応しないようにモニタリング処理を止めます */
-        _targetMonitoringSwich.on = NO;
-        _targetMonitoringSwich.enabled = NO;
+        _targetMonitoringSwitch.on = NO;
+        _targetMonitoringSwitch.enabled = NO;
         assert(_btManager);
         assert(_appLocManager);
         [_btManager stopMonitoringTbBTAllRegions:_appLocManager];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:[NSNumber numberWithBool:NO] forKey:kUsingBeaconFlag];
+        [defaults synchronize];
     }
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setValue:[NSNumber numberWithBool:usingBeacon] forKey:kUsingBeaconFlag];
-    [defaults synchronize];
 }
 
 // モニタリング制御例：ユーザ指定のビーコンがある場合のみモニタリングを開始
@@ -147,7 +145,7 @@ NSString *kRegionLabel = @"Region";
     assert(_btManager);
     assert(_appLocManager);
     BOOL monitoring = NO;
-    if (_targetMonitoringSwich.isOn) {
+    if (_targetMonitoringSwitch.isOn) {
         if ([_btManager hasDesignatedBeacon]) {
             // 指定ビーコンの領域情報をSDKを介して取得し、モニタリングを開始します
             NSArray *regionsOfDesignatedBeacons = [_btManager regionsOfDesignatedBeacons];
@@ -172,7 +170,11 @@ NSString *kRegionLabel = @"Region";
         /* 3bitter側で用意のビーコン機能使用規約の表示 */
         TbBTBuiltInUIActionDispatcher *dispatcher =[TbBTBuiltInUIActionDispatcher sharedDispatcher];
         [dispatcher presentTbBTAgreementViewControllerFromVC:self];
-    } else { /* 規約同意済みなので機能使用の準備 */
+    } else {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:[NSNumber numberWithBool:YES] forKey:kUsingBeaconFlag];
+        [defaults synchronize];
+        /* 規約同意済みなので機能使用の準備 */
         [self prepareManager];
     }
 }
@@ -198,6 +200,10 @@ NSString *kRegionLabel = @"Region";
     // 再起動後のために同意フラグを保存します
     [self saveAgreement];
     _monitoringAndSDKServiceAgreed = YES;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:[NSNumber numberWithBool:YES] forKey:kUsingBeaconFlag];
+    [defaults synchronize];
+    
     _stateDescriptionLabel.text = @"規約が同意されたので位置情報の使用を準備します";
     // 位置情報のモニタリングを可能にします
     _appLocManager = [[CLLocationManager alloc] init];
@@ -220,7 +226,7 @@ NSString *kRegionLabel = @"Region";
 
 - (void)didDisagreeByUser {
     _monitoringAndSDKServiceDisagreed = YES;
-    _beaconFunctionSwitch.on = NO;
+    [_beaconFunctionSwitch setOn:NO];
     _stateDescriptionLabel.text = @"規約に同意がないので位置情報の使用はしません";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
