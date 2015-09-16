@@ -38,12 +38,17 @@ extern NSString *kTwoThirdIconsDownloaded;
     if (appToken.length == 0) {
         _nickNameField.enabled = NO;
         _startButton.enabled = NO;
-        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"本アプリの使用にはデモ環境用の試用キーが必要です" preferredStyle:UIAlertControllerStyleAlert];
-        [alertVC addAction:[UIAlertAction actionWithTitle:@"O.K." style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"本アプリの使用にはデモ環境用の試用キーが必要です" preferredStyle:UIAlertControllerStyleAlert];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"O.K." style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             [self dismissViewControllerAnimated:YES completion:nil];
         }]];
-        [self presentViewController:alertVC animated:YES completion:nil];
-    }
+    [self presentViewController:alertVC animated:YES completion:nil];
+    
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
