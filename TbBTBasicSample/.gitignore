@@ -1,3 +1,5 @@
 TbBTBasicSample.xcodeproj/xcuserdata/*
 TbBTBasicSample.xcworkspace/*
 TbBTBasicSample.xcodeproj/project.pbxproj
+*.xcuserstate
+*.xccheckout
