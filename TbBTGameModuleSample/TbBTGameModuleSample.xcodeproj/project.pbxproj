@@ -1,0 +1,808 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		982D31691B564E9600520AD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 982D31681B564E9600520AD7 /* QuartzCore.framework */; };
+		984679E31BA075F80052769F /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 984679E21BA075F80052769F /* GuideViewController.m */; };
+		984679E61BA2C9410052769F /* TbSandboxCredential.plist in Resources */ = {isa = PBXBuildFile; fileRef = 984679E51BA2C9410052769F /* TbSandboxCredential.plist */; };
+		984679EB1BA2CB390052769F /* TbSandboxCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 984679EA1BA2CB390052769F /* TbSandboxCredential.m */; };
+		98467ABC1BA7F69D0052769F /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98467AAD1BA7F69D0052769F /* libTbBTSDK.a */; };
+		98467ABD1BA7F69D0052769F /* OfficialRegion.json in Resources */ = {isa = PBXBuildFile; fileRef = 98467AAF1BA7F69D0052769F /* OfficialRegion.json */; };
+		98467ABE1BA7F69D0052769F /* TbBTLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98467AB21BA7F69D0052769F /* TbBTLocalizable.strings */; };
+		98467ABF1BA7F69D0052769F /* sdk_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 98467AB61BA7F69D0052769F /* sdk_close.png */; };
+		98467AC01BA7F69E0052769F /* sdk_frame_l.png in Resources */ = {isa = PBXBuildFile; fileRef = 98467AB71BA7F69D0052769F /* sdk_frame_l.png */; };
+		98467AC11BA7F69E0052769F /* sdk_frame_p.png in Resources */ = {isa = PBXBuildFile; fileRef = 98467AB81BA7F69D0052769F /* sdk_frame_p.png */; };
+		98467AC21BA7F69E0052769F /* sdk_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 98467AB91BA7F69D0052769F /* sdk_pause.png */; };
+		98467AC31BA7F69E0052769F /* sdk_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 98467ABA1BA7F69D0052769F /* sdk_play.png */; };
+		98467AC41BA7F69E0052769F /* TbBTDeveloperPreference.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98467ABB1BA7F69D0052769F /* TbBTDeveloperPreference.plist */; };
+		985694001B85FB5600F51BD7 /* SharableItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 985693FF1B85FB5600F51BD7 /* SharableItemsViewController.m */; };
+		986836CB1B77236400F9C716 /* DefaultServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 986836CA1B77236400F9C716 /* DefaultServerClient.m */; };
+		986836CE1B773A4200F9C716 /* StartupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 986836CD1B773A4200F9C716 /* StartupViewController.m */; };
+		986836CF1B773C1F00F9C716 /* ItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EC431B4E5936006A2E1A /* ItemManager.m */; };
+		98941E911B80AA6600CB377A /* OptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98941E901B80AA6600CB377A /* OptionsTableViewController.m */; };
+		98941E941B837D1C00CB377A /* DiscoveredItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98941E931B837D1C00CB377A /* DiscoveredItemsViewController.m */; };
+		98A56BA51B4FE04F00D9F4F0 /* DesignatedBeaconsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A56BA41B4FE04F00D9F4F0 /* DesignatedBeaconsViewController.m */; };
+		98A56BAB1B4FE2B800D9F4F0 /* BTFunctionSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A56BAA1B4FE2B800D9F4F0 /* BTFunctionSettingsViewController.m */; };
+		98A56BAE1B53865500D9F4F0 /* ItemManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A56BAD1B53865500D9F4F0 /* ItemManagementViewController.m */; };
+		98A56BB41B5387EB00D9F4F0 /* BaseItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A56BB31B5387EB00D9F4F0 /* BaseItemListViewController.m */; };
+		98A56BB71B5387FA00D9F4F0 /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A56BB61B5387FA00D9F4F0 /* ItemDetailViewController.m */; };
+		98B2EBDE1B4E4920006A2E1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EBDD1B4E4920006A2E1A /* main.m */; };
+		98B2EBE11B4E4920006A2E1A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EBE01B4E4920006A2E1A /* AppDelegate.m */; };
+		98B2EBE41B4E4920006A2E1A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EBE31B4E4920006A2E1A /* HomeViewController.m */; };
+		98B2EBE71B4E4920006A2E1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B2EBE51B4E4920006A2E1A /* Main.storyboard */; };
+		98B2EBE91B4E4920006A2E1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98B2EBE81B4E4920006A2E1A /* Images.xcassets */; };
+		98B2EBEC1B4E4920006A2E1A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B2EBEA1B4E4920006A2E1A /* LaunchScreen.xib */; };
+		98B2EBF81B4E4920006A2E1A /* TbBTGameModuleSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EBF71B4E4920006A2E1A /* TbBTGameModuleSampleTests.m */; };
+		98B2EC0C1B4E4CF2006A2E1A /* RangedBeaconInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EC031B4E4CF2006A2E1A /* RangedBeaconInfoViewController.m */; };
+		98B2EC0D1B4E4CF2006A2E1A /* BTUseDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EC051B4E4CF2006A2E1A /* BTUseDescriptionViewController.m */; };
+		98B2EC0E1B4E4CF2006A2E1A /* BTServiceFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EC071B4E4CF2006A2E1A /* BTServiceFacade.m */; };
+		98B2EC101B4E4CF2006A2E1A /* BTFuncServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EC0B1B4E4CF2006A2E1A /* BTFuncServerClient.m */; };
+		98B2EC3D1B4E5315006A2E1A /* MyBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EC3A1B4E5315006A2E1A /* MyBeacon.m */; };
+		98B2EC3E1B4E5315006A2E1A /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EC3C1B4E5315006A2E1A /* Item.m */; };
+		98B2EC471B4E9F15006A2E1A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B2EC461B4E9F15006A2E1A /* CoreLocation.framework */; };
+		98B2EC491B4E9F1E006A2E1A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B2EC481B4E9F1E006A2E1A /* AdSupport.framework */; };
+		98B2EC4B1B4E9F25006A2E1A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B2EC4A1B4E9F25006A2E1A /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		98BEA89B1B8DA60C0054EC09 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BEA89A1B8DA60C0054EC09 /* CoreBluetooth.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		98FD113E1B96E10100525B93 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FD113D1B96E10100525B93 /* CreditViewController.m */; };
+		98FD11411B96F09600525B93 /* NeighbersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FD11401B96F09600525B93 /* NeighbersTableViewController.m */; };
+		98FD11441B96F30200525B93 /* AdvertiseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FD11431B96F30200525B93 /* AdvertiseViewController.m */; };
+		98FD11491B97008500525B93 /* BeaconUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FD11481B97008500525B93 /* BeaconUserInfoCell.m */; };
+		98FD114C1B972E4800525B93 /* BeaconOwner.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FD114B1B972E4800525B93 /* BeaconOwner.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		98B2EBF21B4E4920006A2E1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98B2EBD01B4E4920006A2E1A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98B2EBD71B4E4920006A2E1A;
+			remoteInfo = TbBTGameModuleSample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		908BB3C2C45E00E190909C3D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		982D31681B564E9600520AD7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		984679E11BA075F80052769F /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
+		984679E21BA075F80052769F /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		984679E51BA2C9410052769F /* TbSandboxCredential.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TbSandboxCredential.plist; sourceTree = "<group>"; };
+		984679E91BA2CB390052769F /* TbSandboxCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbSandboxCredential.h; sourceTree = "<group>"; };
+		984679EA1BA2CB390052769F /* TbSandboxCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TbSandboxCredential.m; sourceTree = "<group>"; };
+		98467A9E1BA7F69D0052769F /* TbBTAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTAgreementViewController.h; sourceTree = "<group>"; };
+		98467A9F1BA7F69D0052769F /* TbBTAVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTAVPlayerView.h; sourceTree = "<group>"; };
+		98467AA01BA7F69D0052769F /* TbBTAVPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTAVPlayerViewController.h; sourceTree = "<group>"; };
+		98467AA11BA7F69D0052769F /* TbBTBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTBannerViewController.h; sourceTree = "<group>"; };
+		98467AA21BA7F69D0052769F /* TbBTBeaconizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTBeaconizer.h; sourceTree = "<group>"; };
+		98467AA31BA7F69D0052769F /* TbBTBuiltInUIActionDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTBuiltInUIActionDispatcher.h; sourceTree = "<group>"; };
+		98467AA41BA7F69D0052769F /* TbBTDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTDefaults.h; sourceTree = "<group>"; };
+		98467AA51BA7F69D0052769F /* TbBTDeveloperPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTDeveloperPreference.h; sourceTree = "<group>"; };
+		98467AA61BA7F69D0052769F /* TbBTForeNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTForeNotificationViewController.h; sourceTree = "<group>"; };
+		98467AA71BA7F69D0052769F /* TbBTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTManager.h; sourceTree = "<group>"; };
+		98467AA81BA7F69D0052769F /* TbBTPresentationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTPresentationInfo.h; sourceTree = "<group>"; };
+		98467AA91BA7F69D0052769F /* TbBTRegionNotificationSettingOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTRegionNotificationSettingOptions.h; sourceTree = "<group>"; };
+		98467AAA1BA7F69D0052769F /* TbBTServiceBeaconData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTServiceBeaconData.h; sourceTree = "<group>"; };
+		98467AAB1BA7F69D0052769F /* TbBTServiceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTServiceHelper.h; sourceTree = "<group>"; };
+		98467AAC1BA7F69D0052769F /* TbBTWebPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTWebPageViewController.h; sourceTree = "<group>"; };
+		98467AAD1BA7F69D0052769F /* libTbBTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTbBTSDK.a; sourceTree = "<group>"; };
+		98467AAF1BA7F69D0052769F /* OfficialRegion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OfficialRegion.json; sourceTree = "<group>"; };
+		98467AB31BA7F69D0052769F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TbBTLocalizable.strings; sourceTree = "<group>"; };
+		98467AB41BA7F69D0052769F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TbBTLocalizable.strings; sourceTree = "<group>"; };
+		98467AB61BA7F69D0052769F /* sdk_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_close.png; sourceTree = "<group>"; };
+		98467AB71BA7F69D0052769F /* sdk_frame_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_frame_l.png; sourceTree = "<group>"; };
+		98467AB81BA7F69D0052769F /* sdk_frame_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_frame_p.png; sourceTree = "<group>"; };
+		98467AB91BA7F69D0052769F /* sdk_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_pause.png; sourceTree = "<group>"; };
+		98467ABA1BA7F69D0052769F /* sdk_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_play.png; sourceTree = "<group>"; };
+		98467ABB1BA7F69D0052769F /* TbBTDeveloperPreference.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TbBTDeveloperPreference.plist; sourceTree = "<group>"; };
+		985693FE1B85FB5600F51BD7 /* SharableItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharableItemsViewController.h; sourceTree = "<group>"; };
+		985693FF1B85FB5600F51BD7 /* SharableItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharableItemsViewController.m; sourceTree = "<group>"; };
+		986836C91B77236400F9C716 /* DefaultServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultServerClient.h; sourceTree = "<group>"; };
+		986836CA1B77236400F9C716 /* DefaultServerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultServerClient.m; sourceTree = "<group>"; };
+		986836CC1B773A4200F9C716 /* StartupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupViewController.h; sourceTree = "<group>"; };
+		986836CD1B773A4200F9C716 /* StartupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupViewController.m; sourceTree = "<group>"; };
+		98941E8F1B80AA6600CB377A /* OptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsTableViewController.h; sourceTree = "<group>"; };
+		98941E901B80AA6600CB377A /* OptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsTableViewController.m; sourceTree = "<group>"; };
+		98941E921B837D1C00CB377A /* DiscoveredItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveredItemsViewController.h; sourceTree = "<group>"; };
+		98941E931B837D1C00CB377A /* DiscoveredItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveredItemsViewController.m; sourceTree = "<group>"; };
+		98A56BA31B4FE04F00D9F4F0 /* DesignatedBeaconsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignatedBeaconsViewController.h; sourceTree = "<group>"; };
+		98A56BA41B4FE04F00D9F4F0 /* DesignatedBeaconsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignatedBeaconsViewController.m; sourceTree = "<group>"; };
+		98A56BA91B4FE2B800D9F4F0 /* BTFunctionSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTFunctionSettingsViewController.h; sourceTree = "<group>"; };
+		98A56BAA1B4FE2B800D9F4F0 /* BTFunctionSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTFunctionSettingsViewController.m; sourceTree = "<group>"; };
+		98A56BAC1B53865500D9F4F0 /* ItemManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemManagementViewController.h; sourceTree = "<group>"; };
+		98A56BAD1B53865500D9F4F0 /* ItemManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemManagementViewController.m; sourceTree = "<group>"; };
+		98A56BB21B5387EB00D9F4F0 /* BaseItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseItemListViewController.h; sourceTree = "<group>"; };
+		98A56BB31B5387EB00D9F4F0 /* BaseItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseItemListViewController.m; sourceTree = "<group>"; };
+		98A56BB51B5387FA00D9F4F0 /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
+		98A56BB61B5387FA00D9F4F0 /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
+		98B2EBD81B4E4920006A2E1A /* TbBTGameModuleSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TbBTGameModuleSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		98B2EBDC1B4E4920006A2E1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98B2EBDD1B4E4920006A2E1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		98B2EBDF1B4E4920006A2E1A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		98B2EBE01B4E4920006A2E1A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		98B2EBE21B4E4920006A2E1A /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		98B2EBE31B4E4920006A2E1A /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		98B2EBE61B4E4920006A2E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		98B2EBE81B4E4920006A2E1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		98B2EBEB1B4E4920006A2E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		98B2EBF11B4E4920006A2E1A /* TbBTGameModuleSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TbBTGameModuleSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		98B2EBF61B4E4920006A2E1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98B2EBF71B4E4920006A2E1A /* TbBTGameModuleSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TbBTGameModuleSampleTests.m; sourceTree = "<group>"; };
+		98B2EC021B4E4CF2006A2E1A /* RangedBeaconInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangedBeaconInfoViewController.h; sourceTree = "<group>"; };
+		98B2EC031B4E4CF2006A2E1A /* RangedBeaconInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangedBeaconInfoViewController.m; sourceTree = "<group>"; };
+		98B2EC041B4E4CF2006A2E1A /* BTUseDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTUseDescriptionViewController.h; sourceTree = "<group>"; };
+		98B2EC051B4E4CF2006A2E1A /* BTUseDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTUseDescriptionViewController.m; sourceTree = "<group>"; };
+		98B2EC061B4E4CF2006A2E1A /* BTServiceFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTServiceFacade.h; sourceTree = "<group>"; };
+		98B2EC071B4E4CF2006A2E1A /* BTServiceFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTServiceFacade.m; sourceTree = "<group>"; };
+		98B2EC0A1B4E4CF2006A2E1A /* BTFuncServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTFuncServerClient.h; sourceTree = "<group>"; };
+		98B2EC0B1B4E4CF2006A2E1A /* BTFuncServerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTFuncServerClient.m; sourceTree = "<group>"; };
+		98B2EC391B4E5315006A2E1A /* MyBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBeacon.h; sourceTree = "<group>"; };
+		98B2EC3A1B4E5315006A2E1A /* MyBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBeacon.m; sourceTree = "<group>"; };
+		98B2EC3B1B4E5315006A2E1A /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		98B2EC3C1B4E5315006A2E1A /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		98B2EC421B4E57FB006A2E1A /* ItemManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemManager.h; sourceTree = "<group>"; };
+		98B2EC431B4E5936006A2E1A /* ItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemManager.m; sourceTree = "<group>"; };
+		98B2EC461B4E9F15006A2E1A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		98B2EC481B4E9F1E006A2E1A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		98B2EC4A1B4E9F25006A2E1A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		98BEA89A1B8DA60C0054EC09 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		98FD113C1B96E10100525B93 /* CreditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditViewController.h; sourceTree = "<group>"; };
+		98FD113D1B96E10100525B93 /* CreditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditViewController.m; sourceTree = "<group>"; };
+		98FD113F1B96F09600525B93 /* NeighbersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeighbersTableViewController.h; sourceTree = "<group>"; };
+		98FD11401B96F09600525B93 /* NeighbersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeighbersTableViewController.m; sourceTree = "<group>"; };
+		98FD11421B96F30200525B93 /* AdvertiseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertiseViewController.h; sourceTree = "<group>"; };
+		98FD11431B96F30200525B93 /* AdvertiseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertiseViewController.m; sourceTree = "<group>"; };
+		98FD11471B97008500525B93 /* BeaconUserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconUserInfoCell.h; sourceTree = "<group>"; };
+		98FD11481B97008500525B93 /* BeaconUserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconUserInfoCell.m; sourceTree = "<group>"; };
+		98FD114A1B972E4800525B93 /* BeaconOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconOwner.h; sourceTree = "<group>"; };
+		98FD114B1B972E4800525B93 /* BeaconOwner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconOwner.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		98B2EBD51B4E4920006A2E1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98BEA89B1B8DA60C0054EC09 /* CoreBluetooth.framework in Frameworks */,
+				982D31691B564E9600520AD7 /* QuartzCore.framework in Frameworks */,
+				98467ABC1BA7F69D0052769F /* libTbBTSDK.a in Frameworks */,
+				98B2EC4B1B4E9F25006A2E1A /* AVFoundation.framework in Frameworks */,
+				98B2EC491B4E9F1E006A2E1A /* AdSupport.framework in Frameworks */,
+				98B2EC471B4E9F15006A2E1A /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98B2EBEE1B4E4920006A2E1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F6E1944D0D75B437AB95129 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				98BEA89A1B8DA60C0054EC09 /* CoreBluetooth.framework */,
+				908BB3C2C45E00E190909C3D /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		984679E41BA2C72B0052769F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				98B2EC391B4E5315006A2E1A /* MyBeacon.h */,
+				98B2EC3A1B4E5315006A2E1A /* MyBeacon.m */,
+				98FD114A1B972E4800525B93 /* BeaconOwner.h */,
+				98FD114B1B972E4800525B93 /* BeaconOwner.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		984679E71BA2C97B0052769F /* TbEnvironment */ = {
+			isa = PBXGroup;
+			children = (
+				984679E91BA2CB390052769F /* TbSandboxCredential.h */,
+				984679EA1BA2CB390052769F /* TbSandboxCredential.m */,
+			);
+			name = TbEnvironment;
+			sourceTree = "<group>";
+		};
+		98467A9B1BA7F69D0052769F /* TbBTSDKver102 */ = {
+			isa = PBXGroup;
+			children = (
+				98467A9C1BA7F69D0052769F /* include */,
+				98467AAD1BA7F69D0052769F /* libTbBTSDK.a */,
+				98467AAE1BA7F69D0052769F /* Supporting Files */,
+			);
+			path = TbBTSDKver102;
+			sourceTree = "<group>";
+		};
+		98467A9C1BA7F69D0052769F /* include */ = {
+			isa = PBXGroup;
+			children = (
+				98467A9D1BA7F69D0052769F /* TbBTSDK */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		98467A9D1BA7F69D0052769F /* TbBTSDK */ = {
+			isa = PBXGroup;
+			children = (
+				98467A9E1BA7F69D0052769F /* TbBTAgreementViewController.h */,
+				98467A9F1BA7F69D0052769F /* TbBTAVPlayerView.h */,
+				98467AA01BA7F69D0052769F /* TbBTAVPlayerViewController.h */,
+				98467AA11BA7F69D0052769F /* TbBTBannerViewController.h */,
+				98467AA21BA7F69D0052769F /* TbBTBeaconizer.h */,
+				98467AA31BA7F69D0052769F /* TbBTBuiltInUIActionDispatcher.h */,
+				98467AA41BA7F69D0052769F /* TbBTDefaults.h */,
+				98467AA51BA7F69D0052769F /* TbBTDeveloperPreference.h */,
+				98467AA61BA7F69D0052769F /* TbBTForeNotificationViewController.h */,
+				98467AA71BA7F69D0052769F /* TbBTManager.h */,
+				98467AA81BA7F69D0052769F /* TbBTPresentationInfo.h */,
+				98467AA91BA7F69D0052769F /* TbBTRegionNotificationSettingOptions.h */,
+				98467AAA1BA7F69D0052769F /* TbBTServiceBeaconData.h */,
+				98467AAB1BA7F69D0052769F /* TbBTServiceHelper.h */,
+				98467AAC1BA7F69D0052769F /* TbBTWebPageViewController.h */,
+			);
+			path = TbBTSDK;
+			sourceTree = "<group>";
+		};
+		98467AAE1BA7F69D0052769F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				98467AAF1BA7F69D0052769F /* OfficialRegion.json */,
+				98467AB01BA7F69D0052769F /* Resources */,
+				98467ABB1BA7F69D0052769F /* TbBTDeveloperPreference.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98467AB01BA7F69D0052769F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				98467AB11BA7F69D0052769F /* i18n */,
+				98467AB51BA7F69D0052769F /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		98467AB11BA7F69D0052769F /* i18n */ = {
+			isa = PBXGroup;
+			children = (
+				98467AB21BA7F69D0052769F /* TbBTLocalizable.strings */,
+			);
+			path = i18n;
+			sourceTree = "<group>";
+		};
+		98467AB51BA7F69D0052769F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				98467AB61BA7F69D0052769F /* sdk_close.png */,
+				98467AB71BA7F69D0052769F /* sdk_frame_l.png */,
+				98467AB81BA7F69D0052769F /* sdk_frame_p.png */,
+				98467AB91BA7F69D0052769F /* sdk_pause.png */,
+				98467ABA1BA7F69D0052769F /* sdk_play.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		98B2EBCF1B4E4920006A2E1A = {
+			isa = PBXGroup;
+			children = (
+				98467A9B1BA7F69D0052769F /* TbBTSDKver102 */,
+				982D31681B564E9600520AD7 /* QuartzCore.framework */,
+				98B2EC4A1B4E9F25006A2E1A /* AVFoundation.framework */,
+				98B2EC481B4E9F1E006A2E1A /* AdSupport.framework */,
+				98B2EC461B4E9F15006A2E1A /* CoreLocation.framework */,
+				98B2EBDA1B4E4920006A2E1A /* TbBTGameModuleSample */,
+				98B2EBF41B4E4920006A2E1A /* TbBTGameModuleSampleTests */,
+				98B2EBD91B4E4920006A2E1A /* Products */,
+				4F6E1944D0D75B437AB95129 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		98B2EBD91B4E4920006A2E1A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				98B2EBD81B4E4920006A2E1A /* TbBTGameModuleSample.app */,
+				98B2EBF11B4E4920006A2E1A /* TbBTGameModuleSampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		98B2EBDA1B4E4920006A2E1A /* TbBTGameModuleSample */ = {
+			isa = PBXGroup;
+			children = (
+				984679E71BA2C97B0052769F /* TbEnvironment */,
+				98B2EBE51B4E4920006A2E1A /* Main.storyboard */,
+				98B2EC381B4E52FF006A2E1A /* Model */,
+				98B2EC011B4E4CC7006A2E1A /* BeaconFunction */,
+				98B2EBDF1B4E4920006A2E1A /* AppDelegate.h */,
+				98B2EBE01B4E4920006A2E1A /* AppDelegate.m */,
+				984679E11BA075F80052769F /* GuideViewController.h */,
+				984679E21BA075F80052769F /* GuideViewController.m */,
+				98941E921B837D1C00CB377A /* DiscoveredItemsViewController.h */,
+				98941E931B837D1C00CB377A /* DiscoveredItemsViewController.m */,
+				98B2EC421B4E57FB006A2E1A /* ItemManager.h */,
+				98B2EC431B4E5936006A2E1A /* ItemManager.m */,
+				98B2EBE21B4E4920006A2E1A /* HomeViewController.h */,
+				98B2EBE31B4E4920006A2E1A /* HomeViewController.m */,
+				98A56BB51B5387FA00D9F4F0 /* ItemDetailViewController.h */,
+				98A56BB61B5387FA00D9F4F0 /* ItemDetailViewController.m */,
+				98A56BB21B5387EB00D9F4F0 /* BaseItemListViewController.h */,
+				98A56BB31B5387EB00D9F4F0 /* BaseItemListViewController.m */,
+				98A56BAC1B53865500D9F4F0 /* ItemManagementViewController.h */,
+				98A56BAD1B53865500D9F4F0 /* ItemManagementViewController.m */,
+				986836C91B77236400F9C716 /* DefaultServerClient.h */,
+				986836CA1B77236400F9C716 /* DefaultServerClient.m */,
+				986836CC1B773A4200F9C716 /* StartupViewController.h */,
+				986836CD1B773A4200F9C716 /* StartupViewController.m */,
+				98941E8F1B80AA6600CB377A /* OptionsTableViewController.h */,
+				98941E901B80AA6600CB377A /* OptionsTableViewController.m */,
+				985693FE1B85FB5600F51BD7 /* SharableItemsViewController.h */,
+				985693FF1B85FB5600F51BD7 /* SharableItemsViewController.m */,
+				98FD113C1B96E10100525B93 /* CreditViewController.h */,
+				98FD113D1B96E10100525B93 /* CreditViewController.m */,
+				98B2EBE81B4E4920006A2E1A /* Images.xcassets */,
+				98B2EBEA1B4E4920006A2E1A /* LaunchScreen.xib */,
+				98B2EBDB1B4E4920006A2E1A /* Supporting Files */,
+			);
+			path = TbBTGameModuleSample;
+			sourceTree = "<group>";
+		};
+		98B2EBDB1B4E4920006A2E1A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				98B2EBDC1B4E4920006A2E1A /* Info.plist */,
+				98B2EBDD1B4E4920006A2E1A /* main.m */,
+				984679E51BA2C9410052769F /* TbSandboxCredential.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98B2EBF41B4E4920006A2E1A /* TbBTGameModuleSampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				98B2EBF71B4E4920006A2E1A /* TbBTGameModuleSampleTests.m */,
+				98B2EBF51B4E4920006A2E1A /* Supporting Files */,
+			);
+			path = TbBTGameModuleSampleTests;
+			sourceTree = "<group>";
+		};
+		98B2EBF51B4E4920006A2E1A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				98B2EBF61B4E4920006A2E1A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98B2EC011B4E4CC7006A2E1A /* BeaconFunction */ = {
+			isa = PBXGroup;
+			children = (
+				98FD11461B97006700525B93 /* TableViewCell */,
+				984679E41BA2C72B0052769F /* Model */,
+				98A56BA91B4FE2B800D9F4F0 /* BTFunctionSettingsViewController.h */,
+				98A56BAA1B4FE2B800D9F4F0 /* BTFunctionSettingsViewController.m */,
+				98B2EC021B4E4CF2006A2E1A /* RangedBeaconInfoViewController.h */,
+				98B2EC031B4E4CF2006A2E1A /* RangedBeaconInfoViewController.m */,
+				98B2EC041B4E4CF2006A2E1A /* BTUseDescriptionViewController.h */,
+				98B2EC051B4E4CF2006A2E1A /* BTUseDescriptionViewController.m */,
+				98A56BA31B4FE04F00D9F4F0 /* DesignatedBeaconsViewController.h */,
+				98A56BA41B4FE04F00D9F4F0 /* DesignatedBeaconsViewController.m */,
+				98B2EC061B4E4CF2006A2E1A /* BTServiceFacade.h */,
+				98B2EC071B4E4CF2006A2E1A /* BTServiceFacade.m */,
+				98B2EC0A1B4E4CF2006A2E1A /* BTFuncServerClient.h */,
+				98B2EC0B1B4E4CF2006A2E1A /* BTFuncServerClient.m */,
+				98FD11421B96F30200525B93 /* AdvertiseViewController.h */,
+				98FD11431B96F30200525B93 /* AdvertiseViewController.m */,
+				98FD113F1B96F09600525B93 /* NeighbersTableViewController.h */,
+				98FD11401B96F09600525B93 /* NeighbersTableViewController.m */,
+			);
+			name = BeaconFunction;
+			sourceTree = "<group>";
+		};
+		98B2EC381B4E52FF006A2E1A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				98B2EC3B1B4E5315006A2E1A /* Item.h */,
+				98B2EC3C1B4E5315006A2E1A /* Item.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		98FD11461B97006700525B93 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				98FD11471B97008500525B93 /* BeaconUserInfoCell.h */,
+				98FD11481B97008500525B93 /* BeaconUserInfoCell.m */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		98B2EBD71B4E4920006A2E1A /* TbBTGameModuleSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98B2EBFB1B4E4920006A2E1A /* Build configuration list for PBXNativeTarget "TbBTGameModuleSample" */;
+			buildPhases = (
+				98B2EBD41B4E4920006A2E1A /* Sources */,
+				98B2EBD51B4E4920006A2E1A /* Frameworks */,
+				98B2EBD61B4E4920006A2E1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TbBTGameModuleSample;
+			productName = TbBTGameModuleSample;
+			productReference = 98B2EBD81B4E4920006A2E1A /* TbBTGameModuleSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		98B2EBF01B4E4920006A2E1A /* TbBTGameModuleSampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98B2EBFE1B4E4920006A2E1A /* Build configuration list for PBXNativeTarget "TbBTGameModuleSampleTests" */;
+			buildPhases = (
+				98B2EBED1B4E4920006A2E1A /* Sources */,
+				98B2EBEE1B4E4920006A2E1A /* Frameworks */,
+				98B2EBEF1B4E4920006A2E1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				98B2EBF31B4E4920006A2E1A /* PBXTargetDependency */,
+			);
+			name = TbBTGameModuleSampleTests;
+			productName = TbBTGameModuleSampleTests;
+			productReference = 98B2EBF11B4E4920006A2E1A /* TbBTGameModuleSampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98B2EBD01B4E4920006A2E1A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = 3bitter.com;
+				TargetAttributes = {
+					98B2EBD71B4E4920006A2E1A = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = VPNC5YC3SU;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
+					98B2EBF01B4E4920006A2E1A = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 98B2EBD71B4E4920006A2E1A;
+					};
+				};
+			};
+			buildConfigurationList = 98B2EBD31B4E4920006A2E1A /* Build configuration list for PBXProject "TbBTGameModuleSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ja,
+			);
+			mainGroup = 98B2EBCF1B4E4920006A2E1A;
+			productRefGroup = 98B2EBD91B4E4920006A2E1A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				98B2EBD71B4E4920006A2E1A /* TbBTGameModuleSample */,
+				98B2EBF01B4E4920006A2E1A /* TbBTGameModuleSampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		98B2EBD61B4E4920006A2E1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98467ABF1BA7F69D0052769F /* sdk_close.png in Resources */,
+				98467AC11BA7F69E0052769F /* sdk_frame_p.png in Resources */,
+				98467AC01BA7F69E0052769F /* sdk_frame_l.png in Resources */,
+				98B2EBE71B4E4920006A2E1A /* Main.storyboard in Resources */,
+				98467AC41BA7F69E0052769F /* TbBTDeveloperPreference.plist in Resources */,
+				98B2EBEC1B4E4920006A2E1A /* LaunchScreen.xib in Resources */,
+				98B2EBE91B4E4920006A2E1A /* Images.xcassets in Resources */,
+				98467AC31BA7F69E0052769F /* sdk_play.png in Resources */,
+				98467ABE1BA7F69D0052769F /* TbBTLocalizable.strings in Resources */,
+				98467AC21BA7F69E0052769F /* sdk_pause.png in Resources */,
+				984679E61BA2C9410052769F /* TbSandboxCredential.plist in Resources */,
+				98467ABD1BA7F69D0052769F /* OfficialRegion.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98B2EBEF1B4E4920006A2E1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		98B2EBD41B4E4920006A2E1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98FD11441B96F30200525B93 /* AdvertiseViewController.m in Sources */,
+				986836CE1B773A4200F9C716 /* StartupViewController.m in Sources */,
+				98B2EC3E1B4E5315006A2E1A /* Item.m in Sources */,
+				98B2EBE41B4E4920006A2E1A /* HomeViewController.m in Sources */,
+				98B2EC0D1B4E4CF2006A2E1A /* BTUseDescriptionViewController.m in Sources */,
+				98A56BAB1B4FE2B800D9F4F0 /* BTFunctionSettingsViewController.m in Sources */,
+				98FD11491B97008500525B93 /* BeaconUserInfoCell.m in Sources */,
+				98B2EBE11B4E4920006A2E1A /* AppDelegate.m in Sources */,
+				98A56BB41B5387EB00D9F4F0 /* BaseItemListViewController.m in Sources */,
+				98FD11411B96F09600525B93 /* NeighbersTableViewController.m in Sources */,
+				98A56BB71B5387FA00D9F4F0 /* ItemDetailViewController.m in Sources */,
+				98941E911B80AA6600CB377A /* OptionsTableViewController.m in Sources */,
+				98B2EC0E1B4E4CF2006A2E1A /* BTServiceFacade.m in Sources */,
+				98B2EC0C1B4E4CF2006A2E1A /* RangedBeaconInfoViewController.m in Sources */,
+				98941E941B837D1C00CB377A /* DiscoveredItemsViewController.m in Sources */,
+				98A56BA51B4FE04F00D9F4F0 /* DesignatedBeaconsViewController.m in Sources */,
+				98FD114C1B972E4800525B93 /* BeaconOwner.m in Sources */,
+				98A56BAE1B53865500D9F4F0 /* ItemManagementViewController.m in Sources */,
+				986836CB1B77236400F9C716 /* DefaultServerClient.m in Sources */,
+				985694001B85FB5600F51BD7 /* SharableItemsViewController.m in Sources */,
+				986836CF1B773C1F00F9C716 /* ItemManager.m in Sources */,
+				98FD113E1B96E10100525B93 /* CreditViewController.m in Sources */,
+				984679EB1BA2CB390052769F /* TbSandboxCredential.m in Sources */,
+				98B2EBDE1B4E4920006A2E1A /* main.m in Sources */,
+				984679E31BA075F80052769F /* GuideViewController.m in Sources */,
+				98B2EC3D1B4E5315006A2E1A /* MyBeacon.m in Sources */,
+				98B2EC101B4E4CF2006A2E1A /* BTFuncServerClient.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98B2EBED1B4E4920006A2E1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98B2EBF81B4E4920006A2E1A /* TbBTGameModuleSampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		98B2EBF31B4E4920006A2E1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 98B2EBD71B4E4920006A2E1A /* TbBTGameModuleSample */;
+			targetProxy = 98B2EBF21B4E4920006A2E1A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		98467AB21BA7F69D0052769F /* TbBTLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98467AB31BA7F69D0052769F /* en */,
+				98467AB41BA7F69D0052769F /* ja */,
+			);
+			name = TbBTLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		98B2EBE51B4E4920006A2E1A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98B2EBE61B4E4920006A2E1A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		98B2EBEA1B4E4920006A2E1A /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98B2EBEB1B4E4920006A2E1A /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		98B2EBF91B4E4920006A2E1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Takefumi Ueda (66NV83DLSB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		98B2EBFA1B4E4920006A2E1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: 3bitter Inc (VPNC5YC3SU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		98B2EBFC1B4E4920006A2E1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = TbBTGameModuleSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TbBTSDKver102",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		98B2EBFD1B4E4920006A2E1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = TbBTGameModuleSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TbBTSDKver102",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		98B2EBFF1B4E4920006A2E1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TbBTGameModuleSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TbBTGameModuleSample.app/TbBTGameModuleSample";
+			};
+			name = Debug;
+		};
+		98B2EC001B4E4920006A2E1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TbBTGameModuleSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TbBTGameModuleSample.app/TbBTGameModuleSample";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		98B2EBD31B4E4920006A2E1A /* Build configuration list for PBXProject "TbBTGameModuleSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98B2EBF91B4E4920006A2E1A /* Debug */,
+				98B2EBFA1B4E4920006A2E1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		98B2EBFB1B4E4920006A2E1A /* Build configuration list for PBXNativeTarget "TbBTGameModuleSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98B2EBFC1B4E4920006A2E1A /* Debug */,
+				98B2EBFD1B4E4920006A2E1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		98B2EBFE1B4E4920006A2E1A /* Build configuration list for PBXNativeTarget "TbBTGameModuleSampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98B2EBFF1B4E4920006A2E1A /* Debug */,
+				98B2EC001B4E4920006A2E1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 98B2EBD01B4E4920006A2E1A /* Project object */;
+}
