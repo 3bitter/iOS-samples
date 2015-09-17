@@ -14,7 +14,7 @@
 
 @property (strong, nonatomic) CLLocationManager *appLocManager;
 @property (strong, nonatomic) NSMutableArray *designatedBeaconInfos;
-@property (strong, nonatomic) UIButton *registButton;
+@property (strong, nonatomic) UIButton *registerButton;
 @property (strong, nonatomic) UIActivityIndicatorView *indicator;
 
 @property (strong, nonatomic) RangedBeaconInfoViewController *rangedBeaconVC;

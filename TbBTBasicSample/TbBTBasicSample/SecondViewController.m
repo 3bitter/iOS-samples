@@ -517,9 +517,6 @@ NSString *kRegionLabel = @"Region";
                             break;
                         }
                     }
-                    for (TbBTServiceBeaconData *added in _cumulativeRangedBeacons) {
-                        NSLog(@"In cumulative : %@", added.keycode);
-                    }
                     _numberOfFoundLoop++;
                     NSLog(@"ビーコンのキーリストを取得しました:(%lu 回目)", (unsigned long)_numberOfFoundLoop);
                     if (_numberOfFoundLoop >= RANGING_LOOP_LIMIT) {

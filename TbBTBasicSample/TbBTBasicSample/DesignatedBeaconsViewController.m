@@ -49,12 +49,12 @@ extern NSString *kFoundNewBeacon;
     
     NSUInteger centerX = self.view.frame.size.width / 2;
     CGRect newButtonFrame = CGRectMake(centerX - 100.0, 180.0, 200.0, 30.0);
-    _registButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _registButton.frame = newButtonFrame;
-    [_registButton setTitle:@"新規登録" forState:UIControlStateNormal];
-    [_registButton setTintColor:[UIColor redColor]];
-    [_registButton addTarget:self action:@selector(registerButtonDidPush)  forControlEvents:UIControlEventTouchUpInside];
-    [self.tableView.tableHeaderView addSubview:_registButton];
+    _registerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _registerButton.frame = newButtonFrame;
+    [_registerButton setTitle:@"新規登録" forState:UIControlStateNormal];
+    [_registerButton setTintColor:[UIColor redColor]];
+    [_registerButton addTarget:self action:@selector(registerButtonDidPush)  forControlEvents:UIControlEventTouchUpInside];
+    [self.tableView.tableHeaderView addSubview:_registerButton];
     
     CGRect descriptionLabelFrame = CGRectMake(centerX - 150.0, 30.0, 300.0, 160.0);
     UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:descriptionLabelFrame];
@@ -76,13 +76,13 @@ extern NSString *kFoundNewBeacon;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL usingBeaconFunc = [[defaults valueForKey:kUsingBeaconFlag] boolValue];
     if (usingBeaconFunc) {
-        _registButton.enabled = YES;
+        _registerButton.enabled = YES;
         // このアプリ（サンプル）ではAppDelegateからメインのmanagerをコピーしています
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         assert(appDelegate.appLocManager);
         _appLocManager = appDelegate.appLocManager;
     } else {
-        _registButton.enabled = NO;
+        _registerButton.enabled = NO;
     }
 
     TbBTManager *btManager = [TbBTManager sharedManager];
@@ -182,8 +182,16 @@ extern NSString *kFoundNewBeacon;
     appDelegate.addProcessing = NO;
     [self stopSearchIndication];
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ビーコンの検知ができませんでした。設定の確認後、再度お試しください。" delegate:self cancelButtonTitle:@"了解" otherButtonTitles:nil];
-    [alertView show];
+    if (NSFoundationVersionNumber_iOS_7_1 >= NSFoundationVersionNumber) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"お知らせ" message:@"ビーコンの検知ができませんでした。設定の確認後、再度お試しください。" delegate:self cancelButtonTitle:@"了解" otherButtonTitles:nil];
+        [alertView show];
+    } else {
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"お知らせ" message:@"ビーコンの検知ができませんでした。設定の確認後、再度お試しください。" preferredStyle:UIAlertControllerStyleAlert];
+        [alertVC addAction:[UIAlertAction actionWithTitle:@"了解" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self presentViewController:alertVC animated:YES completion:nil];
+    }
 }
 
 - (void)showBeaconKeyList:(NSNotification *)notification {
