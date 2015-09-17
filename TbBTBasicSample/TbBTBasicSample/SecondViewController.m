@@ -541,6 +541,8 @@ NSString *kRegionLabel = @"Region";
                         [manager stopRangingBeaconsInRegion:region];
                         NSLog(@"-- ranging stopped --");
                         return;
+                    } else if (NSOrderedAscending == [[NSDate date] compare:appDelegate.addProcessTimeoutTime]) {
+                        NSLog(@"-- future ? %@", appDelegate.addProcessTimeoutTime);
                     }
                 }
             }  else {// Do nothing when app is background or inactive
