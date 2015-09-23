@@ -13,7 +13,6 @@
 #import "ItemManager.h"
 #import "TbBTAgreementViewController.h"
 #import "TbBTBuiltInUIActionDispatcher.h"
-#import "TbBTBeaconizer.h"
 
 @interface BTFunctionSettingsViewController ()<TbBTAgreementViewControllerDelegate>
 
@@ -60,20 +59,24 @@ NSString *kBTFuncUsing = @"UsingBTFunction";
     }
     // ビーコン関連機能のファサードクラスのBTServiceFacadeを保持します
     //　ただしBTFunctionSettingsViewControllerはnotificationベースで通知を受けるため、delegateにはなりません
-    // cf. BTServiceFacadeDelegate.h
+    // cf. BTServiceFacade.h
     _btFacade = [BTServiceFacade sharedFacade];
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     _settings = [NSMutableDictionary dictionaryWithDictionary:appDelegate.currentSettings];
-    _btFunctionSwitch.enabled = YES;
+    if (_btAgreementSkipped) {
+        _btFunctionSwitch.enabled = NO;
+    } else {
+        _btFunctionSwitch.enabled = YES;
+    }
     BOOL usingBTFunc = [[_settings valueForKey:kBTFuncUsing] boolValue];
     if (!usingBTFunc) {
         _btFunctionSwitch.on = NO;
     }  else {
         _btFunctionSwitch.on = YES;
     }
-   
 }
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
