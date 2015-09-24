@@ -8,15 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		982D31691B564E9600520AD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 982D31681B564E9600520AD7 /* QuartzCore.framework */; };
-		983ED7B81BB2CD7500654318 /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 983ED7A91BB2CD7500654318 /* libTbBTSDK.a */; settings = {ASSET_TAGS = (); }; };
-		983ED7B91BB2CD7500654318 /* OfficialRegion.json in Resources */ = {isa = PBXBuildFile; fileRef = 983ED7AB1BB2CD7500654318 /* OfficialRegion.json */; settings = {ASSET_TAGS = (); }; };
-		983ED7BA1BB2CD7500654318 /* TbBTLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 983ED7AE1BB2CD7500654318 /* TbBTLocalizable.strings */; settings = {ASSET_TAGS = (); }; };
-		983ED7BB1BB2CD7500654318 /* sdk_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 983ED7B21BB2CD7500654318 /* sdk_close.png */; settings = {ASSET_TAGS = (); }; };
-		983ED7BC1BB2CD7500654318 /* sdk_frame_l.png in Resources */ = {isa = PBXBuildFile; fileRef = 983ED7B31BB2CD7500654318 /* sdk_frame_l.png */; settings = {ASSET_TAGS = (); }; };
-		983ED7BD1BB2CD7500654318 /* sdk_frame_p.png in Resources */ = {isa = PBXBuildFile; fileRef = 983ED7B41BB2CD7500654318 /* sdk_frame_p.png */; settings = {ASSET_TAGS = (); }; };
-		983ED7BE1BB2CD7500654318 /* sdk_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 983ED7B51BB2CD7500654318 /* sdk_pause.png */; settings = {ASSET_TAGS = (); }; };
-		983ED7BF1BB2CD7500654318 /* sdk_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 983ED7B61BB2CD7500654318 /* sdk_play.png */; settings = {ASSET_TAGS = (); }; };
-		983ED7C01BB2CD7500654318 /* TbBTDeveloperPreference.plist in Resources */ = {isa = PBXBuildFile; fileRef = 983ED7B71BB2CD7500654318 /* TbBTDeveloperPreference.plist */; settings = {ASSET_TAGS = (); }; };
 		984679E31BA075F80052769F /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 984679E21BA075F80052769F /* GuideViewController.m */; };
 		984679E61BA2C9410052769F /* TbSandboxCredential.plist in Resources */ = {isa = PBXBuildFile; fileRef = 984679E51BA2C9410052769F /* TbSandboxCredential.plist */; };
 		984679EB1BA2CB390052769F /* TbSandboxCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 984679EA1BA2CB390052769F /* TbSandboxCredential.m */; };
@@ -24,6 +15,15 @@
 		986836CB1B77236400F9C716 /* DefaultServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 986836CA1B77236400F9C716 /* DefaultServerClient.m */; };
 		986836CE1B773A4200F9C716 /* StartupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 986836CD1B773A4200F9C716 /* StartupViewController.m */; };
 		986836CF1B773C1F00F9C716 /* ItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EC431B4E5936006A2E1A /* ItemManager.m */; };
+		9889F97B1BB420F200978F4D /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9889F96C1BB420F200978F4D /* libTbBTSDK.a */; settings = {ASSET_TAGS = (); }; };
+		9889F97C1BB420F200978F4D /* OfficialRegion.json in Resources */ = {isa = PBXBuildFile; fileRef = 9889F96E1BB420F200978F4D /* OfficialRegion.json */; settings = {ASSET_TAGS = (); }; };
+		9889F97D1BB420F200978F4D /* TbBTLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9889F9711BB420F200978F4D /* TbBTLocalizable.strings */; settings = {ASSET_TAGS = (); }; };
+		9889F97E1BB420F200978F4D /* sdk_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 9889F9751BB420F200978F4D /* sdk_close.png */; settings = {ASSET_TAGS = (); }; };
+		9889F97F1BB420F200978F4D /* sdk_frame_l.png in Resources */ = {isa = PBXBuildFile; fileRef = 9889F9761BB420F200978F4D /* sdk_frame_l.png */; settings = {ASSET_TAGS = (); }; };
+		9889F9801BB420F200978F4D /* sdk_frame_p.png in Resources */ = {isa = PBXBuildFile; fileRef = 9889F9771BB420F200978F4D /* sdk_frame_p.png */; settings = {ASSET_TAGS = (); }; };
+		9889F9811BB420F200978F4D /* sdk_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 9889F9781BB420F200978F4D /* sdk_pause.png */; settings = {ASSET_TAGS = (); }; };
+		9889F9821BB420F200978F4D /* sdk_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 9889F9791BB420F200978F4D /* sdk_play.png */; settings = {ASSET_TAGS = (); }; };
+		9889F9831BB420F200978F4D /* TbBTDeveloperPreference.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9889F97A1BB420F200978F4D /* TbBTDeveloperPreference.plist */; settings = {ASSET_TAGS = (); }; };
 		98941E911B80AA6600CB377A /* OptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98941E901B80AA6600CB377A /* OptionsTableViewController.m */; };
 		98941E941B837D1C00CB377A /* DiscoveredItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98941E931B837D1C00CB377A /* DiscoveredItemsViewController.m */; };
 		98A56BA51B4FE04F00D9F4F0 /* DesignatedBeaconsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A56BA41B4FE04F00D9F4F0 /* DesignatedBeaconsViewController.m */; };
@@ -68,31 +68,6 @@
 /* Begin PBXFileReference section */
 		908BB3C2C45E00E190909C3D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		982D31681B564E9600520AD7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		983ED79A1BB2CD7500654318 /* TbBTAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTAgreementViewController.h; sourceTree = "<group>"; };
-		983ED79B1BB2CD7500654318 /* TbBTAVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTAVPlayerView.h; sourceTree = "<group>"; };
-		983ED79C1BB2CD7500654318 /* TbBTAVPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTAVPlayerViewController.h; sourceTree = "<group>"; };
-		983ED79D1BB2CD7500654318 /* TbBTBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTBannerViewController.h; sourceTree = "<group>"; };
-		983ED79E1BB2CD7500654318 /* TbBTBeaconizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTBeaconizer.h; sourceTree = "<group>"; };
-		983ED79F1BB2CD7500654318 /* TbBTBuiltInUIActionDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTBuiltInUIActionDispatcher.h; sourceTree = "<group>"; };
-		983ED7A01BB2CD7500654318 /* TbBTDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTDefaults.h; sourceTree = "<group>"; };
-		983ED7A11BB2CD7500654318 /* TbBTDeveloperPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTDeveloperPreference.h; sourceTree = "<group>"; };
-		983ED7A21BB2CD7500654318 /* TbBTForeNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTForeNotificationViewController.h; sourceTree = "<group>"; };
-		983ED7A31BB2CD7500654318 /* TbBTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTManager.h; sourceTree = "<group>"; };
-		983ED7A41BB2CD7500654318 /* TbBTPresentationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTPresentationInfo.h; sourceTree = "<group>"; };
-		983ED7A51BB2CD7500654318 /* TbBTRegionNotificationSettingOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTRegionNotificationSettingOptions.h; sourceTree = "<group>"; };
-		983ED7A61BB2CD7500654318 /* TbBTServiceBeaconData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTServiceBeaconData.h; sourceTree = "<group>"; };
-		983ED7A71BB2CD7500654318 /* TbBTServiceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTServiceHelper.h; sourceTree = "<group>"; };
-		983ED7A81BB2CD7500654318 /* TbBTWebPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTWebPageViewController.h; sourceTree = "<group>"; };
-		983ED7A91BB2CD7500654318 /* libTbBTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTbBTSDK.a; sourceTree = "<group>"; };
-		983ED7AB1BB2CD7500654318 /* OfficialRegion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OfficialRegion.json; sourceTree = "<group>"; };
-		983ED7AF1BB2CD7500654318 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TbBTLocalizable.strings; sourceTree = "<group>"; };
-		983ED7B01BB2CD7500654318 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TbBTLocalizable.strings; sourceTree = "<group>"; };
-		983ED7B21BB2CD7500654318 /* sdk_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_close.png; sourceTree = "<group>"; };
-		983ED7B31BB2CD7500654318 /* sdk_frame_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_frame_l.png; sourceTree = "<group>"; };
-		983ED7B41BB2CD7500654318 /* sdk_frame_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_frame_p.png; sourceTree = "<group>"; };
-		983ED7B51BB2CD7500654318 /* sdk_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_pause.png; sourceTree = "<group>"; };
-		983ED7B61BB2CD7500654318 /* sdk_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_play.png; sourceTree = "<group>"; };
-		983ED7B71BB2CD7500654318 /* TbBTDeveloperPreference.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TbBTDeveloperPreference.plist; sourceTree = "<group>"; };
 		984679E11BA075F80052769F /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		984679E21BA075F80052769F /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		984679E51BA2C9410052769F /* TbSandboxCredential.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TbSandboxCredential.plist; sourceTree = "<group>"; };
@@ -104,6 +79,31 @@
 		986836CA1B77236400F9C716 /* DefaultServerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultServerClient.m; sourceTree = "<group>"; };
 		986836CC1B773A4200F9C716 /* StartupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupViewController.h; sourceTree = "<group>"; };
 		986836CD1B773A4200F9C716 /* StartupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupViewController.m; sourceTree = "<group>"; };
+		9889F95D1BB420F200978F4D /* TbBTAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTAgreementViewController.h; sourceTree = "<group>"; };
+		9889F95E1BB420F200978F4D /* TbBTAVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTAVPlayerView.h; sourceTree = "<group>"; };
+		9889F95F1BB420F200978F4D /* TbBTAVPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTAVPlayerViewController.h; sourceTree = "<group>"; };
+		9889F9601BB420F200978F4D /* TbBTBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTBannerViewController.h; sourceTree = "<group>"; };
+		9889F9611BB420F200978F4D /* TbBTBeaconizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTBeaconizer.h; sourceTree = "<group>"; };
+		9889F9621BB420F200978F4D /* TbBTBuiltInUIActionDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTBuiltInUIActionDispatcher.h; sourceTree = "<group>"; };
+		9889F9631BB420F200978F4D /* TbBTDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTDefaults.h; sourceTree = "<group>"; };
+		9889F9641BB420F200978F4D /* TbBTDeveloperPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTDeveloperPreference.h; sourceTree = "<group>"; };
+		9889F9651BB420F200978F4D /* TbBTForeNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTForeNotificationViewController.h; sourceTree = "<group>"; };
+		9889F9661BB420F200978F4D /* TbBTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTManager.h; sourceTree = "<group>"; };
+		9889F9671BB420F200978F4D /* TbBTPresentationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTPresentationInfo.h; sourceTree = "<group>"; };
+		9889F9681BB420F200978F4D /* TbBTRegionNotificationSettingOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTRegionNotificationSettingOptions.h; sourceTree = "<group>"; };
+		9889F9691BB420F200978F4D /* TbBTServiceBeaconData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTServiceBeaconData.h; sourceTree = "<group>"; };
+		9889F96A1BB420F200978F4D /* TbBTServiceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTServiceHelper.h; sourceTree = "<group>"; };
+		9889F96B1BB420F200978F4D /* TbBTWebPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTWebPageViewController.h; sourceTree = "<group>"; };
+		9889F96C1BB420F200978F4D /* libTbBTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTbBTSDK.a; sourceTree = "<group>"; };
+		9889F96E1BB420F200978F4D /* OfficialRegion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OfficialRegion.json; sourceTree = "<group>"; };
+		9889F9721BB420F200978F4D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TbBTLocalizable.strings; sourceTree = "<group>"; };
+		9889F9731BB420F200978F4D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TbBTLocalizable.strings; sourceTree = "<group>"; };
+		9889F9751BB420F200978F4D /* sdk_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_close.png; sourceTree = "<group>"; };
+		9889F9761BB420F200978F4D /* sdk_frame_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_frame_l.png; sourceTree = "<group>"; };
+		9889F9771BB420F200978F4D /* sdk_frame_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_frame_p.png; sourceTree = "<group>"; };
+		9889F9781BB420F200978F4D /* sdk_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_pause.png; sourceTree = "<group>"; };
+		9889F9791BB420F200978F4D /* sdk_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdk_play.png; sourceTree = "<group>"; };
+		9889F97A1BB420F200978F4D /* TbBTDeveloperPreference.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TbBTDeveloperPreference.plist; sourceTree = "<group>"; };
 		98941E8F1B80AA6600CB377A /* OptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsTableViewController.h; sourceTree = "<group>"; };
 		98941E901B80AA6600CB377A /* OptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsTableViewController.m; sourceTree = "<group>"; };
 		98941E921B837D1C00CB377A /* DiscoveredItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveredItemsViewController.h; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 			files = (
 				98BEA89B1B8DA60C0054EC09 /* CoreBluetooth.framework in Frameworks */,
 				982D31691B564E9600520AD7 /* QuartzCore.framework in Frameworks */,
-				983ED7B81BB2CD7500654318 /* libTbBTSDK.a in Frameworks */,
+				9889F97B1BB420F200978F4D /* libTbBTSDK.a in Frameworks */,
 				98B2EC4B1B4E9F25006A2E1A /* AVFoundation.framework in Frameworks */,
 				98B2EC491B4E9F1E006A2E1A /* AdSupport.framework in Frameworks */,
 				98B2EC471B4E9F15006A2E1A /* CoreLocation.framework in Frameworks */,
@@ -194,85 +194,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		983ED7971BB2CD7500654318 /* TbBTSDKver103 */ = {
-			isa = PBXGroup;
-			children = (
-				983ED7981BB2CD7500654318 /* include */,
-				983ED7A91BB2CD7500654318 /* libTbBTSDK.a */,
-				983ED7AA1BB2CD7500654318 /* Supporting Files */,
-			);
-			path = TbBTSDKver103;
-			sourceTree = "<group>";
-		};
-		983ED7981BB2CD7500654318 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				983ED7991BB2CD7500654318 /* TbBTSDK */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		983ED7991BB2CD7500654318 /* TbBTSDK */ = {
-			isa = PBXGroup;
-			children = (
-				983ED79A1BB2CD7500654318 /* TbBTAgreementViewController.h */,
-				983ED79B1BB2CD7500654318 /* TbBTAVPlayerView.h */,
-				983ED79C1BB2CD7500654318 /* TbBTAVPlayerViewController.h */,
-				983ED79D1BB2CD7500654318 /* TbBTBannerViewController.h */,
-				983ED79E1BB2CD7500654318 /* TbBTBeaconizer.h */,
-				983ED79F1BB2CD7500654318 /* TbBTBuiltInUIActionDispatcher.h */,
-				983ED7A01BB2CD7500654318 /* TbBTDefaults.h */,
-				983ED7A11BB2CD7500654318 /* TbBTDeveloperPreference.h */,
-				983ED7A21BB2CD7500654318 /* TbBTForeNotificationViewController.h */,
-				983ED7A31BB2CD7500654318 /* TbBTManager.h */,
-				983ED7A41BB2CD7500654318 /* TbBTPresentationInfo.h */,
-				983ED7A51BB2CD7500654318 /* TbBTRegionNotificationSettingOptions.h */,
-				983ED7A61BB2CD7500654318 /* TbBTServiceBeaconData.h */,
-				983ED7A71BB2CD7500654318 /* TbBTServiceHelper.h */,
-				983ED7A81BB2CD7500654318 /* TbBTWebPageViewController.h */,
-			);
-			path = TbBTSDK;
-			sourceTree = "<group>";
-		};
-		983ED7AA1BB2CD7500654318 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				983ED7AB1BB2CD7500654318 /* OfficialRegion.json */,
-				983ED7AC1BB2CD7500654318 /* Resources */,
-				983ED7B71BB2CD7500654318 /* TbBTDeveloperPreference.plist */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		983ED7AC1BB2CD7500654318 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				983ED7AD1BB2CD7500654318 /* i18n */,
-				983ED7B11BB2CD7500654318 /* Images */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		983ED7AD1BB2CD7500654318 /* i18n */ = {
-			isa = PBXGroup;
-			children = (
-				983ED7AE1BB2CD7500654318 /* TbBTLocalizable.strings */,
-			);
-			path = i18n;
-			sourceTree = "<group>";
-		};
-		983ED7B11BB2CD7500654318 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				983ED7B21BB2CD7500654318 /* sdk_close.png */,
-				983ED7B31BB2CD7500654318 /* sdk_frame_l.png */,
-				983ED7B41BB2CD7500654318 /* sdk_frame_p.png */,
-				983ED7B51BB2CD7500654318 /* sdk_pause.png */,
-				983ED7B61BB2CD7500654318 /* sdk_play.png */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		984679E41BA2C72B0052769F /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,10 +214,89 @@
 			name = TbEnvironment;
 			sourceTree = "<group>";
 		};
+		9889F95A1BB420F200978F4D /* TbBTSDKver103 */ = {
+			isa = PBXGroup;
+			children = (
+				9889F95B1BB420F200978F4D /* include */,
+				9889F96C1BB420F200978F4D /* libTbBTSDK.a */,
+				9889F96D1BB420F200978F4D /* Supporting Files */,
+			);
+			path = TbBTSDKver103;
+			sourceTree = "<group>";
+		};
+		9889F95B1BB420F200978F4D /* include */ = {
+			isa = PBXGroup;
+			children = (
+				9889F95C1BB420F200978F4D /* TbBTSDK */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		9889F95C1BB420F200978F4D /* TbBTSDK */ = {
+			isa = PBXGroup;
+			children = (
+				9889F95D1BB420F200978F4D /* TbBTAgreementViewController.h */,
+				9889F95E1BB420F200978F4D /* TbBTAVPlayerView.h */,
+				9889F95F1BB420F200978F4D /* TbBTAVPlayerViewController.h */,
+				9889F9601BB420F200978F4D /* TbBTBannerViewController.h */,
+				9889F9611BB420F200978F4D /* TbBTBeaconizer.h */,
+				9889F9621BB420F200978F4D /* TbBTBuiltInUIActionDispatcher.h */,
+				9889F9631BB420F200978F4D /* TbBTDefaults.h */,
+				9889F9641BB420F200978F4D /* TbBTDeveloperPreference.h */,
+				9889F9651BB420F200978F4D /* TbBTForeNotificationViewController.h */,
+				9889F9661BB420F200978F4D /* TbBTManager.h */,
+				9889F9671BB420F200978F4D /* TbBTPresentationInfo.h */,
+				9889F9681BB420F200978F4D /* TbBTRegionNotificationSettingOptions.h */,
+				9889F9691BB420F200978F4D /* TbBTServiceBeaconData.h */,
+				9889F96A1BB420F200978F4D /* TbBTServiceHelper.h */,
+				9889F96B1BB420F200978F4D /* TbBTWebPageViewController.h */,
+			);
+			path = TbBTSDK;
+			sourceTree = "<group>";
+		};
+		9889F96D1BB420F200978F4D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9889F96E1BB420F200978F4D /* OfficialRegion.json */,
+				9889F96F1BB420F200978F4D /* Resources */,
+				9889F97A1BB420F200978F4D /* TbBTDeveloperPreference.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9889F96F1BB420F200978F4D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9889F9701BB420F200978F4D /* i18n */,
+				9889F9741BB420F200978F4D /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9889F9701BB420F200978F4D /* i18n */ = {
+			isa = PBXGroup;
+			children = (
+				9889F9711BB420F200978F4D /* TbBTLocalizable.strings */,
+			);
+			path = i18n;
+			sourceTree = "<group>";
+		};
+		9889F9741BB420F200978F4D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9889F9751BB420F200978F4D /* sdk_close.png */,
+				9889F9761BB420F200978F4D /* sdk_frame_l.png */,
+				9889F9771BB420F200978F4D /* sdk_frame_p.png */,
+				9889F9781BB420F200978F4D /* sdk_pause.png */,
+				9889F9791BB420F200978F4D /* sdk_play.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		98B2EBCF1B4E4920006A2E1A = {
 			isa = PBXGroup;
 			children = (
-				983ED7971BB2CD7500654318 /* TbBTSDKver103 */,
+				9889F95A1BB420F200978F4D /* TbBTSDKver103 */,
 				982D31681B564E9600520AD7 /* QuartzCore.framework */,
 				98B2EC4A1B4E9F25006A2E1A /* AVFoundation.framework */,
 				98B2EC481B4E9F1E006A2E1A /* AdSupport.framework */,
@@ -514,18 +514,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				983ED7BB1BB2CD7500654318 /* sdk_close.png in Resources */,
-				983ED7BD1BB2CD7500654318 /* sdk_frame_p.png in Resources */,
-				983ED7BC1BB2CD7500654318 /* sdk_frame_l.png in Resources */,
+				9889F97E1BB420F200978F4D /* sdk_close.png in Resources */,
+				9889F9801BB420F200978F4D /* sdk_frame_p.png in Resources */,
+				9889F97F1BB420F200978F4D /* sdk_frame_l.png in Resources */,
 				98B2EBE71B4E4920006A2E1A /* Main.storyboard in Resources */,
-				983ED7C01BB2CD7500654318 /* TbBTDeveloperPreference.plist in Resources */,
+				9889F9831BB420F200978F4D /* TbBTDeveloperPreference.plist in Resources */,
 				98B2EBEC1B4E4920006A2E1A /* LaunchScreen.xib in Resources */,
 				98B2EBE91B4E4920006A2E1A /* Images.xcassets in Resources */,
-				983ED7BF1BB2CD7500654318 /* sdk_play.png in Resources */,
-				983ED7BA1BB2CD7500654318 /* TbBTLocalizable.strings in Resources */,
-				983ED7BE1BB2CD7500654318 /* sdk_pause.png in Resources */,
+				9889F9821BB420F200978F4D /* sdk_play.png in Resources */,
+				9889F97D1BB420F200978F4D /* TbBTLocalizable.strings in Resources */,
+				9889F9811BB420F200978F4D /* sdk_pause.png in Resources */,
 				984679E61BA2C9410052769F /* TbSandboxCredential.plist in Resources */,
-				983ED7B91BB2CD7500654318 /* OfficialRegion.json in Resources */,
+				9889F97C1BB420F200978F4D /* OfficialRegion.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,11 +592,11 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		983ED7AE1BB2CD7500654318 /* TbBTLocalizable.strings */ = {
+		9889F9711BB420F200978F4D /* TbBTLocalizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				983ED7AF1BB2CD7500654318 /* en */,
-				983ED7B01BB2CD7500654318 /* ja */,
+				9889F9721BB420F200978F4D /* en */,
+				9889F9731BB420F200978F4D /* ja */,
 			);
 			name = TbBTLocalizable.strings;
 			sourceTree = "<group>";
