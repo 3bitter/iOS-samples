@@ -31,8 +31,8 @@ typedef NS_ENUM(NSInteger, BTBeaconManagementTaskType) {
 
 static NSString *kNewBeaconKeyURL = @"https://bitterbeacon.tokyo/BTGameUseServer/NewBeaconKey";
 static NSString *kOffBeaconKeyURL = @"https://bitterbeacon.tokyo/BTGameUseServer/DeactivateBeaconKey";
-static NSString *kCheckItemURL = @"http://bitterbeacon.tokyo/BTGameUseServer/SharedItem";
-static NSString *kBeaconOwnerURL = @"http://bitterbeacon.tokyo/BTGameUseServer/BeaconOwner";
+static NSString *kCheckItemURL = @"https://bitterbeacon.tokyo/BTGameUseServer/SharedItem";
+static NSString *kBeaconOwnerURL = @"https://bitterbeacon.tokyo/BTGameUseServer/BeaconOwner";
 
 @implementation BTFuncServerClient
 
