@@ -74,7 +74,7 @@ extern NSString *kTwoThirdIconsDownloaded;
         _infoLabel.textColor = [UIColor redColor];
         return;
     }
-    if (_nickNameLabel.text.length > 6) {
+    if (_nickNameField.text.length > 6) {
         _infoLabel.text = @"6文字以内でお願いします";
         _infoLabel.textColor = [UIColor redColor];
         return;
