@@ -175,8 +175,8 @@ static const NSUInteger UNKNOWN_STATE_THRESHOLD = 5;
     }
     TbBTRegionNotificationSettingOptions *settingOptions = [TbBTRegionNotificationSettingOptions settingWithTypes:TbBTRegionNotificationTypeOnEntry | TbBTRegionNotificationTypeEntryStateOnDisplay];
     // 取得されたビーコン情報を使ってSDKに指定ビーコンとして登録させます
-    BOOL isSaved = [_btManager specifyNewUsableServiceBeaconWithCodes:beaconInfos forRegion:region locationManager:_locManager withOptions:settingOptions];
-    if (isSaved) {
+    NSInteger saveStatus = [_btManager specifyNewUsableServiceBeaconWithCodes:beaconInfos forRegion:region locationManager:_locManager withOptions:settingOptions];
+    if (saveStatus == 1) { // 渡されたビーコン全てを指定分として登録できました
         NSLog(@"Saved beacon by SDK");
         NSMutableArray *usingBeacons = nil;
         if (_designatedBeacons.count > 0) {
@@ -228,6 +228,9 @@ static const NSUInteger UNKNOWN_STATE_THRESHOLD = 5;
             NSLog(@"-- %s -- Failed to save beacon", __func__);
             return NO;
         }
+    } else if (saveStatus == 0) { // 上限数までの一部のビーコンが登録されました
+        NSLog(@"Part of beacons saved");
+        return YES;
     } else { // SDKによる登録処理が成功していません
         NSLog(@"-- %s -- Failed to save beacon", __func__);
         return NO;
@@ -343,7 +346,7 @@ static const NSUInteger UNKNOWN_STATE_THRESHOLD = 5;
     [btClient requestAddBeaconkey:selectedBeacon.keycode forMember:memberToken]; // コールバックを待ちます
 }
 
-- (void)inactivateUserBeacon:(MyBeacon *)selectedBeacon {
+- (void)deactivateUserBeacon:(MyBeacon *)selectedBeacon {
     //サーバにメインビーコン（他ユーザが反応するビーコン）のキーを無効化しておくことを依頼します
     _userSelectedBeacon = selectedBeacon;
     BTFuncServerClient *btClient = [[BTFuncServerClient alloc] init];

@@ -169,7 +169,7 @@ extern NSString *kRegionLabel;
     if (_btFacade.designatedBeacons.count == 1 && theBeacon.useForGame) {
             UITableViewRowAction *rowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"登録抹消" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
                 [self startIndicationWithMessage:@"メイン解除しています..."];
-               [_btFacade inactivateUserBeacon:theBeacon]; // Save to server and update my beacons
+               [_btFacade deactivateUserBeacon:theBeacon]; // Save to server and update my beacons
             }];
             rowAction.backgroundColor = [UIColor blueColor];
             editActions = [NSArray arrayWithObject:rowAction];

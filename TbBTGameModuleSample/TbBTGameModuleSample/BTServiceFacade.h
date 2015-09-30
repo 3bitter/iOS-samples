@@ -64,7 +64,7 @@ typedef NS_ENUM(NSInteger, CheckResultType) {
 
 /* Main beacon handling request */
 - (void)registerUserMainBeacon:(MyBeacon *)selectedBeacon;
-- (void)inactivateUserBeacon:(MyBeacon *)selectedBeacon;
+- (void)deactivateUserBeacon:(MyBeacon *)selectedBeacon;
 
 /* Item request triggered by beacon(s) (to server) */
 - (void)checkSharedItemsByBeacon:(NSString *)beaconKey;
