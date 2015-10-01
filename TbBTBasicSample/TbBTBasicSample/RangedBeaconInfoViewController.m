@@ -154,9 +154,16 @@ extern NSString * kAnnounceLogFile;
     }
     NSString *infoMessage = nil;
     // 初期モニタリングした3bitterビーコンの領域を、指定ビーコンの領域に置き換えます
-    BOOL isSaved = [btManager specifyNewUsableServiceBeaconWithCodes:beaconInfos forRegion:_theRegion locationManager:appDelegate.appLocManager];
-    infoMessage = @"指定ビーコンを登録して3bitterビーコン領域のモニタリング対象を切り替えました";
-    if (isSaved) {
+    NSInteger saveStatus = [btManager specifyNewUsableServiceBeaconWithCodes:beaconInfos forRegion:_theRegion locationManager:appDelegate.appLocManager];
+    if (saveStatus == 1) {
+         infoMessage = @"指定ビーコンを登録して3bitterビーコン領域のモニタリング対象を切り替えました";
+        // Show registered beacon info
+        DesignatedBeaconsViewController *designatedBeaconVC = [((UITabBarController *)self.presentingViewController).childViewControllers objectAtIndex:2];
+        designatedBeaconVC.designatedBeaconInfos = [NSMutableArray arrayWithArray:beaconInfos];
+        [designatedBeaconVC.tableView reloadData];
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }  else if (saveStatus == 0) {
+         infoMessage = @"指定ビーコンの一部を上限数まで登録して3bitterビーコン領域のモニタリング対象を切り替えました";
         // Show registered beacon info
         DesignatedBeaconsViewController *designatedBeaconVC = [((UITabBarController *)self.presentingViewController).childViewControllers objectAtIndex:2];
         designatedBeaconVC.designatedBeaconInfos = [NSMutableArray arrayWithArray:beaconInfos];
