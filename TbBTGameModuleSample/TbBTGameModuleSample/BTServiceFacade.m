@@ -482,7 +482,7 @@ static const NSUInteger UNKNOWN_STATE_THRESHOLD = 5;
     }
     _neighbersSearching = NO;
     
-    if (!_locManager.monitoredRegions.count == 0) {
+    if (_locManager.monitoredRegions.count == 0) {
         NSLog(@"No regions monitored");
         return;
     }

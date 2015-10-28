@@ -212,9 +212,11 @@ static const NSUInteger ABORT_THRESHOLD = 3;
 }
 
 - (void)updateRegionState {
-    _neighberBeaconOwners = nil;
-    [self terminateCheckNeighbers];
-    [self.tableView reloadData];
+    if (_neighberBeaconOwners.count == 0) {
+        _neighberBeaconOwners = nil;
+        [self terminateCheckNeighbers];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark BTFacadeDelegate
@@ -237,6 +239,9 @@ static const NSUInteger ABORT_THRESHOLD = 3;
 }
 
 - (void)btFacade:(BTServiceFacade *)facade didUpdateNeighberInfos:(NSArray *)currentNeighbers {
+    // Reset failure count
+    _failureCount = 0;
+    
     _neighberBeaconOwners = [NSArray arrayWithArray:currentNeighbers];
     [self.tableView reloadData];
 }
