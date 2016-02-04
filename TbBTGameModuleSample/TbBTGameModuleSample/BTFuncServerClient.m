@@ -271,8 +271,10 @@ static NSString *kBeaconOwnerURL = @"https://bitterbeacon.tokyo/BTGameUseServer/
         if ([session isEqual:_beaconKeySession]) {
             if (_workingTaskType == BTBeaconManagementTaskTypeRegistGameUseBeacon) {
                 [_delegate BTFuncServerClient:self didFailToAddBeaconkeyWithError:error];
-            } else {
+            } else if (_workingTaskType == BTBeaconManagementTaskTypeDeactivateGameUseBeacon) {
                 [_delegate BTFuncServerClient:self didFailToDeactivateBeaconkeyWithError:error];
+            } else if (_workingTaskType == BTBeaconManagementTaskTypeSearchOwner) {
+                [_delegate BTFuncServerClient:self didFailToCheckOwnerWithError:error forKeycode:_workingKeyCode];
             }
         } else if ([session isEqual:_itemCheckSession]) {
             [_delegate BTFuncServerClient:self didFailToCheckItemsWithError:error];
