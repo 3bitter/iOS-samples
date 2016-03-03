@@ -10,13 +10,15 @@
 #import "AppDelegate.h"
 #import "BaseNotificationViewController.h"
 
+#import <CoreBluetooth/CoreBluetooth.h>
+
 extern NSString *kAlwaysLocServicePermitted;
 extern NSString *kAlwaysLocServiceDenied;
 NSString *kBeaconUseKey = @"UseBRContents";
 
 @interface TransitionViewController()
 
-@property (assign, nonatomic) BOOL brPermitted;
+@property (assign, nonatomic) BOOL brPermitted; // Beacon reagion contents wanted by user
 
 @end
 
@@ -41,15 +43,7 @@ NSString *kBeaconUseKey = @"UseBRContents";
     if (_requireNotification) {
         [self showNotificationViewAsPop];
     } else {
-        if ([TbBTManager isBeaconEventConditionMet]) {
-            if (![self prepareBeaconManager]) {
-                NSLog(@"Preparation failed");
-            }
-            [self gotoMenuPage];
-        } else {
-            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [appDelegate.locManager requestAlwaysAuthorization];
-        }
+        [self decideActionByServiceAvailability];
     }
 }
 
@@ -59,14 +53,7 @@ NSString *kBeaconUseKey = @"UseBRContents";
 }
 
 - (void)didNotificationConfirm {
-    if ([self prepareBeaconManager]) {
-        if (![TbBTManager isBeaconEventConditionMet]) {
-            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [appDelegate.locManager requestAlwaysAuthorization];
-        } else {
-            [self gotoMenuPage];
-        }
-    }
+    [self decideActionByServiceAvailability];
 }
 
 - (void)gotoMenuPage {
@@ -83,25 +70,63 @@ NSString *kBeaconUseKey = @"UseBRContents";
 }
 
 - (void)saveBRUserPermissionAndContinue {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setValue:[NSNumber numberWithBool:YES] forKey:kBeaconUseKey];
-    [userDefaults synchronize];
-    
-    [self gotoMenuPage];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setValue:[NSNumber numberWithBool:YES] forKey:kBeaconUseKey];
+        [userDefaults synchronize];
+        
+        [self prepareBeaconManager];
+        [self gotoMenuPage];
 }
 
-- (BOOL)prepareBeaconManager {
+- (void)decideActionByServiceAvailability {
+    if (![TbBTManager isBeaconEventConditionMet]) {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        if (![CLLocationManager isRangingAvailable]) {
+            NSLog(@"Device not supporting bluetooth..");
+            [self gotoMenuPage];
+        } else if (!appDelegate.locManager && ![self prepareLocManager]) {
+            // Can not use location manger. Skip beacon service ..
+            [self gotoMenuPage];
+        } else if (![CLLocationManager locationServicesEnabled]) {
+            [appDelegate.locManager requestAlwaysAuthorization];
+        } else if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
+            [appDelegate.locManager requestAlwaysAuthorization];
+        } else {
+            // Show dialog with framework or by yourself
+             // Bluetooth check with Core Bluetooth. ignore callback
+            CBCentralManager *centralManager = [[CBCentralManager alloc] initWithDelegate:nil queue:nil];
+                CBCentralManagerState bluetoothState = centralManager.state;
+               if (bluetoothState != CBCentralManagerStatePoweredOn) {
+                   NSLog(@"Bluetooth is off");
+                }
+        }
+    } else { // Every condition is O.K.! Can use beacon service !
+        [self prepareBeaconManager];
+        [self gotoMenuPage];
+    }
 
+}
+
+// Can be skipped if location manager already exists
+- (BOOL)prepareLocManager {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.locManager = [[CLLocationManager alloc] init];
     appDelegate.locManager.delegate = appDelegate;
     
+    if (appDelegate.locManager) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)prepareBeaconManager {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.btManager = [TbBTManager sharedManager];
     if (!appDelegate.btManager) {
         appDelegate.btManager = [TbBTManager initSharedManagerUnderAgreement:YES];
     }
     appDelegate.btManager.delegate = appDelegate;
-    if (appDelegate.locManager && appDelegate.btManager) {
+    if (appDelegate.btManager) {
         return YES;
     }
     return NO;
@@ -121,5 +146,6 @@ NSString *kBeaconUseKey = @"UseBRContents";
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

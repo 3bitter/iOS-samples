@@ -35,6 +35,8 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
             _skipBLT = YES;
         }
     }];
+    // 処理結果が不要なら、これも可能
+    // [TbBTPreliminary setUpWithCompletionHandler:nil];
     
     return YES;
 }
