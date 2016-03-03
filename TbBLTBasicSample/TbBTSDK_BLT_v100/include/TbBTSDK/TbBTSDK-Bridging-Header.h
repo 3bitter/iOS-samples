@@ -10,6 +10,7 @@
 #define TbBTSDK_Briding_Header_h
 
 
+#import "TbBTPreliminary.h"
 #import "TbBTDefaults.h"
 #import "TbBTDeveloperPreference.h"
 #import "TbBTManager.h"
