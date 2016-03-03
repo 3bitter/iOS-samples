@@ -55,10 +55,10 @@ NSString *kBeaconUseKey = @"UseBRContents";
 
 - (void)showNotificationViewAsPop {
     // TODO : Show popover page. This is just a short cut
-    [self didNotificationConfirmed];
+    [self didNotificationConfirm];
 }
 
-- (void)didNotificationConfirmed {
+- (void)didNotificationConfirm {
     if ([self prepareBeaconManager]) {
         if (![TbBTManager isBeaconEventConditionMet]) {
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
