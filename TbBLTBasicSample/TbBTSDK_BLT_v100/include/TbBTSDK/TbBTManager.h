@@ -29,13 +29,19 @@
    シングルトンの共有インスタンスを返します（使用条件の同意YESが過去に与えられていない場合はnil） */
 + (TbBTManager *)sharedManager;
 
+//[[ハードウェア、OSのサポート状態と、位置情報サービス許可のチェック]]
 /* Return YES if conditions for beacon related event are met
- ビーコン領域検知等に必要な条件が満たされているかをチェックするユーティリティメソッドです。
+ ビーコン領域検知等に必要な条件（ハードウェアサポート及び位置情報サービス設定系）が満たされているかをチェックするユーティリティメソッドです。
  （バックグラウンド含む）*/
 + (BOOL)isBeaconEventConditionMet;
 /* Return YES if conditions for beacon related event are met
  アプリがアクティブな状態のときにビーコン領域検知等に必要な条件が満たされているかをチェックするユーティリティメソッドです*/
 + (BOOL)isBeaconEventConditionMetForForegroundOnly;
+
+//[[現在のBluetoothの設定のチェック]]
+/* Try to check current bluetooth settings on the device
+ 端末のBluetooth使用可否状況をチェックします 決定状態の応答に若干のタイムラグがあるので、デリゲートメソッドを応答します */
+- (void)checkCurrentBluetoothAvailability;
 
 //[使用初期設定の確認]
 - (TbBTDeveloperPreference *)preference;
@@ -143,15 +149,15 @@ Can be used under test mode */
 @protocol TbBTManagerDelegate <NSObject>
 
 @optional
+//[Bluetooth使用可否状態のチェック結果]
+// bluetooth check result
+- (void)didDetermineBlutoothAvailability:(BOOL)available;
+
 //[領域処理結果系]
 // for region update
 - (void)didPrepareToRefreshRegionsWithResult:(TbBTPrepareResultType)resultType;
 - (void)didFailToPrepareLatestRegionsWithError:(NSError *)error;
 
-//[ビーコン領域接触時用サービス系]
-- (void)didCheckServiceForBeaconWithResult:(TbBTContactCheckResultType)resultType;
-- (void)didReceivePresentationInfos:(NSArray *)presentations;
-- (void)didFailToCheckServiceWithError:(NSError *)error;
 
 //[テストログ送信系]
 // for test logging
