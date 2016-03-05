@@ -11,5 +11,8 @@
 @interface TransitionViewController : UIViewController
 
 @property (assign, nonatomic) BOOL requireNotification;
+@property (weak, nonatomic) IBOutlet UILabel *stateLabel;
+
+- (void)didConfirmNotification;
 
 @end

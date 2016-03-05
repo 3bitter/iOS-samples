@@ -14,6 +14,7 @@
 
 #import "ContentManager.h"
 
+NSString *kBaseLocServiceEnabled = @"BaseLocServciceEnabled";
 NSString *kAlwaysLocServicePermitted = @"AlwaysLocServicePermitted";
 NSString *kAlwaysLocServiceDenied = @"AlwaysLocServiceDenied";
 NSString *kBeaconRangingFailed = @"BeaconRangingFailed";
@@ -33,6 +34,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
     [TbBTPreliminary setUpWithCompletionHandler:^(BOOL success) {
         if (!success) { // Failed to set up
             _skipBLT = YES;
+        } else {
         }
     }];
     // 処理結果が不要なら、これも可能
@@ -72,16 +74,21 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     NSLog(@"Location service authorization changed");
-    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+    if (status == kCLAuthorizationStatusNotDetermined) {
+        NSLog(@"Service enabled but auth not determinted. Confirm again for app");
+        [[NSNotificationCenter defaultCenter] postNotificationName:kBaseLocServiceEnabled object:self];
+    } else if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        NSLog(@"Callback alwarys permitted");
         [[NSNotificationCenter defaultCenter] postNotificationName:kAlwaysLocServicePermitted object:self];
     } else if (status == kCLAuthorizationStatusRestricted || status == kCLAuthorizationStatusDenied) {
+         NSLog(@"Callback alwarys denied/restricted");
         [[NSNotificationCenter defaultCenter] postNotificationName:kAlwaysLocServiceDenied object:self];
     }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(nonnull NSArray<CLBeacon *> *)beacons inRegion:(nonnull CLBeaconRegion *)region {
-    _btManager = [TbBTManager sharedManager];
-    NSArray *beaconKeyDatas = [_btManager beaconsTrack:beacons ofRegion:region];
+    TbBTManager *btManager = [TbBTManager sharedManager];
+    NSArray *beaconKeyDatas = [btManager beaconsTrack:beacons ofRegion:region];
     if (beaconKeyDatas) { // may be inside of 3b beacon region
         if (beaconKeyDatas.count > 0) {
             NSMutableArray *beaconKeys = [NSMutableArray array];

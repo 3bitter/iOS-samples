@@ -10,4 +10,9 @@
 
 @interface BaseNotificationViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *notificationView;
+@property (weak, nonatomic) IBOutlet UIButton *confirmedButton;
+
+- (IBAction)confirmedButtonDidPush:(id)sender;
+
 @end

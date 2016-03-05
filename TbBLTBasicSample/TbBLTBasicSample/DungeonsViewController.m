@@ -30,6 +30,8 @@ extern NSString *kBeaconMappedContentsPrepared;
 @property (strong, nonatomic) UIActivityIndicatorView *indicator;
 @property (strong, nonatomic) NSTimer *timeoutTimer;
 
+@property (strong, nonatomic) CLBeaconRegion *workingRegion;
+
 @property (strong, nonatomic) NSMutableArray *fullContents;
 @property (assign, nonatomic) BOOL bltUsed;
 @property (assign, nonatomic) BOOL noMapped;
@@ -50,9 +52,11 @@ extern NSString *kBeaconMappedContentsPrepared;
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     _bltUsed = [[userDefaults valueForKey:kBeaconUseKey] boolValue];
-    if (_bltUsed) {
+    if (_bltUsed // User confirmed to use BLT option
+        && [TbBTManager isBeaconEventConditionMet] // Can be use beacon (if bluetooth is off, no)
+        && [TbBTManager sharedManager]) {  // Prepared TbBTManager before
         [self startSearch];
-    }
+    } // else show default
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -143,7 +147,6 @@ extern NSString *kBeaconMappedContentsPrepared;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshWithMappedContents) name:kBeaconMappedContentsPrepared object:nil];
     
     
-    
     // Add timeout timer
     _timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(terminateSearch) userInfo:nil repeats:NO];
     _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhiteLarge];
@@ -155,13 +158,20 @@ extern NSString *kBeaconMappedContentsPrepared;
     _indicator.center = self.view.center;
     [self.view addSubview:_indicator];
     
+    NSArray *tbBeaconRegions = [[TbBTManager sharedManager] initialRegions];
+    _workingRegion = [tbBeaconRegions objectAtIndex:0];
+    assert(_workingRegion);
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    NSArray *tbBeaconRegions = [appDelegate.btManager initialRegions];
-    CLBeaconRegion *tbDefaultRegion = [tbBeaconRegions objectAtIndex:0];
-    [appDelegate.locManager startRangingBeaconsInRegion:tbDefaultRegion]; // Wait for callback
+    [appDelegate.locManager startRangingBeaconsInRegion:_workingRegion]; // Wait for callback
 }
 
 - (void)terminateSearch {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    if (_workingRegion) {
+        [appDelegate.locManager stopRangingBeaconsInRegion:_workingRegion];
+        _workingRegion = nil;
+    }
     if (_indicator) {
         [_indicator stopAnimating];
         [_indicator removeFromSuperview];
@@ -170,6 +180,13 @@ extern NSString *kBeaconMappedContentsPrepared;
     _noMapped = YES;
     // Reset full contents
     _fullContents = [NSMutableArray arrayWithArray:[[ContentManager sharedManager] defaultContents]];
+    
+    if (NSFoundationVersionNumber_iOS_8_0 <= NSFoundationVersionNumber) {
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"ビーコン検出" message:@"ビーコンの検出を終わります" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"O.K." style:UIAlertActionStyleDefault handler:nil];
+        [alertC addAction:dismissAction];
+        [self presentViewController:alertC animated:NO completion:nil];
+    }
 }
 
 - (void)refreshWithMappedContents {

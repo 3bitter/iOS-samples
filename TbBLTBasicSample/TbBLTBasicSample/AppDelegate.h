@@ -16,8 +16,7 @@
 
 @property (strong, nonatomic) CLLocationManager *locManager;
 
-@property (assign, nonatomic) BOOL skipBLT;
-@property (strong, nonatomic) TbBTManager *btManager;
+@property (assign, nonatomic) BOOL skipBLT; // Optional
 
 
 @end

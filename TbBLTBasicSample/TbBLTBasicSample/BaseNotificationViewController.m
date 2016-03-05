@@ -7,6 +7,7 @@
 //
 
 #import "BaseNotificationViewController.h"
+#import "TransitionViewController.h"
 
 @interface BaseNotificationViewController ()
 
@@ -16,12 +17,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _notificationView.backgroundColor = [UIColor blackColor];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)confirmedButtonDidPush:(id)sender {
+    TransitionViewController *transitionVC = [((UINavigationController *)self.presentingViewController).childViewControllers objectAtIndex:0];
+    [transitionVC didConfirmNotification];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*
