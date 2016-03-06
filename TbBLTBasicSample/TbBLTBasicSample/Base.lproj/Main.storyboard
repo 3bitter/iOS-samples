@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -77,7 +78,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TvL-ME-xjY">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TvL-ME-xjY">
                                 <rect key="frame" x="346" y="269" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
@@ -113,12 +114,15 @@
             <objects>
                 <tableViewController id="1pu-4D-dTs" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SB3-kd-QIw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PEh-Up-lQD">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PEh-Up-lQD" id="RS8-zG-0dl">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -197,12 +201,12 @@
                                 <exclude reference="aSl-pZ-MvL"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="V3g-rw-R9b"/>
+                                <exclude reference="aKg-bF-p2h"/>
                                 <exclude reference="2cE-um-DJn"/>
                                 <exclude reference="RTO-0V-Mdv"/>
                                 <exclude reference="Y9T-2F-fpC"/>
                                 <exclude reference="dXL-Dj-Udu"/>
-                                <exclude reference="V3g-rw-R9b"/>
-                                <exclude reference="aKg-bF-p2h"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -211,12 +215,12 @@
                                 <include reference="aSl-pZ-MvL"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="V3g-rw-R9b"/>
+                                <include reference="aKg-bF-p2h"/>
                                 <include reference="2cE-um-DJn"/>
                                 <include reference="RTO-0V-Mdv"/>
                                 <include reference="Y9T-2F-fpC"/>
                                 <include reference="dXL-Dj-Udu"/>
-                                <include reference="V3g-rw-R9b"/>
-                                <include reference="aKg-bF-p2h"/>
                             </mask>
                         </variation>
                     </view>
@@ -261,26 +265,43 @@
                                     <action selector="confirmedButtonDidPush:" destination="Ngf-lL-MZN" eventType="touchUpInside" id="i6B-0l-UWq"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Pvu-xG-dyB">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="Pvu-xG-dyB">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お知らせ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdM-Fn-qtZ">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Pvu-xG-dyB" firstAttribute="top" secondItem="K9f-Gb-nfB" secondAttribute="bottom" constant="25" id="7aI-SK-cZh"/>
+                            <constraint firstItem="sdM-Fn-qtZ" firstAttribute="leading" secondItem="Pvu-xG-dyB" secondAttribute="leading" id="7PW-Tr-bM4"/>
+                            <constraint firstItem="Pvu-xG-dyB" firstAttribute="top" secondItem="K9f-Gb-nfB" secondAttribute="bottom" constant="25" id="7aI-SK-cZh">
+                                <variation key="widthClass=compact" constant="67"/>
+                            </constraint>
                             <constraint firstItem="79I-OK-y90" firstAttribute="centerX" secondItem="Pvu-xG-dyB" secondAttribute="centerX" id="CZ7-aX-h4t"/>
                             <constraint firstItem="79I-OK-y90" firstAttribute="top" secondItem="Pvu-xG-dyB" secondAttribute="bottom" constant="10" id="McP-lW-pa5"/>
+                            <constraint firstItem="sdM-Fn-qtZ" firstAttribute="trailing" secondItem="Pvu-xG-dyB" secondAttribute="trailing" id="aEC-eT-NQp"/>
+                            <constraint firstItem="Pvu-xG-dyB" firstAttribute="top" secondItem="sdM-Fn-qtZ" secondAttribute="bottom" constant="24" id="bx7-77-kVZ"/>
                             <constraint firstItem="Pvu-xG-dyB" firstAttribute="leading" secondItem="7Fa-hg-ghe" secondAttribute="leadingMargin" constant="22" id="gLL-p6-vJP"/>
                             <constraint firstItem="Pvu-xG-dyB" firstAttribute="centerX" secondItem="7Fa-hg-ghe" secondAttribute="centerX" id="pT9-U0-OC0"/>
                             <constraint firstAttribute="bottom" secondItem="Pvu-xG-dyB" secondAttribute="bottom" constant="111" id="rtN-QG-QQs"/>
+                            <constraint firstItem="sdM-Fn-qtZ" firstAttribute="top" secondItem="K9f-Gb-nfB" secondAttribute="bottom" constant="22" id="vMu-FH-Rb0"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="79I-OK-y90"/>
                                 <exclude reference="Pvu-xG-dyB"/>
+                                <exclude reference="sdM-Fn-qtZ"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="7PW-Tr-bM4"/>
+                                <exclude reference="aEC-eT-NQp"/>
+                                <exclude reference="vMu-FH-Rb0"/>
                                 <exclude reference="7aI-SK-cZh"/>
+                                <exclude reference="bx7-77-kVZ"/>
                                 <exclude reference="gLL-p6-vJP"/>
                                 <exclude reference="pT9-U0-OC0"/>
                                 <exclude reference="rtN-QG-QQs"/>
@@ -292,9 +313,14 @@
                             <mask key="subviews">
                                 <include reference="79I-OK-y90"/>
                                 <include reference="Pvu-xG-dyB"/>
+                                <include reference="sdM-Fn-qtZ"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="7PW-Tr-bM4"/>
+                                <include reference="aEC-eT-NQp"/>
+                                <include reference="vMu-FH-Rb0"/>
                                 <include reference="7aI-SK-cZh"/>
+                                <include reference="bx7-77-kVZ"/>
                                 <include reference="gLL-p6-vJP"/>
                                 <include reference="pT9-U0-OC0"/>
                                 <include reference="rtN-QG-QQs"/>
@@ -310,7 +336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5cy-21-I2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-205.5" y="-614"/>
+            <point key="canvasLocation" x="378" y="-487"/>
         </scene>
         <!--ダンジョン-->
         <scene sceneID="jhR-Dh-h6O">
