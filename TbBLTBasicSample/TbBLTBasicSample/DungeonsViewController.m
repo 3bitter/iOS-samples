@@ -180,13 +180,6 @@ extern NSString *kBeaconMappedContentsPrepared;
     _noMapped = YES;
     // Reset full contents
     _fullContents = [NSMutableArray arrayWithArray:[[ContentManager sharedManager] defaultContents]];
-    
-    if (NSFoundationVersionNumber_iOS_8_0 <= NSFoundationVersionNumber) {
-        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"ビーコン検出" message:@"ビーコンの検出を終わります" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"O.K." style:UIAlertActionStyleDefault handler:nil];
-        [alertC addAction:dismissAction];
-        [self presentViewController:alertC animated:NO completion:nil];
-    }
 }
 
 - (void)refreshWithMappedContents {
