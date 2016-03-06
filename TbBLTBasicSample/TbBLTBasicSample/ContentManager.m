@@ -29,11 +29,11 @@
 - (NSArray *)defaultContents {
 
     OurContent *justAnotherContent1 = [[OurContent alloc] init];
-    justAnotherContent1.title = @"static 1";
+    justAnotherContent1.title = @" 標準ダンジョン 1";
     justAnotherContent1.contentDescription = @"description 1";
     
     OurContent *justAnotherContent2 = [[OurContent alloc] init];
-    justAnotherContent2.title = @"static 2";
+    justAnotherContent2.title = @"標準ダンジョン 2";
     justAnotherContent2.contentDescription = @"description 2";
     
     NSMutableArray *contentArray = [NSMutableArray array];
@@ -84,15 +84,15 @@
     
     OurContent *mappedContent1 = [[OurContent alloc] init];
     mappedContent1.title = @"Beacon region 1 limited";
-    mappedContent1.contentDescription = @"Server side mapping may better";
+    mappedContent1.contentDescription = @"Server side mapping may be better";
     
     OurContent *mappedContent2 = [[OurContent alloc] init];
     mappedContent2.title = @"Beacon region 2 limited";
-    mappedContent2.contentDescription = @"Server side mapping may better";
+    mappedContent2.contentDescription = @"Server side mapping may be better";
     
     OurContent *mappedContent3 = [[OurContent alloc] init];
     mappedContent3.title = @"Beacon region 3 limited";
-    mappedContent3.contentDescription = @"Server side mapping may better";
+    mappedContent3.contentDescription = @"Server side mapping may be better";
 
     
     // This matching is not for 1 on 1

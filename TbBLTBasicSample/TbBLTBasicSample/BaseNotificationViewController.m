@@ -18,7 +18,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _notificationView.backgroundColor = [UIColor blackColor];
+    _notificationView.backgroundColor = [UIColor whiteColor];
+    
+    CGRect infoLabelRect = CGRectMake(0.0, 0.0, _notificationView.frame.size.width - 20.0, 200.0);
+    UILabel *infoLabel = [[UILabel alloc] initWithFrame:infoLabelRect];
+    infoLabel.numberOfLines = 3;
+    infoLabel.font = [UIFont systemFontOfSize:13.0];
+    infoLabel.textAlignment = NSTextAlignmentCenter;
+    infoLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    infoLabel.text = @"位置情報サービスとBluetoothをオンにしておくと、XXXXXXに行ったときに限定コンテンツが使用できるよ。";
+    [_notificationView addSubview:infoLabel];
     // Do any additional setup after loading the view.
 }
 
