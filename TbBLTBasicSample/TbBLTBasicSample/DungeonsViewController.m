@@ -169,10 +169,12 @@ extern NSString *kBeaconMappedContentsPrepared;
 }
 
 - (void)terminateSearch {
+     NSLog(@"-- %s --", __func__);
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
     if (_workingRegion) {
         [appDelegate.locManager stopRangingBeaconsInRegion:_workingRegion];
+        NSLog(@"Ranging stopped(in terminateSearch).");
         _workingRegion = nil;
     }
     if (_indicator) {
@@ -183,10 +185,12 @@ extern NSString *kBeaconMappedContentsPrepared;
     _noMapped = YES;
     // Reset full contents
     _fullContents = [NSMutableArray arrayWithArray:[[ContentManager sharedManager] defaultContents]];
+     NSLog(@"## No. of  contents: %lu ##", _fullContents.count);
     [self.tableView reloadData];
 }
 
 - (void)refreshWithMappedContents {
+    NSLog(@"-- %s --", __func__);
     // Reset full contents
     _fullContents = [NSMutableArray arrayWithArray:[[ContentManager sharedManager] defaultContents]];
     ContentManager *contentManager = [ContentManager sharedManager];
@@ -194,6 +198,7 @@ extern NSString *kBeaconMappedContentsPrepared;
     if (_limitedContents > 0) {
         _noMapped = NO;
         [_fullContents addObjectsFromArray:_limitedContents];
+        NSLog(@"## No. of  contents: %lu ##", _fullContents.count);
     }
     if (_indicator) {
         [_indicator stopAnimating];
