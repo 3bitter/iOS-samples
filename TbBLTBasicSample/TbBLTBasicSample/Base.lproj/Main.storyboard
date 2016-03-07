@@ -297,6 +297,8 @@
                                 <exclude reference="sdM-Fn-qtZ"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="CZ7-aX-h4t"/>
+                                <exclude reference="McP-lW-pa5"/>
                                 <exclude reference="7PW-Tr-bM4"/>
                                 <exclude reference="aEC-eT-NQp"/>
                                 <exclude reference="vMu-FH-Rb0"/>
@@ -305,8 +307,6 @@
                                 <exclude reference="gLL-p6-vJP"/>
                                 <exclude reference="pT9-U0-OC0"/>
                                 <exclude reference="rtN-QG-QQs"/>
-                                <exclude reference="CZ7-aX-h4t"/>
-                                <exclude reference="McP-lW-pa5"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -316,6 +316,8 @@
                                 <include reference="sdM-Fn-qtZ"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="CZ7-aX-h4t"/>
+                                <include reference="McP-lW-pa5"/>
                                 <include reference="7PW-Tr-bM4"/>
                                 <include reference="aEC-eT-NQp"/>
                                 <include reference="vMu-FH-Rb0"/>
@@ -324,8 +326,6 @@
                                 <include reference="gLL-p6-vJP"/>
                                 <include reference="pT9-U0-OC0"/>
                                 <include reference="rtN-QG-QQs"/>
-                                <include reference="CZ7-aX-h4t"/>
-                                <include reference="McP-lW-pa5"/>
                             </mask>
                         </variation>
                     </view>
