@@ -183,6 +183,7 @@ extern NSString *kBeaconMappedContentsPrepared;
     _noMapped = YES;
     // Reset full contents
     _fullContents = [NSMutableArray arrayWithArray:[[ContentManager sharedManager] defaultContents]];
+    [self.tableView reloadData];
 }
 
 - (void)refreshWithMappedContents {
