@@ -485,8 +485,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TbBTSDK_BLT_v100",
-					"$(PROJECT_DIR)/TbBTSDK_BLT_v100/Supporting",
-					Files,
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -508,8 +506,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TbBTSDK_BLT_v100",
-					"$(PROJECT_DIR)/TbBTSDK_BLT_v100/Supporting",
-					Files,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
