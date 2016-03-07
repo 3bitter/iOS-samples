@@ -60,7 +60,13 @@ NSString *kBeaconUseKey = @"UseBRContents";
         if (appDelegate.skipBLT) { // Skip explicitly
             [self gotoMenuPage];
         }
-        if (![TbBTManager isBeaconEventConditionMet]) { // Simple check
+        if (NSFoundationVersionNumber_iOS_8_0 > NSFoundationVersionNumber) {
+            [self prepareLocManager];
+            [self prepareBeaconManager];
+            [self gotoMenuPage];
+            return; // Dialog will show when
+        }
+        if (![TbBTManager isBeaconEventConditionMet]) {
             if  (!_locServiceStateDetermined || !_locServiceForAppDetermined) { // Location service status not checked
                 _stateLabel.text = @"現在の設定では限定コンテンツが使用できません";
                 [self checkLocServiceStateAndContinue];
@@ -148,12 +154,18 @@ NSString *kBeaconUseKey = @"UseBRContents";
         [self gotoMenuPage];
     } else if (![CLLocationManager locationServicesEnabled]) {
         NSLog(@"位置情報サービス自体がオフ");
-        assert(appDelegate.locManager);
-        [appDelegate.locManager requestAlwaysAuthorization];// Show loc service dialog by framework
+        if (NSFoundationVersionNumber_iOS_8_0 <= NSFoundationVersionNumber) {
+            assert(appDelegate.locManager);
+            [appDelegate.locManager requestAlwaysAuthorization];// Show loc service dialog by framework
+        } else {
+            _locServiceStateDetermined = YES;
+        }
     } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
          NSLog(@"アプリに対しての位置情報サービス許可がされていない");
         _locServiceStateDetermined = YES;
-        [appDelegate.locManager requestAlwaysAuthorization];// Show app permission dialog by framework
+        if (NSFoundationVersionNumber_iOS_8_0 <= NSFoundationVersionNumber) {
+            [appDelegate.locManager requestAlwaysAuthorization];// Show app permission dialog by framework
+        }
     } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways
                || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied
                || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted) {

@@ -59,7 +59,10 @@ extern NSString *kBeaconMappedContentsPrepared;
         && [TbBTManager isBeaconEventConditionMet] // Can be use beacon (if bluetooth is off, no)
         && [TbBTManager sharedManager]) {  // Prepared TbBTManager before
         [self startSearch];
-    } // else show default
+    } else if (NSFoundationVersionNumber_iOS_8_0 > NSFoundationVersionNumber) {
+        [self startSearch];
+    }
+    // else show default
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -208,7 +211,6 @@ extern NSString *kBeaconMappedContentsPrepared;
     _noMapped = YES;
     // Reset full contents
     _fullContents = [NSMutableArray arrayWithArray:[[ContentManager sharedManager] defaultContents]];
-     NSLog(@"## No. of  contents: %lu ##", _fullContents.count);
     [self.tableView reloadData];
     _searching = NO;
 }
@@ -222,7 +224,6 @@ extern NSString *kBeaconMappedContentsPrepared;
     if (_limitedContents > 0) {
         _noMapped = NO;
         [_fullContents addObjectsFromArray:_limitedContents];
-        NSLog(@"## No. of  contents: %lu ##", _fullContents.count);
     }
     if (_indicator) {
         [_indicator stopAnimating];
@@ -239,6 +240,7 @@ extern NSString *kBeaconMappedContentsPrepared;
     }
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.cancelTimerStopped = YES;
+    NSLog(@"ranging timeout timer canceled");
 }
 
 @end
