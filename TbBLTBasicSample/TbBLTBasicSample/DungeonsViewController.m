@@ -37,6 +37,8 @@ extern NSString *kBeaconMappedContentsPrepared;
 @property (assign, nonatomic) BOOL bltUsed;
 @property (assign, nonatomic) BOOL noMapped;
 
+@property (assign, nonatomic) BOOL searching;
+
 @end
 
 @implementation DungeonsViewController
@@ -65,6 +67,21 @@ extern NSString *kBeaconMappedContentsPrepared;
     if (_bltUsed && _indicator) {
         [_indicator startAnimating];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    if (_indicator) {
+        [_indicator stopAnimating];
+    }
+    if (_searching) {
+        [self terminateSearch];
+    }
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -138,6 +155,7 @@ extern NSString *kBeaconMappedContentsPrepared;
 */
 
 - (void)startSearch {
+    _searching = YES;
     // Add timer cancel notification (for not ranged case)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelTimeoutTimer)name:kRangingStarted object:nil];
     
@@ -192,6 +210,7 @@ extern NSString *kBeaconMappedContentsPrepared;
     _fullContents = [NSMutableArray arrayWithArray:[[ContentManager sharedManager] defaultContents]];
      NSLog(@"## No. of  contents: %lu ##", _fullContents.count);
     [self.tableView reloadData];
+    _searching = NO;
 }
 
 - (void)refreshWithMappedContents {
