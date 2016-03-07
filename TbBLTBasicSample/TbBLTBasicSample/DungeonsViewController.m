@@ -55,12 +55,13 @@ extern NSString *kBeaconMappedContentsPrepared;
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     _bltUsed = [[userDefaults valueForKey:kBeaconUseKey] boolValue];
+    
     if (_bltUsed // User confirmed to use BLT option
         && [TbBTManager isBeaconEventConditionMet] // Can be use beacon (if bluetooth is off, no)
         && [TbBTManager sharedManager]) {  // Prepared TbBTManager before
         [self startSearch];
     } else if (NSFoundationVersionNumber_iOS_8_0 > NSFoundationVersionNumber) {
-        [self startSearch];
+        [self startSearch]; // iOS 7 may show permission dialog
     }
     // else show default
 }

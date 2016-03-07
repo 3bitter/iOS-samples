@@ -59,13 +59,16 @@ NSString *kBeaconUseKey = @"UseBRContents";
     } else {
         if (appDelegate.skipBLT) { // Skip explicitly
             [self gotoMenuPage];
+            return;
         }
+        // For iOS 7.x
         if (NSFoundationVersionNumber_iOS_8_0 > NSFoundationVersionNumber) {
             [self prepareLocManager];
             [self prepareBeaconManager];
             [self gotoMenuPage];
-            return; // Dialog will show when
+            return;
         }
+        // for iOS 8.0 〜
         if (![TbBTManager isBeaconEventConditionMet]) {
             if  (!_locServiceStateDetermined || !_locServiceForAppDetermined) { // Location service status not checked
                 _stateLabel.text = @"現在の設定では限定コンテンツが使用できません";
