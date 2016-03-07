@@ -75,6 +75,7 @@ NSString *kBeaconUseKey = @"UseBRContents";
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     if (_locServiceForAppDetermined && _locServiceForAppDetermined) {
         // Quit observe for permission changing
         [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -97,7 +98,6 @@ NSString *kBeaconUseKey = @"UseBRContents";
 - (void)didDetermineLocationState {
     NSLog(@" -- %s --", __func__);
     
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if (!_locServiceStateDetermined || !_locServiceForAppDetermined)  {
         while (UIApplicationStateBackground == [UIApplication sharedApplication].applicationState) {
             [NSThread sleepForTimeInterval:0.5];

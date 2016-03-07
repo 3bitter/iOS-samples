@@ -199,4 +199,11 @@ extern NSString *kBeaconMappedContentsPrepared;
     [self.tableView reloadData];
 }
 
+- (void)cancelTimeoutTimer {
+    if (_timeoutTimer) {
+        [_timeoutTimer invalidate];
+        _timeoutTimer = nil;
+    }
+}
+
 @end
