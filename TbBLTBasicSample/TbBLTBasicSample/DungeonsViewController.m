@@ -17,6 +17,7 @@
 
 extern NSString *kBeaconUseKey;
 
+extern NSString *kRangingStarted;
 extern NSString *kBeaconRangingFailed;
 extern NSString *kBeaconDidNotDetectedInRegion;
 extern NSString *kBeaconMappedContentsPrepared;
@@ -138,9 +139,7 @@ extern NSString *kBeaconMappedContentsPrepared;
 
 - (void)startSearch {
     // Add timer cancel notification (for not ranged case)
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelTimeoutTimer)name:@"RangingStarted" object:nil];
-    // Add timeout after ranging notification
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(terminateSearch) name:@"RangingTimeOver" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelTimeoutTimer)name:kRangingStarted object:nil];
     
     // Observers for failure cases
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(terminateSearch) name:kBeaconRangingFailed object:nil];
@@ -150,8 +149,11 @@ extern NSString *kBeaconMappedContentsPrepared;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshWithMappedContents) name:kBeaconMappedContentsPrepared object:nil];
     
     
-    // Add timeout timer
+    // Add timeout timer (ranging did not send callback)
     _timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(terminateSearch) userInfo:nil repeats:NO];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.cancelTimerStopped = NO;
+    
     _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhiteLarge];
     _indicator.frame = CGRectMake(0.0, 0.0, 50.0, 50.0);
     _indicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -164,7 +166,7 @@ extern NSString *kBeaconMappedContentsPrepared;
     NSArray *tbBeaconRegions = [[TbBTManager sharedManager] initialRegions];
     _workingRegion = [tbBeaconRegions objectAtIndex:0];
     assert(_workingRegion);
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
     [appDelegate.locManager startRangingBeaconsInRegion:_workingRegion]; // Wait for callback
 }
 
@@ -176,6 +178,9 @@ extern NSString *kBeaconMappedContentsPrepared;
         [appDelegate.locManager stopRangingBeaconsInRegion:_workingRegion];
         NSLog(@"Ranging stopped(in terminateSearch).");
         _workingRegion = nil;
+    }
+    if (_timeoutTimer) {
+        [self cancelTimeoutTimer];
     }
     if (_indicator) {
         [_indicator stopAnimating];
@@ -213,6 +218,8 @@ extern NSString *kBeaconMappedContentsPrepared;
         [_timeoutTimer invalidate];
         _timeoutTimer = nil;
     }
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.cancelTimerStopped = YES;
 }
 
 @end

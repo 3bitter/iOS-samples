@@ -18,6 +18,8 @@
 
 @property (assign, nonatomic) BOOL skipBLT; // Optional
 
+@property (assign, nonatomic) BOOL cancelTimerStopped;
+
 
 @end
 

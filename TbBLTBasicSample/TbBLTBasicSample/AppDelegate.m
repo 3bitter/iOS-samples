@@ -17,6 +17,7 @@
 NSString *kBaseLocServiceEnabled = @"BaseLocServciceEnabled";
 NSString *kAlwaysLocServicePermitted = @"AlwaysLocServicePermitted";
 NSString *kAlwaysLocServiceDenied = @"AlwaysLocServiceDenied";
+NSString *kRangingStarted = @"RangingStarted";
 NSString *kBeaconRangingFailed = @"BeaconRangingFailed";
 NSString *kBeaconDidNotDetectedInRegion = @"BeaconNotDetected";
 NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
@@ -87,6 +88,9 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 }
 
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(nonnull NSArray<CLBeacon *> *)beacons inRegion:(nonnull CLBeaconRegion *)region {
+    if (!_cancelTimerStopped) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kRangingStarted object:self];
+    }
     TbBTManager *btManager = [TbBTManager sharedManager];
     NSArray *beaconKeyDatas = [btManager beaconsTrack:beacons ofRegion:region];
     if (beaconKeyDatas) { // may be inside of 3b beacon region
