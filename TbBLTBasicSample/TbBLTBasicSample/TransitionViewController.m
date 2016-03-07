@@ -66,6 +66,9 @@ NSString *kBeaconUseKey = @"UseBRContents";
                 [self checkLocServiceStateAndContinue];
             }
         } else if (!_bluetoothStateDetermined){ // Bluetooth status not checked yet
+            if (!appDelegate.locManager) {
+                [self prepareLocManager];
+            }
             [self prepareBeaconManager];
             [self checkBluetoothState];
         } else { // Every setting is O.K.
@@ -203,9 +206,11 @@ NSString *kBeaconUseKey = @"UseBRContents";
 - (void)didDetermineBlutoothAvailability:(BOOL)available {
     NSLog(@"--%s--", __func__);
     if (!available) {
+        NSLog(@"Bluetooth not available");
         //[self showCustomAlert];
         [self showDefaultAlertWithCBFramework];
     } else { // Now Bluetooth is ON
+        NSLog(@"Bluetooth is available");
         _bluetoothStateDetermined = YES;
        [self performSelectorOnMainThread:@selector(gotoMenuPage) withObject:nil waitUntilDone:NO];
     }

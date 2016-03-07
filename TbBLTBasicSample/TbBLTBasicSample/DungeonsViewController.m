@@ -83,6 +83,9 @@ extern NSString *kBeaconMappedContentsPrepared;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContentTitleCell" forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ContentTitleCell"];
+    }
     OurContent *content = [_fullContents objectAtIndex:indexPath.row];
     cell.textLabel.text = content.title;
     cell.detailTextLabel.text = content.contentDescription;
