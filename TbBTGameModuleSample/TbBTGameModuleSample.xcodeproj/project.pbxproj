@@ -15,7 +15,6 @@
 		986836CB1B77236400F9C716 /* DefaultServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 986836CA1B77236400F9C716 /* DefaultServerClient.m */; };
 		986836CE1B773A4200F9C716 /* StartupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 986836CD1B773A4200F9C716 /* StartupViewController.m */; };
 		986836CF1B773C1F00F9C716 /* ItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B2EC431B4E5936006A2E1A /* ItemManager.m */; };
-		987368681CA29B5900F13789 /* ChangeLog_20160323.txt in Resources */ = {isa = PBXBuildFile; fileRef = 987368461CA29B5900F13789 /* ChangeLog_20160323.txt */; };
 		987368691CA29B5900F13789 /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 987368591CA29B5900F13789 /* libTbBTSDK.a */; };
 		9873686A1CA29B5A00F13789 /* OfficialRegion.json in Resources */ = {isa = PBXBuildFile; fileRef = 9873685B1CA29B5900F13789 /* OfficialRegion.json */; };
 		9873686B1CA29B5A00F13789 /* TbBTLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9873685E1CA29B5900F13789 /* TbBTLocalizable.strings */; };
@@ -80,7 +79,6 @@
 		986836CA1B77236400F9C716 /* DefaultServerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultServerClient.m; sourceTree = "<group>"; };
 		986836CC1B773A4200F9C716 /* StartupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupViewController.h; sourceTree = "<group>"; };
 		986836CD1B773A4200F9C716 /* StartupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupViewController.m; sourceTree = "<group>"; };
-		987368461CA29B5900F13789 /* ChangeLog_20160323.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog_20160323.txt; sourceTree = "<group>"; };
 		987368491CA29B5900F13789 /* TbBTAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTAgreementViewController.h; sourceTree = "<group>"; };
 		9873684A1CA29B5900F13789 /* TbBTAVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTAVPlayerView.h; sourceTree = "<group>"; };
 		9873684B1CA29B5900F13789 /* TbBTAVPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTAVPlayerViewController.h; sourceTree = "<group>"; };
@@ -222,7 +220,6 @@
 		987368451CA29B5900F13789 /* TbBTSDK_Normal_v121 */ = {
 			isa = PBXGroup;
 			children = (
-				987368461CA29B5900F13789 /* ChangeLog_20160323.txt */,
 				987368471CA29B5900F13789 /* include */,
 				987368591CA29B5900F13789 /* libTbBTSDK.a */,
 				9873685A1CA29B5900F13789 /* Supporting Files */,
@@ -529,7 +526,6 @@
 				987368701CA29B5A00F13789 /* sdk_play.png in Resources */,
 				9873686B1CA29B5A00F13789 /* TbBTLocalizable.strings in Resources */,
 				9873686E1CA29B5A00F13789 /* sdk_frame_p.png in Resources */,
-				987368681CA29B5900F13789 /* ChangeLog_20160323.txt in Resources */,
 				9873686F1CA29B5A00F13789 /* sdk_pause.png in Resources */,
 				9873686C1CA29B5A00F13789 /* sdk_close.png in Resources */,
 			);
