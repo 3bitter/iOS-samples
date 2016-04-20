@@ -126,8 +126,6 @@ NSString *kBeaconUseKey = @"UseBRContents";
 
 - (void)gotoMenuPage {
     UITabBarController *baseMenuController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MenuTabBarController"];
-    //[self presentViewController:baseMenuController animated:YES completion:nil];
-   // [self.view addSubview:baseMenuController.view];
     [self.navigationController pushViewController:baseMenuController animated:YES];
 }
 
@@ -159,7 +157,7 @@ NSString *kBeaconUseKey = @"UseBRContents";
         NSLog(@"位置情報サービス自体がオフ");
         if (NSFoundationVersionNumber_iOS_8_0 <= NSFoundationVersionNumber) {
             assert(appDelegate.locManager);
-            [appDelegate.locManager requestAlwaysAuthorization];// Show loc service dialog by framework
+            [appDelegate.locManager requestWhenInUseAuthorization];// Show loc service dialog by framework
         } else {
             _locServiceStateDetermined = YES;
         }
@@ -167,9 +165,9 @@ NSString *kBeaconUseKey = @"UseBRContents";
          NSLog(@"アプリに対しての位置情報サービス許可がされていない");
         _locServiceStateDetermined = YES;
         if (NSFoundationVersionNumber_iOS_8_0 <= NSFoundationVersionNumber) {
-            [appDelegate.locManager requestAlwaysAuthorization];// Show app permission dialog by framework
+            [appDelegate.locManager requestWhenInUseAuthorization];// Show app permission dialog by framework
         }
-    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways
+    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse
                || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied
                || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted) {
          NSLog(@"アプリに対しての位置情報サービス許可が決定した");
