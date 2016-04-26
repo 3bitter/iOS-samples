@@ -45,8 +45,8 @@ static NSString *kBeaconOwnerURL = @"https://bitterbeacon.tokyo/BTGameUseServer/
     if (!_beaconKeySession) {
         NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
         sessionConfig.networkServiceType = NSURLNetworkServiceTypeDefault;
-        sessionConfig.timeoutIntervalForRequest = 5;
-        sessionConfig.timeoutIntervalForResource = 10;
+        sessionConfig.timeoutIntervalForRequest = 10;
+        sessionConfig.timeoutIntervalForResource = 30;
         sessionConfig.TLSMinimumSupportedProtocol = kTLSProtocol1;
         sessionConfig.requestCachePolicy = NO;
         sessionConfig.URLCache = nil;
@@ -80,8 +80,8 @@ static NSString *kBeaconOwnerURL = @"https://bitterbeacon.tokyo/BTGameUseServer/
     if (!_beaconKeySession) {
         NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
         sessionConfig.networkServiceType = NSURLNetworkServiceTypeDefault;
-        sessionConfig.timeoutIntervalForRequest = 5;
-        sessionConfig.timeoutIntervalForResource = 10;
+        sessionConfig.timeoutIntervalForRequest = 10;
+        sessionConfig.timeoutIntervalForResource = 30;
         sessionConfig.TLSMinimumSupportedProtocol = kTLSProtocol1;
         sessionConfig.requestCachePolicy = NO;
         sessionConfig.URLCache = nil;
@@ -154,8 +154,8 @@ static NSString *kBeaconOwnerURL = @"https://bitterbeacon.tokyo/BTGameUseServer/
     if (!_beaconKeySession) {
         NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
         sessionConfig.networkServiceType = NSURLNetworkServiceTypeDefault;
-        sessionConfig.timeoutIntervalForRequest = 5;
-        sessionConfig.timeoutIntervalForResource = 10;
+        sessionConfig.timeoutIntervalForRequest = 10;
+        sessionConfig.timeoutIntervalForResource = 30;
         sessionConfig.TLSMinimumSupportedProtocol = kTLSProtocol1;
         sessionConfig.requestCachePolicy = NO;
         sessionConfig.URLCache = nil;

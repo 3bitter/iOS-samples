@@ -224,6 +224,16 @@ static const NSUInteger ABORT_THRESHOLD = 3;
 - (void)btFacade:(BTServiceFacade *)facade didProfileNewNeighbers:(NSArray *)discoveredNeighbers {
     // プロパティにコピー、リロード
     _neighberBeaconOwners = [NSArray arrayWithArray:discoveredNeighbers];
+    [self performSelectorOnMainThread:@selector(viewUpdate) withObject:nil waitUntilDone:NO];
+}
+
+- (void)viewUpdate {
+      [self.tableView reloadData];
+}
+
+- (void)viewUpdateAfterTermination {
+    // Stop search and alert
+    [self terminateCheckNeighbers];
     [self.tableView reloadData];
 }
 
@@ -232,9 +242,8 @@ static const NSUInteger ABORT_THRESHOLD = 3;
     _failureCount++;
     if (_failureCount >= ABORT_THRESHOLD) {
     // Stop search and alert
-        [self terminateCheckNeighbers];
         _finishWithError = YES;
-        [self.tableView reloadData];
+        [self performSelectorOnMainThread:@selector(viewUpdateAfterTermination) withObject:nil waitUntilDone:NO];
     }
 }
 
@@ -243,7 +252,7 @@ static const NSUInteger ABORT_THRESHOLD = 3;
     _failureCount = 0;
     
     _neighberBeaconOwners = [NSArray arrayWithArray:currentNeighbers];
-    [self.tableView reloadData];
+     [self performSelectorOnMainThread:@selector(viewUpdate) withObject:nil waitUntilDone:NO];
 }
 
 
