@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TestMode</key>
+	<true/>
+	<key>DeveloperAppCode</key>
+	<string>TbBTBasicSample</string>
+	<key>SDKEdition</key>
+	<string>Normal</string>
+	<key>SDKVersion</key>
+	<string>1.2.2</string>
+	<key>MaxDesignatableBeaconRegions</key>
+	<integer>19</integer>
+	<key>RegionUpdateIntervalHours</key>
+	<integer>24</integer>
+	<key>InteractionBlockIntervalMinutes</key>
+	<integer>720</integer>
+</dict>
+</plist>
