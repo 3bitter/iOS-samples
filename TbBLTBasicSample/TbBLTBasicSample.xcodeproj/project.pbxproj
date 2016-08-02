@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		985335FB1D50884A00270EBF /* GuideStep1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 985335F81D50884A00270EBF /* GuideStep1ViewController.m */; };
+		985335FC1D50884A00270EBF /* GuideStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 985335FA1D50884A00270EBF /* GuideStep2ViewController.m */; };
+		985336121D508D8700270EBF /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 985336081D508D8700270EBF /* libTbBTSDK.a */; };
+		985336131D508D8700270EBF /* OfficialRegion.json in Resources */ = {isa = PBXBuildFile; fileRef = 9853360A1D508D8700270EBF /* OfficialRegion.json */; };
+		985336141D508D8700270EBF /* TbBTLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9853360D1D508D8700270EBF /* TbBTLocalizable.strings */; };
+		985336151D508D8700270EBF /* TbBTDeveloperPreference.plist in Resources */ = {isa = PBXBuildFile; fileRef = 985336101D508D8700270EBF /* TbBTDeveloperPreference.plist */; };
 		986C73D91C868346000EFB73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 986C73D81C868346000EFB73 /* main.m */; };
 		986C73DC1C868347000EFB73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 986C73DB1C868347000EFB73 /* AppDelegate.m */; };
 		986C73E21C868347000EFB73 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 986C73E11C868347000EFB73 /* SecondViewController.m */; };
@@ -18,10 +24,6 @@
 		986C741E1C868A3F000EFB73 /* TransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 986C741D1C868A3F000EFB73 /* TransitionViewController.m */; };
 		986C74211C868A89000EFB73 /* BaseNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 986C74201C868A89000EFB73 /* BaseNotificationViewController.m */; };
 		986C74251C86B32E000EFB73 /* DungeonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 986C74241C86B32E000EFB73 /* DungeonsViewController.m */; };
-		98A8F7501CC77E5800DA625F /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A8F7471CC77E5800DA625F /* libTbBTSDK.a */; };
-		98A8F7511CC77E5800DA625F /* OfficialRegion.json in Resources */ = {isa = PBXBuildFile; fileRef = 98A8F7491CC77E5800DA625F /* OfficialRegion.json */; };
-		98A8F7521CC77E5800DA625F /* TbBTLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98A8F74C1CC77E5800DA625F /* TbBTLocalizable.strings */; };
-		98A8F7531CC77E5800DA625F /* TbBTDeveloperPreference.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98A8F74F1CC77E5800DA625F /* TbBTDeveloperPreference.plist */; };
 		98BF5F141C88A8E000991969 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BF5F131C88A8E000991969 /* CoreBluetooth.framework */; };
 		98C655781C86F6D1004865FD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98C655771C86F6D1004865FD /* CoreLocation.framework */; };
 		98DEF4191C87112D00721709 /* ContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DEF4181C87112D00721709 /* ContentManager.m */; };
@@ -39,6 +41,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		985335F71D50884A00270EBF /* GuideStep1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideStep1ViewController.h; sourceTree = "<group>"; };
+		985335F81D50884A00270EBF /* GuideStep1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideStep1ViewController.m; sourceTree = "<group>"; };
+		985335F91D50884A00270EBF /* GuideStep2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideStep2ViewController.h; sourceTree = "<group>"; };
+		985335FA1D50884A00270EBF /* GuideStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideStep2ViewController.m; sourceTree = "<group>"; };
+		985336011D508D8700270EBF /* TbBTDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTDefaults.h; sourceTree = "<group>"; };
+		985336021D508D8700270EBF /* TbBTDeveloperPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTDeveloperPreference.h; sourceTree = "<group>"; };
+		985336031D508D8700270EBF /* TbBTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTManager.h; sourceTree = "<group>"; };
+		985336041D508D8700270EBF /* TbBTPreliminary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTPreliminary.h; sourceTree = "<group>"; };
+		985336051D508D8700270EBF /* TbBTRegionNotificationSettingOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTRegionNotificationSettingOptions.h; sourceTree = "<group>"; };
+		985336061D508D8700270EBF /* TbBTSDK-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TbBTSDK-Bridging-Header.h"; sourceTree = "<group>"; };
+		985336071D508D8700270EBF /* TbBTServiceBeaconData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTServiceBeaconData.h; sourceTree = "<group>"; };
+		985336081D508D8700270EBF /* libTbBTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTbBTSDK.a; sourceTree = "<group>"; };
+		9853360A1D508D8700270EBF /* OfficialRegion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OfficialRegion.json; sourceTree = "<group>"; };
+		9853360E1D508D8700270EBF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TbBTLocalizable.strings; sourceTree = "<group>"; };
+		9853360F1D508D8700270EBF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TbBTLocalizable.strings; sourceTree = "<group>"; };
+		985336101D508D8700270EBF /* TbBTDeveloperPreference.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TbBTDeveloperPreference.plist; sourceTree = "<group>"; };
 		986C73D41C868346000EFB73 /* TbBLTBasicSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TbBLTBasicSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		986C73D81C868346000EFB73 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		986C73DA1C868346000EFB73 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,18 +78,6 @@
 		986C74201C868A89000EFB73 /* BaseNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNotificationViewController.m; sourceTree = "<group>"; };
 		986C74231C86B32E000EFB73 /* DungeonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DungeonsViewController.h; sourceTree = "<group>"; };
 		986C74241C86B32E000EFB73 /* DungeonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DungeonsViewController.m; sourceTree = "<group>"; };
-		98A8F7401CC77E5800DA625F /* TbBTDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTDefaults.h; sourceTree = "<group>"; };
-		98A8F7411CC77E5800DA625F /* TbBTDeveloperPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTDeveloperPreference.h; sourceTree = "<group>"; };
-		98A8F7421CC77E5800DA625F /* TbBTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTManager.h; sourceTree = "<group>"; };
-		98A8F7431CC77E5800DA625F /* TbBTPreliminary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTPreliminary.h; sourceTree = "<group>"; };
-		98A8F7441CC77E5800DA625F /* TbBTRegionNotificationSettingOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTRegionNotificationSettingOptions.h; sourceTree = "<group>"; };
-		98A8F7451CC77E5800DA625F /* TbBTSDK-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TbBTSDK-Bridging-Header.h"; sourceTree = "<group>"; };
-		98A8F7461CC77E5800DA625F /* TbBTServiceBeaconData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTServiceBeaconData.h; sourceTree = "<group>"; };
-		98A8F7471CC77E5800DA625F /* libTbBTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTbBTSDK.a; sourceTree = "<group>"; };
-		98A8F7491CC77E5800DA625F /* OfficialRegion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OfficialRegion.json; sourceTree = "<group>"; };
-		98A8F74D1CC77E5800DA625F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TbBTLocalizable.strings; sourceTree = "<group>"; };
-		98A8F74E1CC77E5800DA625F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TbBTLocalizable.strings; sourceTree = "<group>"; };
-		98A8F74F1CC77E5800DA625F /* TbBTDeveloperPreference.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TbBTDeveloperPreference.plist; sourceTree = "<group>"; };
 		98BF5F131C88A8E000991969 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		98C655771C86F6D1004865FD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		98DEF4171C87112D00721709 /* ContentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentManager.h; sourceTree = "<group>"; };
@@ -87,7 +93,7 @@
 			files = (
 				98BF5F141C88A8E000991969 /* CoreBluetooth.framework in Frameworks */,
 				98C655781C86F6D1004865FD /* CoreLocation.framework in Frameworks */,
-				98A8F7501CC77E5800DA625F /* libTbBTSDK.a in Frameworks */,
+				985336121D508D8700270EBF /* libTbBTSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,10 +107,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		985335FD1D508D8700270EBF /* TbBTSDK_BLT_v113 */ = {
+			isa = PBXGroup;
+			children = (
+				985335FF1D508D8700270EBF /* include */,
+				985336081D508D8700270EBF /* libTbBTSDK.a */,
+				985336091D508D8700270EBF /* Supporting Files */,
+			);
+			path = TbBTSDK_BLT_v113;
+			sourceTree = "<group>";
+		};
+		985335FF1D508D8700270EBF /* include */ = {
+			isa = PBXGroup;
+			children = (
+				985336001D508D8700270EBF /* TbBTSDK */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		985336001D508D8700270EBF /* TbBTSDK */ = {
+			isa = PBXGroup;
+			children = (
+				985336011D508D8700270EBF /* TbBTDefaults.h */,
+				985336021D508D8700270EBF /* TbBTDeveloperPreference.h */,
+				985336031D508D8700270EBF /* TbBTManager.h */,
+				985336041D508D8700270EBF /* TbBTPreliminary.h */,
+				985336051D508D8700270EBF /* TbBTRegionNotificationSettingOptions.h */,
+				985336061D508D8700270EBF /* TbBTSDK-Bridging-Header.h */,
+				985336071D508D8700270EBF /* TbBTServiceBeaconData.h */,
+			);
+			path = TbBTSDK;
+			sourceTree = "<group>";
+		};
+		985336091D508D8700270EBF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9853360A1D508D8700270EBF /* OfficialRegion.json */,
+				9853360B1D508D8700270EBF /* Resources */,
+				985336101D508D8700270EBF /* TbBTDeveloperPreference.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9853360B1D508D8700270EBF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9853360C1D508D8700270EBF /* i18n */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9853360C1D508D8700270EBF /* i18n */ = {
+			isa = PBXGroup;
+			children = (
+				9853360D1D508D8700270EBF /* TbBTLocalizable.strings */,
+			);
+			path = i18n;
+			sourceTree = "<group>";
+		};
 		986C73CB1C868346000EFB73 = {
 			isa = PBXGroup;
 			children = (
-				98A8F73D1CC77E5800DA625F /* TbBTSDK_BLT_v112 */,
+				985335FD1D508D8700270EBF /* TbBTSDK_BLT_v113 */,
 				98BF5F131C88A8E000991969 /* CoreBluetooth.framework */,
 				98C655771C86F6D1004865FD /* CoreLocation.framework */,
 				986C73D61C868346000EFB73 /* TbBLTBasicSample */,
@@ -125,6 +189,10 @@
 		986C73D61C868346000EFB73 /* TbBLTBasicSample */ = {
 			isa = PBXGroup;
 			children = (
+				985335F71D50884A00270EBF /* GuideStep1ViewController.h */,
+				985335F81D50884A00270EBF /* GuideStep1ViewController.m */,
+				985335F91D50884A00270EBF /* GuideStep2ViewController.h */,
+				985335FA1D50884A00270EBF /* GuideStep2ViewController.m */,
 				986C73DA1C868346000EFB73 /* AppDelegate.h */,
 				986C73DB1C868347000EFB73 /* AppDelegate.m */,
 				986C73E01C868347000EFB73 /* SecondViewController.h */,
@@ -165,64 +233,6 @@
 				986C73F61C868347000EFB73 /* Info.plist */,
 			);
 			path = TbBLTBasicSampleTests;
-			sourceTree = "<group>";
-		};
-		98A8F73D1CC77E5800DA625F /* TbBTSDK_BLT_v112 */ = {
-			isa = PBXGroup;
-			children = (
-				98A8F73E1CC77E5800DA625F /* include */,
-				98A8F7471CC77E5800DA625F /* libTbBTSDK.a */,
-				98A8F7481CC77E5800DA625F /* Supporting Files */,
-			);
-			path = TbBTSDK_BLT_v112;
-			sourceTree = "<group>";
-		};
-		98A8F73E1CC77E5800DA625F /* include */ = {
-			isa = PBXGroup;
-			children = (
-				98A8F73F1CC77E5800DA625F /* TbBTSDK */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		98A8F73F1CC77E5800DA625F /* TbBTSDK */ = {
-			isa = PBXGroup;
-			children = (
-				98A8F7401CC77E5800DA625F /* TbBTDefaults.h */,
-				98A8F7411CC77E5800DA625F /* TbBTDeveloperPreference.h */,
-				98A8F7421CC77E5800DA625F /* TbBTManager.h */,
-				98A8F7431CC77E5800DA625F /* TbBTPreliminary.h */,
-				98A8F7441CC77E5800DA625F /* TbBTRegionNotificationSettingOptions.h */,
-				98A8F7451CC77E5800DA625F /* TbBTSDK-Bridging-Header.h */,
-				98A8F7461CC77E5800DA625F /* TbBTServiceBeaconData.h */,
-			);
-			path = TbBTSDK;
-			sourceTree = "<group>";
-		};
-		98A8F7481CC77E5800DA625F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				98A8F7491CC77E5800DA625F /* OfficialRegion.json */,
-				98A8F74A1CC77E5800DA625F /* Resources */,
-				98A8F74F1CC77E5800DA625F /* TbBTDeveloperPreference.plist */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		98A8F74A1CC77E5800DA625F /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				98A8F74B1CC77E5800DA625F /* i18n */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		98A8F74B1CC77E5800DA625F /* i18n */ = {
-			isa = PBXGroup;
-			children = (
-				98A8F74C1CC77E5800DA625F /* TbBTLocalizable.strings */,
-			);
-			path = i18n;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,12 +317,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98A8F7511CC77E5800DA625F /* OfficialRegion.json in Resources */,
 				986C73EA1C868347000EFB73 /* LaunchScreen.storyboard in Resources */,
 				986C73E71C868347000EFB73 /* Assets.xcassets in Resources */,
 				986C73E51C868347000EFB73 /* Main.storyboard in Resources */,
-				98A8F7531CC77E5800DA625F /* TbBTDeveloperPreference.plist in Resources */,
-				98A8F7521CC77E5800DA625F /* TbBTLocalizable.strings in Resources */,
+				985336141D508D8700270EBF /* TbBTLocalizable.strings in Resources */,
+				985336151D508D8700270EBF /* TbBTDeveloperPreference.plist in Resources */,
+				985336131D508D8700270EBF /* OfficialRegion.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,8 +347,10 @@
 				986C74251C86B32E000EFB73 /* DungeonsViewController.m in Sources */,
 				98DEF4191C87112D00721709 /* ContentManager.m in Sources */,
 				986C741B1C868969000EFB73 /* StartUpViewController.m in Sources */,
+				985335FB1D50884A00270EBF /* GuideStep1ViewController.m in Sources */,
 				98DEF41F1C8714E100721709 /* OurContent.m in Sources */,
 				986C73D91C868346000EFB73 /* main.m in Sources */,
+				985335FC1D50884A00270EBF /* GuideStep2ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +373,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9853360D1D508D8700270EBF /* TbBTLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9853360E1D508D8700270EBF /* en */,
+				9853360F1D508D8700270EBF /* ja */,
+			);
+			name = TbBTLocalizable.strings;
+			sourceTree = "<group>";
+		};
 		986C73E31C868347000EFB73 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -375,15 +396,6 @@
 				986C73E91C868347000EFB73 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		98A8F74C1CC77E5800DA625F /* TbBTLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				98A8F74D1CC77E5800DA625F /* en */,
-				98A8F74E1CC77E5800DA625F /* ja */,
-			);
-			name = TbBTLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -482,6 +494,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TbBTSDK_BLT_v111",
 					"$(PROJECT_DIR)/TbBTSDK_BLT_v112",
+					"$(PROJECT_DIR)/TbBTSDK_BLT_v113",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -504,6 +517,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TbBTSDK_BLT_v111",
 					"$(PROJECT_DIR)/TbBTSDK_BLT_v112",
+					"$(PROJECT_DIR)/TbBTSDK_BLT_v113",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
