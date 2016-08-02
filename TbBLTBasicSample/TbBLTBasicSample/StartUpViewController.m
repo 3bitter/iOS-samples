@@ -7,6 +7,8 @@
 //
 
 #import "StartUpViewController.h"
+//#import "TransitionViewController.h"
+#import "GuideStep1ViewController.h"
 
 @interface StartUpViewController ()
 
@@ -17,6 +19,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (IBAction)startButtonDidPush:(id)sender {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([[userDefaults valueForKey:@"confirmedBefore"] boolValue] == YES) {
+        // Skip guides
+        UINavigationController *transitionVC = [self.view.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"TransitionNaviController"];
+        [self presentViewController:transitionVC animated:YES completion:nil];
+    } else {
+        // Show guide 1
+        GuideStep1ViewController *step1VC = [self.view.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"GuideStep1ViewController"];
+        [self presentViewController:step1VC animated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

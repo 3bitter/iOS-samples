@@ -111,6 +111,7 @@ extern NSString *kBeaconMappedContentsPrepared;
     OurContent *content = [_fullContents objectAtIndex:indexPath.row];
     cell.textLabel.text = content.title;
     cell.detailTextLabel.text = content.contentDescription;
+    cell.imageView.image = content.icon;
     return cell;
 }
 

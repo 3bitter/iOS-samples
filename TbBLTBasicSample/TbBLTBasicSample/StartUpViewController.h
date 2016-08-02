@@ -10,4 +10,8 @@
 
 @interface StartUpViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+
+- (IBAction)startButtonDidPush:(id)sender;
+
 @end
