@@ -145,8 +145,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94g-Ke-up2">
-                                <rect key="frame" x="161" y="476" width="53" height="30"/>
-                                <state key="normal" title="Ge next"/>
+                                <rect key="frame" x="160.5" y="476" width="54" height="30"/>
+                                <state key="normal" title="Go next"/>
                                 <connections>
                                     <segue destination="49e-Tb-3d3" kind="show" id="wlI-xS-ZLE"/>
                                 </connections>
