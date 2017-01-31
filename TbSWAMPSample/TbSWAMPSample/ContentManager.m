@@ -29,14 +29,14 @@
 - (NSArray *)defaultContents {
 
     OurContent *justAnotherContent1 = [[OurContent alloc] init];
-    justAnotherContent1.title = @" 標準ダンジョン 1";
+    justAnotherContent1.title = @" 標準コンテンツ 1";
     justAnotherContent1.contentDescription = @"description 1";
-    justAnotherContent1.icon = [UIImage imageNamed:@"normal_dungeon1"];
+    justAnotherContent1.icon = [UIImage imageNamed:@"normal_content1"];
     
     OurContent *justAnotherContent2 = [[OurContent alloc] init];
-    justAnotherContent2.title = @"標準ダンジョン 2";
+    justAnotherContent2.title = @"標準コンテンツ 2";
     justAnotherContent2.contentDescription = @"description 2";
-    justAnotherContent2.icon = [UIImage imageNamed:@"normal_dungeon2"];
+    justAnotherContent2.icon = [UIImage imageNamed:@"normal_content2"];
     
     NSMutableArray *contentArray = [NSMutableArray array];
     [contentArray addObject:justAnotherContent1];
@@ -85,17 +85,17 @@
     }
     
     OurContent *mappedContent1 = [[OurContent alloc] init];
-    mappedContent1.title = [@"領域タイプ1限定ダンジョン" stringByAppendingFormat:@"(%@)", beaconKey];
+    mappedContent1.title = [@"領域タイプ1限定コンテンツ" stringByAppendingFormat:@"(%@)", beaconKey];
     mappedContent1.contentDescription = @"Server side mapping may be better";
-    mappedContent1.icon = [UIImage imageNamed:@"special_dungeon1"];
+    mappedContent1.icon = [UIImage imageNamed:@"special_content1"];
     
     OurContent *mappedContent2 = [[OurContent alloc] init];
-    mappedContent2.title = [@"領域タイプ2限定ダンジョン" stringByAppendingFormat:@"(%@)", beaconKey];
+    mappedContent2.title = [@"領域タイプ2限定コンテンツ" stringByAppendingFormat:@"(%@)", beaconKey];
     mappedContent2.contentDescription = @"Server side mapping may be better";
-     mappedContent2.icon = [UIImage imageNamed:@"special_dungeon2"];
+     mappedContent2.icon = [UIImage imageNamed:@"special_content2"];
     
     OurContent *mappedContent3 = [[OurContent alloc] init];
-    mappedContent3.title = [@"領域タイプ3限定ダンジョン" stringByAppendingFormat:@"(%@)", beaconKey];
+    mappedContent3.title = [@"領域タイプ3限定コンテンツ" stringByAppendingFormat:@"(%@)", beaconKey];
     mappedContent3.contentDescription = @"Server side mapping may be better";
 
     

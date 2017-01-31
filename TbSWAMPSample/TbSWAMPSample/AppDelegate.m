@@ -51,7 +51,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    _autoDetection = NO;
+    _autoDetection = NO; // UI操作に入ったら手動測定処理モードに切り替え
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -79,6 +79,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
     _skipSWAMPExec = YES;
 }
 
+/* ユーザーによるパーミッションの状態検知してViewControllerに通知 */
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     NSLog(@"Location service authorization changed");
     if (status == kCLAuthorizationStatusNotDetermined) {
@@ -105,7 +106,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
     }
 
     if ([btManager isInitialRegion:(CLBeaconRegion *)region]) {
-        _autoDetection = YES;
+        _autoDetection = YES; // マニュアル操作でないビーコン計測を開始
         
         _bgRangingTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
             if (_bgRangingTask != UIBackgroundTaskInvalid) {
@@ -129,9 +130,10 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
      NSLog(@"Exited to region: %@", region.identifier);
     TbBTManager *btManager = [TbBTManager sharedManager];
-    if (!btManager) { // Will be created after UI thread detection
+    if (!btManager) {
         return;
     }
+    // サンプル実装：全ての3Bビーコンの電波領域から出たことを通知
     if ([btManager isInitialRegion:(CLBeaconRegion *)region]) {
         NSMutableString *bodyString = [NSMutableString stringWithString:@"ビーコン領域["];
         [bodyString appendString:region.identifier];
@@ -149,14 +151,11 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         [manager stopRangingBeaconsInRegion:region];
         return;
     }
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
-    notification.alertBody = @"3b beacon ranged !!!!";
-    notification.soundName = UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
     NSArray *beaconKeyDatas = [btManager beaconsTrack:beacons ofRegion:region];
     if (_autoDetection) { // Non-UI operation
-        if (beaconKeyDatas) { // may be inside of 3b beacon region
+        if (beaconKeyDatas) { // データが取得できれば、3Bビーコン領域内
             if (beaconKeyDatas.count > 0) {
+                // サンプル実装：見つかった一番近めのビーコンのキーコードを取得して通知
                 TbBTServiceBeaconData *firstBeacon = (TbBTServiceBeaconData *)[beaconKeyDatas objectAtIndex:0];
                 NSMutableString *bodyString = [NSMutableString stringWithString:@"ビーコン領域["];
                 [bodyString appendString:region.identifier];
@@ -176,7 +175,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         if (!_cancelTimerStopped) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kRangingStarted object:self];
         }
-        if (beaconKeyDatas) { // may be inside of 3b beacon region
+        if (beaconKeyDatas) {  // データが取得できれば、3Bビーコン領域内
             if (beaconKeyDatas.count > 0) {
                 NSMutableArray *beaconKeys = [NSMutableArray array];
                 for(TbBTServiceBeaconData *beaconData in beaconKeyDatas) {
@@ -203,7 +202,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
     [[NSNotificationCenter defaultCenter] postNotificationName:kBeaconRangingFailed object:self];
 }
 
-# pragma mark Content Handling method
+# pragma mark Content handling sample method
 
 - (void)execMappedContentFetch:(NSArray *)beaconKeys {
     NSLog(@"-- %s --", __func__);
