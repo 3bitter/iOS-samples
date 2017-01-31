@@ -1,0 +1,69 @@
+//
+//  SampleSettingViewController.m
+//  TbSWAMPSample
+//
+//  Created by Ueda on 2017/01/30.
+//  Copyright © 2017年 3bitter Inc. All rights reserved.
+//
+
+#import "SampleSettingViewController.h"
+
+#import "AppDelegate.h"
+#import "TbBTManager.h"
+
+@interface SampleSettingViewController ()
+
+@end
+
+@implementation SampleSettingViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    // プッシュ通知の許可がされていなければ確認
+    if (NSFoundationVersionNumber_iOS_7_1 < NSFoundationVersionNumber) { // Just in case
+        if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+            [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound|UIUserNotificationTypeAlert|UIUserNotificationTypeBadge categories:nil]];
+        }
+    }
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (!appDelegate.locManager){
+        _monitoringSwitch.enabled = NO;
+        _monitoringSwitch.userInteractionEnabled = NO;
+    } else {
+        _monitoringSwitch.enabled = YES;
+        _monitoringSwitch.userInteractionEnabled = YES;
+    }
+    // Better to check monitoring status & synchronize switch state (Skipped here)
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+- (IBAction)monitoringSwitchDidChange:(id)sender {
+    TbBTManager *btManager = [TbBTManager sharedManager];
+    if (!btManager) { // Just in case
+        btManager = [TbBTManager initSharedManagerUnderAgreement:YES];
+    }
+    NSArray *tbBeaconRegions = [btManager initialRegions];
+    if (tbBeaconRegions.count == 0) {
+        NSLog(@"[Preparation error....");
+        abort();
+    } else {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        if ([((UISwitch *)sender) isOn]) {
+            [btManager startMonitoringTbBTInitialRegions:appDelegate.locManager];
+            // Nearly equals
+            //CLRegion *tbOfficialBeaconRegion = (CLRegion *)[tbBeaconRegions objectAtIndex:0];
+            // [appDelegate.locManager startMonitoringForRegion:tbOfficialBeaconRegion];
+        } else {
+            [btManager stopMonitoringTbBTAllRegions:appDelegate.locManager];
+           // [appDelegate.locManager stopMonitoringForRegion:tbOfficialBeaconRegion];
+        }
+    }
+}
+
+@end
