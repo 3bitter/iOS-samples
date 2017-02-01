@@ -140,6 +140,8 @@
 				985BD8C71E3F775A00C5BA4C /* AppDelegate.m */,
 				985BD8D11E3F77B000C5BA4C /* DungeonsViewController.h */,
 				985BD8D21E3F77B000C5BA4C /* DungeonsViewController.m */,
+				985BD8F71E3F7B9000C5BA4C /* SampleSettingViewController.h */,
+				985BD8F81E3F7B9000C5BA4C /* SampleSettingViewController.m */,
 				985BD8D31E3F77B000C5BA4C /* ContentManager.h */,
 				985BD8D41E3F77B000C5BA4C /* ContentManager.m */,
 				985BD8D51E3F77B000C5BA4C /* OurContent.h */,
@@ -149,8 +151,6 @@
 				985BD89D1E3F76E400C5BA4C /* LaunchScreen.storyboard */,
 				985BD8A01E3F76E400C5BA4C /* Info.plist */,
 				985BD88C1E3F76E400C5BA4C /* Supporting Files */,
-				985BD8F71E3F7B9000C5BA4C /* SampleSettingViewController.h */,
-				985BD8F81E3F7B9000C5BA4C /* SampleSettingViewController.m */,
 			);
 			path = TbSWAMPSample;
 			sourceTree = "<group>";
@@ -649,6 +649,7 @@
 				985BD8BB1E3F76E400C5BA4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		985BD8BC1E3F76E400C5BA4C /* Build configuration list for PBXNativeTarget "TbSWAMPSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -657,6 +658,7 @@
 				985BD8BE1E3F76E400C5BA4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		985BD8BF1E3F76E400C5BA4C /* Build configuration list for PBXNativeTarget "TbSWAMPSampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -665,6 +667,7 @@
 				985BD8C11E3F76E400C5BA4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
