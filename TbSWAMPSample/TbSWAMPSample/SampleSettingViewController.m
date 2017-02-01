@@ -33,8 +33,10 @@
     } else {
         _monitoringSwitch.enabled = YES;
         _monitoringSwitch.userInteractionEnabled = YES;
+        if (appDelegate.locManager.monitoredRegions.count > 0) {
+            [_monitoringSwitch setOn:YES];
+        }
     }
-    // Better to check monitoring status & synchronize switch state (Skipped here)
 }
 
 - (void)didReceiveMemoryWarning {
