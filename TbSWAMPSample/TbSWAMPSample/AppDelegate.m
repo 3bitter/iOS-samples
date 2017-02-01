@@ -51,7 +51,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    _autoDetection = NO; // UI操作に入ったら手動測定処理モードに切り替え
+    _autoDetection = YES; // UI操作に入ったら手動測定処理モードに切り替え
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -64,7 +64,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+     _autoDetection = NO; // UI操作に入ったら手動測定処理モードに切り替え
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -101,10 +101,13 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
     NSLog(@"Entered to region: %@", region.identifier);
     TbBTManager *btManager = [TbBTManager sharedManager];
-    if (!btManager) { // Will be created after UI thread detection
+    if (!btManager) {
+        UILocalNotification *notification = [[UILocalNotification alloc] init];
+        notification.alertBody = @"[Warning] TbBTManagerが使える状態になっていません(アイテム検索の後で有効になります）";
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
         return;
     }
-
     if ([btManager isInitialRegion:(CLBeaconRegion *)region]) {
         _autoDetection = YES; // マニュアル操作でないビーコン計測を開始
         
