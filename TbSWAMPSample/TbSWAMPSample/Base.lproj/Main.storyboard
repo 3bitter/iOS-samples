@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--ダンジョン-->
+        <!--アイテム-->
         <scene sceneID="ovu-4h-k5b">
             <objects>
                 <tableViewController id="gfd-Ii-Kem" customClass="DungeonsViewController" sceneMemberID="viewController">
@@ -52,7 +51,7 @@
                             <outlet property="delegate" destination="gfd-Ii-Kem" id="jig-uq-z2N"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="ダンジョン" image="dungeon_icon" id="EWD-fm-4Ad"/>
+                    <tabBarItem key="tabBarItem" title="アイテム" image="dungeon_icon" id="EWD-fm-4Ad"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRw-wr-FAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
