@@ -110,7 +110,14 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
     }
     if ([btManager isInitialRegion:(CLBeaconRegion *)region]) {
         _autoDetection = YES; // マニュアル操作でないビーコン計測を開始
-        
+        NSMutableString *bodyString = [NSMutableString stringWithString:@"ビーコン領域["];
+        [bodyString appendString:region.identifier];
+        [bodyString appendString:@"] に入りました"];
+        UILocalNotification *enterNotification = [[UILocalNotification alloc] init];
+        enterNotification.alertBody = [NSString stringWithString:bodyString];
+        enterNotification.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:enterNotification];
+        // バックグラウンドで計測してキーコードの取得を試行
         _bgRangingTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
             if (_bgRangingTask != UIBackgroundTaskInvalid) {
                 // レンジングストップを指示してタスクを終了
@@ -122,7 +129,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
             }
         }];
         dispatch_queue_t queue;
-        queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
         dispatch_async(queue, ^{
             // レンジング開始を指示します
             [manager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
