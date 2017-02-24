@@ -1,0 +1,16 @@
+{
+"regions": [
+	          {
+           "regionID":"3bitter_official_1"
+           , "UUID":"93BEB3D9-3160-4BB9-B5B0-B7B1F61415D8"
+           , "regionType":1
+           , "beaconType":1
+           }
+            , {
+             "regionID":"3bitter_dynamic_1"
+             , "UUID":"348C9182-DCEA-4496-9862-3171D388328B"
+             , "regionType":1
+             , "beaconType":2
+             }
+ ]
+}
