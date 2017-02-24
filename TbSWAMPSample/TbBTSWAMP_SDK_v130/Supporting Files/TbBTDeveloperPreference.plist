@@ -5,7 +5,7 @@
 	<key>TestMode</key>
 	<true/>
 	<key>DeveloperAppCode</key>
-	<string></string>
+	<string>demodemo</string>
 	<key>SDKEdition</key>
 	<string>SWAMP</string>
 	<key>SDKVersion</key>
