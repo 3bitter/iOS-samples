@@ -37,11 +37,6 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
-    notification.alertBody = @"[SWAMPSample Info] アプリが起動されました。";
-    notification.soundName = UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
-
     _skipSWAMPExec = NO;
     [TbBTPreliminary setUpWithCompletionHandler:^(BOOL success) {
         if (!success) { // Failed to set up
