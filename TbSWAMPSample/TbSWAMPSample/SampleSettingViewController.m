@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "TbBTManager.h"
 
+#import <UserNotifications/UNUserNotificationCenter.h>
+
 @interface SampleSettingViewController ()
 
 @end
@@ -21,9 +23,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // プッシュ通知の許可がされていなければ確認
-    if (NSFoundationVersionNumber_iOS_7_1 < NSFoundationVersionNumber) { // Just in case
+    if (NSFoundationVersionNumber_iOS_7_1 < NSFoundationVersionNumber <NSFoundationVersionNumber10_0) { // Just in case
         if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
             [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound|UIUserNotificationTypeAlert|UIUserNotificationTypeBadge categories:nil]];
+        }
+    } else if (NSFoundationVersionNumber10_0 <= NSFoundationVersionNumber) {
+        if ([UNUserNotificationCenter instanceMethodForSelector:@selector(requestAuthorizationWithOptions:completionHandler:)]){
+            UNAuthorizationOptions options =
+            (UNAuthorizationOptionSound + UNAuthorizationOptionAlert + UNAuthorizationOptionBadge);
+            [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError *_Nullable error) {
+                if (!granted) {
+                    NSLog(@"Notification not granted.");
+                    _monitoringSwitch.enabled = NO;
+                    _monitoringSwitch.userInteractionEnabled = NO;
+                }
+            }];
         }
     }
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -57,7 +71,7 @@
     } else {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         if ([((UISwitch *)sender) isOn]) {
-            [btManager startMonitoringTbBTInitialRegions:appDelegate.locManager];
+             [btManager startMonitoringTbBTInitialRegions:appDelegate.locManager];
             // Nearly equals
             //CLRegion *tbOfficialBeaconRegion = (CLRegion *)[tbBeaconRegions objectAtIndex:0];
             // [appDelegate.locManager startMonitoringForRegion:tbOfficialBeaconRegion];

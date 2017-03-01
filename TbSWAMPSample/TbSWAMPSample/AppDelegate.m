@@ -14,6 +14,8 @@
 
 #import "ContentManager.h"
 
+#import <UserNotifications/UserNotifications.h>
+
 NSString *kBaseLocServiceEnabled = @"BaseLocServciceEnabled";
 NSString *kAlwaysLocServicePermitted = @"AlwaysLocServicePermitted";
 //NSString *kInUseLocServicePermitted = @"WhenInUseLocServicePermitted";
@@ -34,6 +36,11 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.alertBody = @"[SWAMPSample Info] アプリが起動されました。";
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 
     _skipSWAMPExec = NO;
     [TbBTPreliminary setUpWithCompletionHandler:^(BOOL success) {
@@ -113,10 +120,25 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         NSMutableString *bodyString = [NSMutableString stringWithString:@"ビーコン領域["];
         [bodyString appendString:region.identifier];
         [bodyString appendString:@"] に入りました"];
-        UILocalNotification *enterNotification = [[UILocalNotification alloc] init];
-        enterNotification.alertBody = [NSString stringWithString:bodyString];
-        enterNotification.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] presentLocalNotificationNow:enterNotification];
+        if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+            UILocalNotification *enterNotification = [[UILocalNotification alloc] init];
+            enterNotification.alertBody = [NSString stringWithString:bodyString];
+            enterNotification.soundName = UILocalNotificationDefaultSoundName;
+            [[UIApplication sharedApplication] presentLocalNotificationNow:enterNotification];
+        } else {
+            UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+            content.title = @"Entered beacon region";
+            content.body = bodyString;
+            content.sound = [UNNotificationSound defaultSound];
+            
+            UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Just entered" content:content trigger:nil];
+            
+            [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                if (error) {
+                    NSLog(@"Notification Error %@", [error userInfo]);
+                }
+            }];
+        }
         // バックグラウンドで計測してキーコードの取得を試行
         _bgRangingTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
             if (_bgRangingTask != UIBackgroundTaskInvalid) {
@@ -148,10 +170,26 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         NSMutableString *bodyString = [NSMutableString stringWithString:@"ビーコン領域["];
         [bodyString appendString:region.identifier];
         [bodyString appendString:@"] から出ました"];
-        UILocalNotification *exitNotification = [[UILocalNotification alloc] init];
-        exitNotification.alertBody = [NSString stringWithString:bodyString];
-        exitNotification.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] presentLocalNotificationNow:exitNotification];
+        if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+            UILocalNotification *exitNotification = [[UILocalNotification alloc] init];
+            exitNotification.alertBody = [NSString stringWithString:bodyString];
+            exitNotification.soundName = UILocalNotificationDefaultSoundName;
+            [[UIApplication sharedApplication] presentLocalNotificationNow:exitNotification];
+        }  else {
+            UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+            content.title = @"Exited from beacon region";
+            content.body = bodyString;
+            content.sound = [UNNotificationSound defaultSound];
+            
+            UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Exited Some times ago" content:content trigger:nil];
+            
+            [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                if (error) {
+                    NSLog(@"Notification Error %@", [error userInfo]);
+                }
+            }];
+
+        }
     }
 }
 
@@ -172,11 +210,26 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
                 [bodyString appendString:@"] by ("];
                 [bodyString appendString:firstBeacon.keycode];
                 [bodyString appendString:@") に入りました"];
+                if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+                    UILocalNotification *enterNotification = [[UILocalNotification alloc] init];
+                    enterNotification.alertBody = [NSString stringWithString:bodyString];
+                    enterNotification.soundName = UILocalNotificationDefaultSoundName;
+                    [[UIApplication sharedApplication] presentLocalNotificationNow:enterNotification];
+                } else {
+                    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+                    content.title = @"Found beacon in region";
+                    content.body = bodyString;
+                    content.sound = [UNNotificationSound defaultSound];
+                    
+                    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Found one" content:content trigger:nil];
+                    
+                    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                        if (error) {
+                            NSLog(@"Notification Error %@", [error userInfo]);
+                        }
+                    }];
 
-                UILocalNotification *enterNotification = [[UILocalNotification alloc] init];
-                enterNotification.alertBody = [NSString stringWithString:bodyString];
-                enterNotification.soundName = UILocalNotificationDefaultSoundName;
-                [[UIApplication sharedApplication] presentLocalNotificationNow:enterNotification];
+                }
                 [manager stopRangingBeaconsInRegion:region];
                 _autoDetection = NO;
             } // else keep ranging
