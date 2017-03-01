@@ -37,13 +37,75 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    NSString *notificationBodyString = @"[Info] App launched";
+    if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+        UILocalNotification *launchNotification = [[UILocalNotification alloc] init];
+        launchNotification.alertBody = [NSString stringWithString:notificationBodyString];
+        launchNotification.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:launchNotification];
+    }  else {
+        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+        content.title = @"Launch message";
+        content.body = notificationBodyString;
+        content.sound = [UNNotificationSound defaultSound];
+        
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Launch message" content:content trigger:nil];
+        
+        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Notification Error %@", [error userInfo]);
+            }
+        }];
+        
+    }
+
     _skipSWAMPExec = NO;
     [TbBTPreliminary setUpWithCompletionHandler:^(BOOL success) {
         if (!success) { // Failed to set up
             _skipSWAMPExec = YES;
+            NSString *notificationBodyString = @"[Error] TbBTPreliminary setUpWithCompletionHandler Failed.";
+            if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+                UILocalNotification *setupNotification = [[UILocalNotification alloc] init];
+                setupNotification.alertBody = notificationBodyString;
+                setupNotification.soundName = UILocalNotificationDefaultSoundName;
+                [[UIApplication sharedApplication] presentLocalNotificationNow:setupNotification];
+            }  else {
+                UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+                content.title = @"Debug notificaiton";
+                content.body = notificationBodyString;
+                content.sound = [UNNotificationSound defaultSound];
+                
+                UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"SDK Setup failed" content:content trigger:nil];
+                
+                [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                    if (error) {
+                        NSLog(@"Notification Error %@", [error userInfo]);
+                    }
+                }];
+            }
         } else {
             // Do something if needed
             NSLog(@"SWAMP Setup completed successfully.");
+            NSString *notificationBodyString = @"[Error] TbBTPreliminary setUpWithCompletionHandler Failed.";
+            if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+                UILocalNotification *setupNotification = [[UILocalNotification alloc] init];
+                setupNotification.alertBody = notificationBodyString;
+                setupNotification.soundName = UILocalNotificationDefaultSoundName;
+                [[UIApplication sharedApplication] presentLocalNotificationNow:setupNotification];
+            }  else {
+                UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+                content.title = @"Debug notificaiton";
+                content.body = notificationBodyString;
+                content.sound = [UNNotificationSound defaultSound];
+                
+                UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"SDK Setup Success" content:content trigger:nil];
+                
+                [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                    if (error) {
+                        NSLog(@"Notification Error %@", [error userInfo]);
+                    }
+                }];
+            }
         }
     }];
     // 処理結果が不要なら、これも可能
@@ -53,7 +115,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    _autoDetection = YES; // UI操作に入ったら手動測定処理モードに切り替え
+    _autoDetection = YES; // アプリが非アクティブになったら自動処理モードに切り替え
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -88,12 +150,33 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         NSLog(@"Service enabled but auth not determinted. Confirm again for app");
         [[NSNotificationCenter defaultCenter] postNotificationName:kBaseLocServiceEnabled object:self];
     } else if (status == kCLAuthorizationStatusAuthorizedAlways) {
-        NSLog(@"Callback Allways permitted");
+        NSLog(@"Callback Always permitted");
         [[NSNotificationCenter defaultCenter] postNotificationName:kAlwaysLocServicePermitted object:self];
     } else if (status == kCLAuthorizationStatusRestricted || status == kCLAuthorizationStatusDenied) {
          NSLog(@"Callback alwarys denied/restricted");
         [[NSNotificationCenter defaultCenter] postNotificationName:kAlwaysLocServiceDenied object:self];
     }
+    NSString *notificationBodyString = @"[Info] didChangeAuthroizationStatus";
+    if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+        UILocalNotification *authNotification = [[UILocalNotification alloc] init];
+        authNotification.alertBody = notificationBodyString;
+        authNotification.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:authNotification];
+    }  else {
+        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+        content.title = @"Debug notificaiton";
+        content.body = notificationBodyString;
+        content.sound = [UNNotificationSound defaultSound];
+        
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Auth Status" content:content trigger:nil];
+        
+        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Notification Error %@", [error userInfo]);
+            }
+        }];
+    }
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
@@ -102,6 +185,27 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
     NSLog(@"Entered to region: %@", region.identifier);
+    NSString *bodyString = @"Entered region";
+    if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+        UILocalNotification *enterNotification = [[UILocalNotification alloc] init];
+        enterNotification.alertBody = [NSString stringWithString:bodyString];
+        enterNotification.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:enterNotification];
+    } else {
+        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+        content.title = @"Entered beacon region";
+        content.body = bodyString;
+        content.sound = [UNNotificationSound defaultSound];
+        
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Entered to some region" content:content trigger:nil];
+        
+        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Notification Error %@", [error userInfo]);
+            }
+        }];
+    }
+
     TbBTManager *btManager = [TbBTManager sharedManager];
     if (!btManager) {
         UILocalNotification *notification = [[UILocalNotification alloc] init];
@@ -122,7 +226,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
             [[UIApplication sharedApplication] presentLocalNotificationNow:enterNotification];
         } else {
             UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-            content.title = @"Entered beacon region";
+            content.title = @"Entered 3bitter beacon region";
             content.body = bodyString;
             content.sound = [UNNotificationSound defaultSound];
             
@@ -142,6 +246,27 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
                     [[UIApplication sharedApplication] endBackgroundTask:_bgRangingTask];
                     _bgRangingTask = UIBackgroundTaskInvalid;
                     [manager stopRangingBeaconsInRegion:(CLBeaconRegion *)region];
+                    NSString *notificationBodyString = @"Stop ranging of background thread";
+                    if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+                        UILocalNotification *taskNotification = [[UILocalNotification alloc] init];
+                        taskNotification.alertBody = [NSString stringWithString:notificationBodyString];
+                        taskNotification.soundName = UILocalNotificationDefaultSoundName;
+                        [[UIApplication sharedApplication] presentLocalNotificationNow:taskNotification];
+                    } else {
+                        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+                        content.title = @"Stop ranging";
+                        content.body = notificationBodyString;
+                        content.sound = [UNNotificationSound defaultSound];
+                        
+                        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Ranging Task Stop" content:content trigger:nil];
+                        
+                        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                            if (error) {
+                                NSLog(@"Notification Error %@", [error userInfo]);
+                            }
+                        }];
+                    }
+
                 });
             }
         }];
@@ -151,11 +276,52 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
             // レンジング開始を指示します
             [manager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
         });
+        NSString *notificationBodyString = @"Start ranging in background thread";
+        if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+            UILocalNotification *taskNotification = [[UILocalNotification alloc] init];
+            taskNotification.alertBody = [NSString stringWithString:notificationBodyString];
+            taskNotification.soundName = UILocalNotificationDefaultSoundName;
+            [[UIApplication sharedApplication] presentLocalNotificationNow:taskNotification];
+        } else {
+            UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+            content.title = @"Begin ranging";
+            content.body = notificationBodyString;
+            content.sound = [UNNotificationSound defaultSound];
+            
+            UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Ranging Task Start" content:content trigger:nil];
+            
+            [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                if (error) {
+                    NSLog(@"Notification Error %@", [error userInfo]);
+                }
+            }];
+        }
     }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
      NSLog(@"Exited to region: %@", region.identifier);
+    NSString *bodyString = @"Exited from some region";
+    if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+        UILocalNotification *exitNotification = [[UILocalNotification alloc] init];
+        exitNotification.alertBody = [NSString stringWithString:bodyString];
+        exitNotification.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:exitNotification];
+    } else {
+        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+        content.title = @"Exited from beacon region";
+        content.body = bodyString;
+        content.sound = [UNNotificationSound defaultSound];
+        
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Just exited" content:content trigger:nil];
+        
+        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Notification Error %@", [error userInfo]);
+            }
+        }];
+    }
+
     TbBTManager *btManager = [TbBTManager sharedManager];
     if (!btManager) {
         return;
@@ -172,7 +338,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
             [[UIApplication sharedApplication] presentLocalNotificationNow:exitNotification];
         }  else {
             UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-            content.title = @"Exited from beacon region";
+            content.title = @"Exited from 3bitter beacon region";
             content.body = bodyString;
             content.sound = [UNNotificationSound defaultSound];
             
@@ -183,7 +349,6 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
                     NSLog(@"Notification Error %@", [error userInfo]);
                 }
             }];
-
         }
     }
 }
