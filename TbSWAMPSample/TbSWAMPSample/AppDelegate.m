@@ -115,7 +115,14 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    NSLog(@"%s", __func__);
     _autoDetection = YES; // アプリが非アクティブになったら自動処理モードに切り替え
+    NSDictionary *staticRegionDict = [[TbBTDefaults sharedDefaults].usingServiceRegionInfos objectAtIndex:0];
+    NSString *uuidString = [staticRegionDict objectForKey:@"UUID"];
+    NSString *regionID = [staticRegionDict objectForKey:@"regionID"];
+    CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:[[NSUUID alloc] initWithUUIDString:uuidString] identifier:regionID];
+    assert(_locManager.delegate == self);
+    [_locManager requestStateForRegion:region];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -177,6 +184,47 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         }];
     }
 
+}
+
+- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region {
+    NSLog(@"%s", __func__);
+    NSMutableString *bodyString = [NSMutableString stringWithFormat:@"%@ : ", region.identifier];
+    switch (state) {
+        case CLRegionStateInside:
+            [bodyString appendString:@"Inside"];
+            break;
+        case CLRegionStateOutside:
+            [bodyString appendString:@"Outside"];
+            break;
+        case CLRegionStateUnknown:
+            [bodyString appendString:@"Unknown"];
+            break;
+        default:
+            break;
+    }
+    if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+        UILocalNotification *stateNotification = [[UILocalNotification alloc] init];
+        stateNotification.alertBody = [NSString stringWithString:bodyString];
+        stateNotification.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:stateNotification];
+    } else {
+        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+        content.title = @"region state";
+        content.body = bodyString;
+        content.sound = [UNNotificationSound defaultSound];
+        
+        UNNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:2 repeats:NO];
+        
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Region state" content:content trigger:trigger];
+        
+        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Notification Error %@", [error userInfo]);
+            }  else {
+                NSLog(@"Notification Success");
+            }
+        }];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
@@ -360,6 +408,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         return;
     }
     NSArray *beaconKeyDatas = [btManager beaconsTrack:beacons ofRegion:region];
+   // NSArray *beaconKeyDatas = [btManager keyCodesForBeacons:beacons ofRegion:region];
     if (_autoDetection) { // Non-UI operation
         if (beaconKeyDatas) { // データが取得できれば、3Bビーコン領域内
             if (beaconKeyDatas.count > 0) {
@@ -381,7 +430,8 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
                     content.body = bodyString;
                     content.sound = [UNNotificationSound defaultSound];
                     
-                    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Found one" content:content trigger:nil];
+                    UNNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+                    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Found one" content:content trigger:trigger];
                     
                     [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
                         if (error) {
