@@ -156,15 +156,8 @@ extern NSString *kAlwaysLocServiceDenied;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDetermineLocationState) name:kAlwaysLocServicePermitted object:appDelegate];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDetermineLocationState) name:kAlwaysLocServiceDenied object:appDelegate];
     
-    /* @see TbBLTBasicSample for user pre-permission
-     
-     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-     _swampUsed = [[userDefaults valueForKey:kBeaconUseKey] boolValue];
-     */
-    // This is a simple alternative.
     _swampUsed = YES;
-    
-    if (_swampUsed // User confirmed to use SWAMP option
+    if (_swampUsed// User confirmed to use SWAMP option
         && [TbBTManager isBeaconEventConditionMet] // Can be use beacon (if bluetooth is off, no)
         && [self prepareLocManager] // Prepare Location manager if not exists
         && [TbBTManager sharedManager]) {  // Prepared TbBTManager before
@@ -305,10 +298,8 @@ extern NSString *kAlwaysLocServiceDenied;
         NSLog(@"Bluetooth is available");
         _bluetoothStateDetermined = YES;
         [self performSelectorOnMainThread:@selector(startSearch) withObject:nil waitUntilDone:NO];
-
     }
 }
-
     
 #pragma mark beacon based part
     
@@ -327,7 +318,11 @@ extern NSString *kAlwaysLocServiceDenied;
     
     
     // Add timeout timer (ranging did not send callback)
+    if (_timeoutTimer) {
+        [_timeoutTimer invalidate];
+    }
     _timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(terminateSearch) userInfo:nil repeats:NO];
+    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.cancelTimerStopped = NO;
     
@@ -370,6 +365,7 @@ extern NSString *kAlwaysLocServiceDenied;
 }
 
 - (void)cancelTimeoutTimer {
+    NSLog(@"%s", __func__);
     if (_timeoutTimer) {
         [_timeoutTimer invalidate];
         _timeoutTimer = nil;

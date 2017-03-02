@@ -86,7 +86,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         } else {
             // Do something if needed
             NSLog(@"SWAMP Setup completed successfully.");
-            NSString *notificationBodyString = @"[Error] TbBTPreliminary setUpWithCompletionHandler Sucess.";
+            NSString *notificationBodyString = @"[Info] TbBTPreliminary setUpWithCompletionHandler Sucess.";
             if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
                 UILocalNotification *setupNotification = [[UILocalNotification alloc] init];
                 setupNotification.alertBody = notificationBodyString;
@@ -421,8 +421,12 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         [manager stopRangingBeaconsInRegion:region];
         return;
     }
-    NSArray *beaconKeyDatas = [btManager beaconsTrack:beacons ofRegion:region];
-   // NSArray *beaconKeyDatas = [btManager keyCodesForBeacons:beacons ofRegion:region];
+    NSArray *beaconKeyDatas = nil;
+    if (_skipSWAMPExec) { // Do not track
+        beaconKeyDatas = [btManager keyCodesForBeacons:beacons ofRegion:region];
+    } else {
+        beaconKeyDatas = [btManager beaconsTrack:beacons ofRegion:region];
+    }
     if (_autoDetection) { // Non-UI operation
         if (beaconKeyDatas) { // データが取得できれば、3Bビーコン領域内
             if (beaconKeyDatas.count > 0) {
