@@ -86,7 +86,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         } else {
             // Do something if needed
             NSLog(@"SWAMP Setup completed successfully.");
-            NSString *notificationBodyString = @"[Error] TbBTPreliminary setUpWithCompletionHandler Failed.";
+            NSString *notificationBodyString = @"[Error] TbBTPreliminary setUpWithCompletionHandler Sucess.";
             if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
                 UILocalNotification *setupNotification = [[UILocalNotification alloc] init];
                 setupNotification.alertBody = notificationBodyString;
@@ -404,6 +404,20 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(nonnull NSArray<CLBeacon *> *)beacons inRegion:(nonnull CLBeaconRegion *)region {
     TbBTManager *btManager = [TbBTManager sharedManager];
     if (!btManager) {
+        NSString *infoString = @"TbBTManager is nil";
+        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+        content.title = @"Failed in didRange";
+        content.body = infoString;
+        content.sound = [UNNotificationSound defaultSound];
+        
+        UNNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"StopRange" content:content trigger:trigger];
+        
+        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Notification Error %@", [error userInfo]);
+            }
+        }];
         [manager stopRangingBeaconsInRegion:region];
         return;
     }
@@ -442,7 +456,22 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
                 }
                 [manager stopRangingBeaconsInRegion:region];
                 _autoDetection = NO;
-            } // else keep ranging
+            } else {// else keep ranging
+                NSString *infoString = @"did range (not found 3b beacon)";
+                UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+                content.title = @"DidRange";
+                content.body = infoString;
+                content.sound = [UNNotificationSound defaultSound];
+                
+                UNNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+                UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"DidRange" content:content trigger:trigger];
+                
+                [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                    if (error) {
+                        NSLog(@"Notification Error %@", [error userInfo]);
+                    }
+                }];
+            }
         }
     } else { // Called from UI thread
         if (!_cancelTimerStopped) {
