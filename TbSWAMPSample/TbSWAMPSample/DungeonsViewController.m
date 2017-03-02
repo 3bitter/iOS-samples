@@ -327,6 +327,9 @@ extern NSString *kAlwaysLocServiceDenied;
     
     
     // Add timeout timer (ranging did not send callback)
+    if (_timeoutTimer) {
+        [_timeoutTimer invalidate];
+    }
     _timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(terminateSearch) userInfo:nil repeats:NO];
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.cancelTimerStopped = NO;
