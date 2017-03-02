@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9854C36D1E684D25000A86A0 /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9854C36C1E684D25000A86A0 /* libTbBTSDK.a */; };
 		985BD88E1E3F76E400C5BA4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 985BD88D1E3F76E400C5BA4C /* main.m */; };
 		985BD89A1E3F76E400C5BA4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 985BD8981E3F76E400C5BA4C /* Main.storyboard */; };
 		985BD89C1E3F76E400C5BA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 985BD89B1E3F76E400C5BA4C /* Assets.xcassets */; };
@@ -22,7 +23,6 @@
 		985BD8FE1E3F836700C5BA4C /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985BD8FD1E3F836700C5BA4C /* CoreBluetooth.framework */; };
 		989713291E658FCF00B021E5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989713281E658FCF00B021E5 /* UserNotifications.framework */; };
 		989713FE1E671C8900B021E5 /* ChangeLog_20170301.txt in Resources */ = {isa = PBXBuildFile; fileRef = 989713E91E671C8900B021E5 /* ChangeLog_20170301.txt */; };
-		989713FF1E671C8900B021E5 /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 989713F51E671C8900B021E5 /* libTbBTSDK.a */; };
 		989714001E671C8900B021E5 /* OfficialRegion.json in Resources */ = {isa = PBXBuildFile; fileRef = 989713F71E671C8900B021E5 /* OfficialRegion.json */; };
 		989714011E671C8900B021E5 /* TbBTLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 989713FA1E671C8900B021E5 /* TbBTLocalizable.strings */; };
 		989714021E671C8900B021E5 /* TbBTDeveloperPreference.plist in Resources */ = {isa = PBXBuildFile; fileRef = 989713FD1E671C8900B021E5 /* TbBTDeveloperPreference.plist */; };
@@ -46,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9854C36C1E684D25000A86A0 /* libTbBTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTbBTSDK.a; sourceTree = "<group>"; };
 		985BD8891E3F76E400C5BA4C /* TbSWAMPSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TbSWAMPSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		985BD88D1E3F76E400C5BA4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		985BD8991E3F76E400C5BA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,7 +82,6 @@
 		989713F21E671C8900B021E5 /* TbBTRegionNotificationSettingOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTRegionNotificationSettingOptions.h; sourceTree = "<group>"; };
 		989713F31E671C8900B021E5 /* TbBTSDK-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TbBTSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		989713F41E671C8900B021E5 /* TbBTServiceBeaconData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTServiceBeaconData.h; sourceTree = "<group>"; };
-		989713F51E671C8900B021E5 /* libTbBTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTbBTSDK.a; sourceTree = "<group>"; };
 		989713F71E671C8900B021E5 /* OfficialRegion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OfficialRegion.json; sourceTree = "<group>"; };
 		989713FB1E671C8900B021E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TbBTLocalizable.strings; sourceTree = "<group>"; };
 		989713FC1E671C8900B021E5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TbBTLocalizable.strings; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				989713FF1E671C8900B021E5 /* libTbBTSDK.a in Frameworks */,
+				9854C36D1E684D25000A86A0 /* libTbBTSDK.a in Frameworks */,
 				989713291E658FCF00B021E5 /* UserNotifications.framework in Frameworks */,
 				985BD8FE1E3F836700C5BA4C /* CoreBluetooth.framework in Frameworks */,
 				985BD8FC1E3F836100C5BA4C /* CoreLocation.framework in Frameworks */,
@@ -200,9 +200,9 @@
 		989713E81E671C8900B021E5 /* Tb_SWAMP_iOS_SDK_IDFA_v130(b2) */ = {
 			isa = PBXGroup;
 			children = (
+				9854C36C1E684D25000A86A0 /* libTbBTSDK.a */,
 				989713E91E671C8900B021E5 /* ChangeLog_20170301.txt */,
 				989713EA1E671C8900B021E5 /* include */,
-				989713F51E671C8900B021E5 /* libTbBTSDK.a */,
 				989713F61E671C8900B021E5 /* Supporting Files */,
 			);
 			path = "Tb_SWAMP_iOS_SDK_IDFA_v130(b2)";
