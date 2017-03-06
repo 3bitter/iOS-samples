@@ -58,8 +58,9 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         }];
         
     }
-
+// TODO: just for test
     _skipSWAMPExec = NO;
+    /*
     [TbBTPreliminary setUpWithCompletionHandler:^(BOOL success) {
         if (!success) { // Failed to set up
             _skipSWAMPExec = YES;
@@ -107,7 +108,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
                 }];
             }
         }
-    }];
+    }]; */
     // 処理結果が不要なら、これも可能
     // [TbBTPreliminary setUpWithCompletionHandler:nil];
     
@@ -153,15 +154,30 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 /* ユーザーによるパーミッションの状態検知してViewControllerに通知 */
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     NSLog(@"Location service authorization changed");
+     if (UIApplicationStateActive != [UIApplication sharedApplication].applicationState) {
+         UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+         content.title = @"Auth State";
+         content.body = @"didChangeAuthorizationStatus";
+         content.sound = [UNNotificationSound defaultSound];
+         
+         UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"AuthNotification" content:content trigger:nil];
+         [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:nil];
+     }
     if (status == kCLAuthorizationStatusNotDetermined) {
         NSLog(@"Service enabled but auth not determinted. Confirm again for app");
-        [[NSNotificationCenter defaultCenter] postNotificationName:kBaseLocServiceEnabled object:self];
+        if (UIApplicationStateActive == [UIApplication sharedApplication].applicationState) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kBaseLocServiceEnabled object:self];
+        }
     } else if (status == kCLAuthorizationStatusAuthorizedAlways) {
         NSLog(@"Callback Always permitted");
-        [[NSNotificationCenter defaultCenter] postNotificationName:kAlwaysLocServicePermitted object:self];
+        if (UIApplicationStateActive == [UIApplication sharedApplication].applicationState) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kAlwaysLocServicePermitted object:self];
+        }
     } else if (status == kCLAuthorizationStatusRestricted || status == kCLAuthorizationStatusDenied) {
          NSLog(@"Callback alwarys denied/restricted");
-        [[NSNotificationCenter defaultCenter] postNotificationName:kAlwaysLocServiceDenied object:self];
+         if (UIApplicationStateActive == [UIApplication sharedApplication].applicationState) {
+             [[NSNotificationCenter defaultCenter] postNotificationName:kAlwaysLocServiceDenied object:self];
+         }
     }
     NSString *notificationBodyString = @"[Info] didChangeAuthroizationStatus";
     if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
@@ -294,7 +310,8 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
                     [[UIApplication sharedApplication] endBackgroundTask:_bgRangingTask];
                     _bgRangingTask = UIBackgroundTaskInvalid;
                     [manager stopRangingBeaconsInRegion:(CLBeaconRegion *)region];
-                    NSString *notificationBodyString = @"Stop ranging of background thread";
+                    NSMutableString *notificationBodyString = [NSMutableString stringWithString:@"Stop ranging of background thread (by expiration handler)"];
+                    [notificationBodyString appendFormat:@"%@", [NSDate date]];
                     if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
                         UILocalNotification *taskNotification = [[UILocalNotification alloc] init];
                         taskNotification.alertBody = [NSString stringWithString:notificationBodyString];
@@ -348,7 +365,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
-     NSLog(@"Exited to region: %@", region.identifier);
+     NSLog(@"Exited from region: %@", region.identifier);
     NSString *bodyString = @"Exited from some region";
     if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
         UILocalNotification *exitNotification = [[UILocalNotification alloc] init];
@@ -422,10 +439,13 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         return;
     }
     NSArray *beaconKeyDatas = nil;
+
     if (_skipSWAMPExec) { // Do not track
         beaconKeyDatas = [btManager keyCodesForBeacons:beacons ofRegion:region];
     } else {
-        beaconKeyDatas = [btManager beaconsTrack:beacons ofRegion:region];
+        // TODO:just for test
+        beaconKeyDatas = [btManager keyCodesForBeacons:beacons ofRegion:region];
+        //beaconKeyDatas = [btManager beaconsTrack:beacons ofRegion:region];
     }
     if (_autoDetection) { // Non-UI operation
         if (beaconKeyDatas) { // データが取得できれば、3Bビーコン領域内
@@ -459,6 +479,26 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 
                 }
                 [manager stopRangingBeaconsInRegion:region];
+                NSString *notificationBodyString = @"Stop ranging (non-background)";
+                if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+                    UILocalNotification *taskNotification = [[UILocalNotification alloc] init];
+                    taskNotification.alertBody = [NSString stringWithString:notificationBodyString];
+                    taskNotification.soundName = UILocalNotificationDefaultSoundName;
+                    [[UIApplication sharedApplication] presentLocalNotificationNow:taskNotification];
+                } else {
+                    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+                    content.title = @"Stop ranging";
+                    content.body = notificationBodyString;
+                    content.sound = [UNNotificationSound defaultSound];
+                    
+                    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Ranging Task Stop" content:content trigger:nil];
+                    
+                    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                        if (error) {
+                            NSLog(@"Notification Error %@", [error userInfo]);
+                        }
+                    }];
+                }
                 _autoDetection = NO;
             } else {// else keep ranging
                 NSString *infoString = @"did range (not found 3b beacon)";
@@ -505,7 +545,9 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 - (void)locationManager:(CLLocationManager *)manager rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region withError:(NSError *)error {
     NSLog(@"Faield to range");
     [manager stopRangingBeaconsInRegion:region];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kBeaconRangingFailed object:self];
+    if (UIApplicationStateActive == [UIApplication sharedApplication].applicationState) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kBeaconRangingFailed object:self];
+    }
 }
 
 # pragma mark Content handling sample method
