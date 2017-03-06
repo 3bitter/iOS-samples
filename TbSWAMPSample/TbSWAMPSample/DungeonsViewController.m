@@ -348,6 +348,9 @@ extern NSString *kAlwaysLocServiceDenied;
     [_indicator startAnimating];
     
     // Simple ranging method
+    if (!_btManager) {
+        _btManager = [TbBTManager sharedManager];
+    }
     [_btManager startRangingTbBTStaticBeacons:appDelegate.locManager]; // Wait for callback
 }
 
