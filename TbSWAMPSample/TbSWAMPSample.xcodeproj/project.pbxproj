@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9854C36D1E684D25000A86A0 /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9854C36C1E684D25000A86A0 /* libTbBTSDK.a */; };
+		984D86421E6D8B34005060F6 /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 984D86411E6D8B34005060F6 /* libTbBTSDK.a */; };
 		985BD88E1E3F76E400C5BA4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 985BD88D1E3F76E400C5BA4C /* main.m */; };
 		985BD89A1E3F76E400C5BA4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 985BD8981E3F76E400C5BA4C /* Main.storyboard */; };
 		985BD89C1E3F76E400C5BA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 985BD89B1E3F76E400C5BA4C /* Assets.xcassets */; };
@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9854C36C1E684D25000A86A0 /* libTbBTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTbBTSDK.a; sourceTree = "<group>"; };
+		984D86411E6D8B34005060F6 /* libTbBTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTbBTSDK.a; sourceTree = "<group>"; };
 		985BD8891E3F76E400C5BA4C /* TbSWAMPSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TbSWAMPSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		985BD88D1E3F76E400C5BA4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		985BD8991E3F76E400C5BA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9854C36D1E684D25000A86A0 /* libTbBTSDK.a in Frameworks */,
+				984D86421E6D8B34005060F6 /* libTbBTSDK.a in Frameworks */,
 				989713291E658FCF00B021E5 /* UserNotifications.framework in Frameworks */,
 				985BD8FE1E3F836700C5BA4C /* CoreBluetooth.framework in Frameworks */,
 				985BD8FC1E3F836100C5BA4C /* CoreLocation.framework in Frameworks */,
@@ -200,7 +200,7 @@
 		989713E81E671C8900B021E5 /* Tb_SWAMP_iOS_SDK_IDFA_v130(b2) */ = {
 			isa = PBXGroup;
 			children = (
-				9854C36C1E684D25000A86A0 /* libTbBTSDK.a */,
+				984D86411E6D8B34005060F6 /* libTbBTSDK.a */,
 				989713E91E671C8900B021E5 /* ChangeLog_20170301.txt */,
 				989713EA1E671C8900B021E5 /* include */,
 				989713F61E671C8900B021E5 /* Supporting Files */,
@@ -569,11 +569,12 @@
 				DEVELOPMENT_TEAM = VPNC5YC3SU;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TbSWAMPSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Tb_SWAMP_iOS_SDK_IDFA_v130(b2)",
+					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.threebitter.beacons.TbSWAMPSample;
@@ -588,11 +589,12 @@
 				DEVELOPMENT_TEAM = VPNC5YC3SU;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TbSWAMPSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Tb_SWAMP_iOS_SDK_IDFA_v130(b2)",
+					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.threebitter.beacons.TbSWAMPSample;
