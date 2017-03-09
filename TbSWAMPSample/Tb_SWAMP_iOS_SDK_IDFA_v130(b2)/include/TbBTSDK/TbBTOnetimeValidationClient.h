@@ -15,7 +15,8 @@ typedef NS_ENUM(NSInteger, TbBTOnetimeValidationError) {
     TbBTOnetimeValidationErrorInvalidApp,
     TbBTOnetimeValidationErrorInvalidRegion,
     TbBTOnetimeValidationErrorInvalidBeacon,
-    TbBTOnetimeValidationErrorInternalServerError
+    TbBTOnetimeValidationErrorInternalServerError,
+    TbBTOnetimeValidationErrorInternetUnconnectable
 };
 
 
