@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		984D86421E6D8B34005060F6 /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 984D86411E6D8B34005060F6 /* libTbBTSDK.a */; };
+		984D86631E712A11005060F6 /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 984D86621E712A11005060F6 /* libTbBTSDK.a */; };
 		985BD88E1E3F76E400C5BA4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 985BD88D1E3F76E400C5BA4C /* main.m */; };
 		985BD89A1E3F76E400C5BA4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 985BD8981E3F76E400C5BA4C /* Main.storyboard */; };
 		985BD89C1E3F76E400C5BA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 985BD89B1E3F76E400C5BA4C /* Assets.xcassets */; };
@@ -46,7 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		984D86411E6D8B34005060F6 /* libTbBTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTbBTSDK.a; sourceTree = "<group>"; };
+		984D86621E712A11005060F6 /* libTbBTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTbBTSDK.a; sourceTree = "<group>"; };
+		984D86641E712A34005060F6 /* TbBTOnetimeValidationClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TbBTOnetimeValidationClient.h; sourceTree = "<group>"; };
 		985BD8891E3F76E400C5BA4C /* TbSWAMPSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TbSWAMPSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		985BD88D1E3F76E400C5BA4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		985BD8991E3F76E400C5BA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		989713ED1E671C8900B021E5 /* TbBTDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTDefaults.h; sourceTree = "<group>"; };
 		989713EE1E671C8900B021E5 /* TbBTDeveloperPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTDeveloperPreference.h; sourceTree = "<group>"; };
 		989713EF1E671C8900B021E5 /* TbBTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTManager.h; sourceTree = "<group>"; };
-		989713F01E671C8900B021E5 /* TbBTOnetimeValidationClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTOnetimeValidationClient.h; sourceTree = "<group>"; };
 		989713F11E671C8900B021E5 /* TbBTPreliminary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTPreliminary.h; sourceTree = "<group>"; };
 		989713F21E671C8900B021E5 /* TbBTRegionNotificationSettingOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TbBTRegionNotificationSettingOptions.h; sourceTree = "<group>"; };
 		989713F31E671C8900B021E5 /* TbBTSDK-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TbBTSDK-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				984D86421E6D8B34005060F6 /* libTbBTSDK.a in Frameworks */,
+				984D86631E712A11005060F6 /* libTbBTSDK.a in Frameworks */,
 				989713291E658FCF00B021E5 /* UserNotifications.framework in Frameworks */,
 				985BD8FE1E3F836700C5BA4C /* CoreBluetooth.framework in Frameworks */,
 				985BD8FC1E3F836100C5BA4C /* CoreLocation.framework in Frameworks */,
@@ -200,8 +200,8 @@
 		989713E81E671C8900B021E5 /* Tb_SWAMP_iOS_SDK_IDFA_v130(b2) */ = {
 			isa = PBXGroup;
 			children = (
-				984D86411E6D8B34005060F6 /* libTbBTSDK.a */,
 				989713E91E671C8900B021E5 /* ChangeLog_20170301.txt */,
+				984D86621E712A11005060F6 /* libTbBTSDK.a */,
 				989713EA1E671C8900B021E5 /* include */,
 				989713F61E671C8900B021E5 /* Supporting Files */,
 			);
@@ -220,10 +220,10 @@
 			isa = PBXGroup;
 			children = (
 				989713EC1E671C8900B021E5 /* TbBTBeaconizer.h */,
+				984D86641E712A34005060F6 /* TbBTOnetimeValidationClient.h */,
 				989713ED1E671C8900B021E5 /* TbBTDefaults.h */,
 				989713EE1E671C8900B021E5 /* TbBTDeveloperPreference.h */,
 				989713EF1E671C8900B021E5 /* TbBTManager.h */,
-				989713F01E671C8900B021E5 /* TbBTOnetimeValidationClient.h */,
 				989713F11E671C8900B021E5 /* TbBTPreliminary.h */,
 				989713F21E671C8900B021E5 /* TbBTRegionNotificationSettingOptions.h */,
 				989713F31E671C8900B021E5 /* TbBTSDK-Bridging-Header.h */,
