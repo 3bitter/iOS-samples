@@ -58,9 +58,8 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         }];
         
     }
-// TODO: just for test
     _skipSWAMPExec = NO;
-    /*
+    
     [TbBTPreliminary setUpWithCompletionHandler:^(BOOL success) {
         if (!success) { // Failed to set up
             _skipSWAMPExec = YES;
@@ -108,7 +107,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
                 }];
             }
         }
-    }]; */
+    }];
     // 処理結果が不要なら、これも可能
     // [TbBTPreliminary setUpWithCompletionHandler:nil];
     
@@ -148,6 +147,13 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(nonnull NSError *)error {
     NSLog(@"Location Manager failure .. %@", error);
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.title = @"Location Event Failure";
+    content.body = [NSString stringWithFormat:@"Location Manager failure .. %@", error];
+    content.sound = [UNNotificationSound defaultSound];
+    
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"AuthNotification" content:content trigger:nil];
+    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:nil];
     _skipSWAMPExec = YES;
 }
 
@@ -435,7 +441,16 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
                 NSLog(@"Notification Error %@", [error userInfo]);
             }
         }];
-        [manager stopRangingBeaconsInRegion:region];
+        if (_bgRangingTask != UIBackgroundTaskInvalid) {
+            // レンジングストップを指示してタスクを終了
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [[UIApplication sharedApplication] endBackgroundTask:_bgRangingTask];
+                _bgRangingTask = UIBackgroundTaskInvalid;
+                [manager stopRangingBeaconsInRegion:(CLBeaconRegion *)region];
+            });
+        } else {
+            [manager stopRangingBeaconsInRegion:(CLBeaconRegion *)region];
+        }
         return;
     }
     NSArray *beaconKeyDatas = nil;
@@ -478,8 +493,20 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
                     }];
 
                 }
-                [manager stopRangingBeaconsInRegion:region];
-                NSString *notificationBodyString = @"Stop ranging (non-background)";
+                NSString *notificationBodyString = nil;
+                if (_bgRangingTask != UIBackgroundTaskInvalid) {
+                    notificationBodyString = @"Stop ranging (of background)";
+                    // レンジングストップを指示してタスクを終了
+                    dispatch_async(dispatch_get_main_queue(), ^ {
+                        [[UIApplication sharedApplication] endBackgroundTask:_bgRangingTask];
+                        _bgRangingTask = UIBackgroundTaskInvalid;
+                        [manager stopRangingBeaconsInRegion:(CLBeaconRegion *)region];
+                    });
+                } else {
+                    [manager stopRangingBeaconsInRegion:region];
+                    notificationBodyString = @"Stop ranging (of non-background)";
+                }
+
                 if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
                     UILocalNotification *taskNotification = [[UILocalNotification alloc] init];
                     taskNotification.alertBody = [NSString stringWithString:notificationBodyString];
