@@ -255,7 +255,7 @@ extern NSString *kAlwaysLocServiceDenied;
     // [self prepareBeaconManager] is required before this call
     TbBTManager *btManager = [TbBTManager sharedManager];
     assert(btManager != nil);
-    assert([btManager.delegate isEqual:self]);
+    btManager.delegate = self;
     [[TbBTManager sharedManager] checkCurrentBluetoothAvailability];
 }
 
