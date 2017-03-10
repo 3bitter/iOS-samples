@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		984D86B41E7264B5005060F6 /* libTbBTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 984D86B31E7264B5005060F6 /* libTbBTSDK.a */; };
+		984D86B61E726566005060F6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984D86B51E726566005060F6 /* SystemConfiguration.framework */; };
 		985BD88E1E3F76E400C5BA4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 985BD88D1E3F76E400C5BA4C /* main.m */; };
 		985BD89A1E3F76E400C5BA4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 985BD8981E3F76E400C5BA4C /* Main.storyboard */; };
 		985BD89C1E3F76E400C5BA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 985BD89B1E3F76E400C5BA4C /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		984D86641E712A34005060F6 /* TbBTOnetimeValidationClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TbBTOnetimeValidationClient.h; sourceTree = "<group>"; };
 		984D86B31E7264B5005060F6 /* libTbBTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTbBTSDK.a; sourceTree = "<group>"; };
+		984D86B51E726566005060F6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		985BD8891E3F76E400C5BA4C /* TbSWAMPSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TbSWAMPSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		985BD88D1E3F76E400C5BA4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		985BD8991E3F76E400C5BA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				984D86B61E726566005060F6 /* SystemConfiguration.framework in Frameworks */,
 				984D86B41E7264B5005060F6 /* libTbBTSDK.a in Frameworks */,
 				989713291E658FCF00B021E5 /* UserNotifications.framework in Frameworks */,
 				985BD8FE1E3F836700C5BA4C /* CoreBluetooth.framework in Frameworks */,
@@ -190,6 +193,7 @@
 		985BD8FA1E3F836100C5BA4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				984D86B51E726566005060F6 /* SystemConfiguration.framework */,
 				989713281E658FCF00B021E5 /* UserNotifications.framework */,
 				985BD8FD1E3F836700C5BA4C /* CoreBluetooth.framework */,
 				985BD8FB1E3F836100C5BA4C /* CoreLocation.framework */,
