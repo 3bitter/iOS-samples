@@ -86,13 +86,19 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
     NSLog(@"Location service authorization changed");
     if (status == kCLAuthorizationStatusNotDetermined) {
         NSLog(@"Service enabled but auth not determinted. Confirm again for app");
-        [[NSNotificationCenter defaultCenter] postNotificationName:kBaseLocServiceEnabled object:self];
+        if (UIApplicationStateActive == [UIApplication sharedApplication].applicationState) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kBaseLocServiceEnabled object:self];
+        }
     } else if (status == kCLAuthorizationStatusAuthorizedAlways) {
         NSLog(@"Callback Always permitted");
-        [[NSNotificationCenter defaultCenter] postNotificationName:kAlwaysLocServicePermitted object:self];
+          if (UIApplicationStateActive == [UIApplication sharedApplication].applicationState) {
+              [[NSNotificationCenter defaultCenter] postNotificationName:kAlwaysLocServicePermitted object:self];
+          }
     } else if (status == kCLAuthorizationStatusRestricted || status == kCLAuthorizationStatusDenied) {
          NSLog(@"Callback alwarys denied/restricted");
-        [[NSNotificationCenter defaultCenter] postNotificationName:kAlwaysLocServiceDenied object:self];
+          if (UIApplicationStateActive == [UIApplication sharedApplication].applicationState) {
+              [[NSNotificationCenter defaultCenter] postNotificationName:kAlwaysLocServiceDenied object:self];
+          }
     }
 }
 
