@@ -12,10 +12,11 @@
 @protocol TbBTOnetimeValidationClientDelegate;
 
 typedef NS_ENUM(NSInteger, TbBTOnetimeValidationError) {
-    TbBTOnetimeValidationErrorInvalidApp,
-    TbBTOnetimeValidationErrorInvalidRegion,
-    TbBTOnetimeValidationErrorInvalidBeacon,
-    TbBTOnetimeValidationErrorInternalServerError
+    TbBTOnetimeValidationErrorInvalidApp = 2001,
+    TbBTOnetimeValidationErrorInvalidRegion = 2002,
+    TbBTOnetimeValidationErrorInvalidBeacon = 2003,
+    TbBTOnetimeValidationErrorInternalServerError = 2004,
+    TbBTOnetimeValidationErrorInternetUnconnectable = 2005
 };
 
 
