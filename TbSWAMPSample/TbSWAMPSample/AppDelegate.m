@@ -458,9 +458,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
     if (_skipSWAMPExec) { // Do not track
         beaconKeyDatas = [btManager keyCodesForBeacons:beacons ofRegion:region];
     } else {
-        // TODO:just for test
-        beaconKeyDatas = [btManager keyCodesForBeacons:beacons ofRegion:region];
-        //beaconKeyDatas = [btManager beaconsTrack:beacons ofRegion:region];
+        beaconKeyDatas = [btManager beaconsTrack:beacons ofRegion:region];
     }
     if (_autoDetection) { // Non-UI operation
         if (beaconKeyDatas) { // データが取得できれば、3Bビーコン領域内
