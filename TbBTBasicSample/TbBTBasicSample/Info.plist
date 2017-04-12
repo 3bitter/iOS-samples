@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>このアプリはビーコン位置情報を使って革新的な機能を提供しています</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>このアプリはBluetoothを使用してリアル空間連動の機能を提供しています</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
