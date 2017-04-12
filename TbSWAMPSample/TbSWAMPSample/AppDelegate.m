@@ -38,6 +38,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     _skipSWAMPExec = NO;
+    
     [TbBTPreliminary setUpWithCompletionHandler:^(BOOL success) {
         if (!success) { // Failed to set up
             _skipSWAMPExec = YES;
@@ -121,7 +122,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         NSMutableString *bodyString = [NSMutableString stringWithString:@"ビーコン領域["];
         [bodyString appendString:region.identifier];
         [bodyString appendString:@"] に入りました"];
-        if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+        if (NSFoundationVersionNumber_iOS_9_x_Max > NSFoundationVersionNumber) {
             UILocalNotification *enterNotification = [[UILocalNotification alloc] init];
             enterNotification.alertBody = [NSString stringWithString:bodyString];
             enterNotification.soundName = UILocalNotificationDefaultSoundName;
@@ -171,7 +172,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
         NSMutableString *bodyString = [NSMutableString stringWithString:@"ビーコン領域["];
         [bodyString appendString:region.identifier];
         [bodyString appendString:@"] から出ました"];
-        if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+        if (NSFoundationVersionNumber_iOS_9_x_Max > NSFoundationVersionNumber) {
             UILocalNotification *exitNotification = [[UILocalNotification alloc] init];
             exitNotification.alertBody = [NSString stringWithString:bodyString];
             exitNotification.soundName = UILocalNotificationDefaultSoundName;
@@ -211,7 +212,7 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
                 [bodyString appendString:@"] by ("];
                 [bodyString appendString:firstBeacon.keycode];
                 [bodyString appendString:@") に入りました"];
-                if (NSFoundationVersionNumber10_0 > NSFoundationVersionNumber) {
+                if (NSFoundationVersionNumber_iOS_9_x_Max > NSFoundationVersionNumber) {
                     UILocalNotification *enterNotification = [[UILocalNotification alloc] init];
                     enterNotification.alertBody = [NSString stringWithString:bodyString];
                     enterNotification.soundName = UILocalNotificationDefaultSoundName;

@@ -23,11 +23,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // プッシュ通知の許可がされていなければ確認
-    if (NSFoundationVersionNumber_iOS_7_1 < NSFoundationVersionNumber <NSFoundationVersionNumber10_0) { // Just in case
+    if (NSFoundationVersionNumber_iOS_7_1 < NSFoundationVersionNumber
+        &&  NSFoundationVersionNumber_iOS_9_x_Max > NSFoundationVersionNumber) { // Just in case
         if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
             [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound|UIUserNotificationTypeAlert|UIUserNotificationTypeBadge categories:nil]];
         }
-    } else if (NSFoundationVersionNumber10_0 <= NSFoundationVersionNumber) {
+    } else if (NSFoundationVersionNumber_iOS_9_x_Max <= NSFoundationVersionNumber) {
         if ([UNUserNotificationCenter instanceMethodForSelector:@selector(requestAuthorizationWithOptions:completionHandler:)]){
             UNAuthorizationOptions options =
             (UNAuthorizationOptionSound + UNAuthorizationOptionAlert + UNAuthorizationOptionBadge);
