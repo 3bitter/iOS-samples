@@ -10,10 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "TbBTManager.h"
 
-#import "TbBTAgreementViewController.h"
 
-
-@interface SecondViewController : UIViewController<CLLocationManagerDelegate, TbBTManagerDelegate, TbBTAgreementViewControllerDelegate>
+@interface SecondViewController : UIViewController<CLLocationManagerDelegate, TbBTManagerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *appLocManager;
 @property (strong, nonatomic) TbBTManager *btManager;

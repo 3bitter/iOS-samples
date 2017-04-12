@@ -59,7 +59,7 @@ extern NSString *kFoundNewBeacon;
     CGRect descriptionLabelFrame = CGRectMake(centerX - 150.0, 30.0, 300.0, 160.0);
     UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:descriptionLabelFrame];
     descriptionLabel.center = self.tableView.tableHeaderView.center;
-    descriptionLabel.numberOfLines = 6;
+    descriptionLabel.numberOfLines = 7;
     descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
     descriptionLabel.font = [UIFont systemFontOfSize:13.0];
     descriptionLabel.textColor = [UIColor whiteColor];
@@ -166,6 +166,7 @@ extern NSString *kFoundNewBeacon;
     appDelegate.addProcessing = YES;
     
     _timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(terminateSearchMyBeacons) userInfo:nil repeats:NO];
+    // モニタリングベースの検出
     [[TbBTManager sharedManager] startMonitoringTbBTInitialRegions:appDelegate.appLocManager];
 }
 

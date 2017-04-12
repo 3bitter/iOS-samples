@@ -8,7 +8,6 @@
 
 #import "FirstViewController.h"
 #import "TbBTManager.h"
-#import "TbBTBuiltInUIActionDispatcher.h"
 #import "AppDelegate.h"
 #import "ItemViewController.h"
 
@@ -34,6 +33,7 @@ extern NSString *kNumberOfMonitoredRegions;
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSUInteger numberOfMonitoredRegions = appDelegate.appLocManager.monitoredRegions.count;
     _numberOfRegionsLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)numberOfMonitoredRegions];
+
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *logFilePath = [rootPath stringByAppendingPathComponent:kAnnounceLogFile];
     NSError *error = nil;

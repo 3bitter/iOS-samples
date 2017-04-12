@@ -10,9 +10,13 @@
 #import "RangedBeaconInfoViewController.h"
 #import "DesignatedBeaconsViewController.h"
 #import "AppDelegate.h"
-#import "TbBTBuiltInUIActionDispatcher.h"
 
-@interface SecondViewController ()<UIAlertViewDelegate>
+#import "AppAgreementViewController.h"
+// Added for iOS 10.0+
+#import <UserNotifications/UserNotifications.h>
+
+
+@interface SecondViewController ()<UIAlertViewDelegate, AppAgreementViewControllerDelegate>
 
 @property (assign, nonatomic) NSUInteger monitoringStartCount;
 @property (assign, nonatomic) NSUInteger monitoringFailCount;
@@ -54,6 +58,7 @@ NSString *kRegionLabel = @"Region";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     // サービス利用（位置モニタリング）同意フラグ
@@ -67,7 +72,7 @@ NSString *kRegionLabel = @"Region";
         _stateDescriptionLabel.hidden = NO;
         NSMutableString *stateString = [NSMutableString stringWithString:@"位置情報の使用と"];
         [stateString appendString:@"\n"];
-        [stateString appendString:@"3bitterサービスの規約に同意済みです"];
+        [stateString appendString:@"アプリの規約に同意済みです"];
         _stateDescriptionLabel.text = stateString;
         /* LocationManagerはAppDelegateに保持されているものを参照します */
         if (!_appLocManager) {
@@ -133,6 +138,10 @@ NSString *kRegionLabel = @"Region";
         _targetMonitoringSwitch.enabled = NO;
         assert(_btManager);
         assert(_appLocManager);
+        if ([_btManager hasDesignatedBeacon]) { // 登録したビーコンについてのモニタリングを停止
+            [_btManager stopMonitoringTbBTNonSwitcherBeaconRegions:_appLocManager];
+        }
+        // 登録していない3bitterビーコン領域のモニタリングを念のため停止
         [_btManager stopMonitoringTbBTAllRegions:_appLocManager];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:[NSNumber numberWithBool:NO] forKey:kUsingBeaconFlag];
@@ -145,16 +154,24 @@ NSString *kRegionLabel = @"Region";
     assert(_btManager);
     assert(_appLocManager);
     BOOL monitoring = NO;
-    if (_targetMonitoringSwitch.isOn) {
+    if (_targetMonitoringSwitch.isOn) { // Start monitoring
         if ([_btManager hasDesignatedBeacon]) {
             // 指定ビーコンの領域情報をSDKを介して取得し、モニタリングを開始します
             NSArray *regionsOfDesignatedBeacons = [_btManager regionsOfDesignatedBeacons];
             for (CLBeaconRegion *beaconRegion in regionsOfDesignatedBeacons) {
                 [_appLocManager startMonitoringForRegion:beaconRegion];
             }
+            monitoring = YES; // モニタリング可能フラグ
+        } else {
+            [_targetMonitoringSwitch setOn:NO];
+            UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"How to" message:@"「ビーコン指定」機能を使用して、モニタリング対象のビーコンを登録してください" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"了解" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [alertC addAction:dismissAction];
+            [self presentViewController:alertC animated:YES completion:nil];
         }
-        monitoring = YES;
-    } else {
+    } else { // Stop monitoring
         // 指定ビーコンまたは3bitter専用ビーコンの初期のモニタリングを停止します
         [_btManager stopMonitoringTbBTAllRegions:_appLocManager];
     }
@@ -167,9 +184,13 @@ NSString *kRegionLabel = @"Region";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL serviceAgreed = [[defaults valueForKey:kMonitoringAllowed] boolValue];
     if (!serviceAgreed) {
-        /* 3bitter側で用意のビーコン機能使用規約の表示 */
-        TbBTBuiltInUIActionDispatcher *dispatcher =[TbBTBuiltInUIActionDispatcher sharedDispatcher];
-        [dispatcher presentTbBTAgreementViewControllerFromVC:self];
+        /* アプリ使用規約（位置情報サービスの使用を明示）の表示 */
+        AppAgreementViewController *agreementVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"AppAgreementViewController"];
+        agreementVC.delegate = self;
+        agreementVC.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:agreementVC animated:YES completion:nil];
+        
+        agreementVC.view.backgroundColor = [UIColor lightGrayColor];
     } else {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:[NSNumber numberWithBool:YES] forKey:kUsingBeaconFlag];
@@ -194,7 +215,7 @@ NSString *kRegionLabel = @"Region";
     }
 }
 
-#pragma mark TkAgreementViewControllerDelegate method
+#pragma mark AppAgreementViewControllerDelegate method
 
 - (void)didAgreeByUser {
     // 再起動後のために同意フラグを保存します
@@ -236,12 +257,26 @@ NSString *kRegionLabel = @"Region";
 // 位置情報サービスの許可（及びプッシュ通知の許可）を確認します
 - (void)requestUserAuthorization {
     
-    // Local Notification Permission
-    UIApplication *application = [UIApplication sharedApplication];
-    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
-        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound|UIUserNotificationTypeAlert|UIUserNotificationTypeBadge categories:nil]];
+    // プッシュ通知前提のサンプルのため、プッシュ通知の許可がされていなければ確認
+    if (NSFoundationVersionNumber_iOS_7_1 < NSFoundationVersionNumber
+        &&  NSFoundationVersionNumber_iOS_9_x_Max > NSFoundationVersionNumber) {
+        if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+            [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound|UIUserNotificationTypeAlert|UIUserNotificationTypeBadge categories:nil]];
+        }
+    } else if (NSFoundationVersionNumber_iOS_9_x_Max <= NSFoundationVersionNumber) {
+        if ([UNUserNotificationCenter instanceMethodForSelector:@selector(requestAuthorizationWithOptions:completionHandler:)]){
+            UNAuthorizationOptions options =
+            (UNAuthorizationOptionSound + UNAuthorizationOptionAlert + UNAuthorizationOptionBadge);
+            [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError *_Nullable error) {
+                if (!granted) {
+                    NSLog(@"Notification not granted.");
+                    _beaconFunctionSwitch.on = NO;
+                    _targetMonitoringSwitch.on = NO;
+                    _targetMonitoringSwitch.enabled = NO;
+                }
+            }];
+        }
     }
-    
     // Location Service Permission
     if ([TbBTManager isBeaconEventConditionMet] == NO) {
         if (NSFoundationVersionNumber <=  NSFoundationVersionNumber_iOS_7_1) {
@@ -283,7 +318,9 @@ NSString *kRegionLabel = @"Region";
         return;
     } else if ([region isKindOfClass:[CLBeaconRegion class]]) {
             // 登録済みビーコンの領域でない場合、レンジング処理を開始します（キーコード取得のため）
+            // モニタリングは停止します。
             if ([_btManager isInitialRegion:(CLBeaconRegion *)region]) {
+                [manager stopMonitoringForRegion:region];
                 _numberOfFoundLoop = 0;
                 _timerCanceled = NO;
                 [manager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
@@ -447,6 +484,19 @@ NSString *kRegionLabel = @"Region";
     }
     
     if (beacons.count == 0) {
+        if (appDelegate.addProcessing) {
+            // 新規登録用のタイムアウト
+            if (NSOrderedDescending == [[NSDate date] compare:appDelegate.addProcessTimeoutTime]) {
+                NSLog(@"-- ranging time out --");
+                // 必要ならタイムアウト通知をオブザーバに送信します
+                [[NSNotificationCenter defaultCenter] postNotificationName:kRangingTimeOverNotification object:self];
+                [manager stopRangingBeaconsInRegion:region];
+                NSLog(@"-- ranging stopped --");
+                return;
+            } else if (NSOrderedAscending == [[NSDate date] compare:appDelegate.addProcessTimeoutTime]) {
+                NSLog(@"-- future ? %@", appDelegate.addProcessTimeoutTime);
+            }
+        }
         // exit and wait for next call
         return;
     }
@@ -475,15 +525,32 @@ NSString *kRegionLabel = @"Region";
                     /*  ユーザ指定登録のビーコンが見つかったので、連動処理をします */
                     NSLog(@"%s Found designated beacon", __func__);
                     NSString *selectedItemImageName = (NSString *)[appDelegate selectItemWithEntryTiming];
-                    [manager stopRangingBeaconsInRegion:(CLBeaconRegion *)region];
+                    [manager stopRangingBeaconsInRegion:(CLBeaconRegion *)region]; // 検出が終わったので停止を必ずします
                     
                     NSDictionary *notificationUserInfo =[NSDictionary dictionaryWithObject:selectedItemImageName forKey:@"selection"];
-                    UILocalNotification *userNotification = [[UILocalNotification alloc] init];
-                    userNotification.fireDate = [NSDate date];
-                    userNotification.alertBody = @"ビーコン領域にイン！";
-                    userNotification.soundName = UILocalNotificationDefaultSoundName;
-                    userNotification.userInfo = notificationUserInfo;
-                    [[UIApplication sharedApplication] presentLocalNotificationNow:userNotification];
+                    NSString *bodyString = @"ビーコン領域にイン！";
+                    if (NSFoundationVersionNumber_iOS_9_x_Max > NSFoundationVersionNumber) {
+                        UILocalNotification *userNotification = [[UILocalNotification alloc] init];
+                        userNotification.fireDate = [NSDate date];
+                        userNotification.alertBody = bodyString;
+                        userNotification.soundName = UILocalNotificationDefaultSoundName;
+                        userNotification.userInfo = notificationUserInfo;
+                        [[UIApplication sharedApplication] presentLocalNotificationNow:userNotification];
+                    } else {
+                        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+                        content.title = @"Found beacon in region";
+                        content.body = bodyString;
+                        content.sound = [UNNotificationSound defaultSound];
+                        content.userInfo = notificationUserInfo;
+                        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Found one" content:content trigger:nil];
+                        
+                        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                            if (error) {
+                                NSLog(@"Notification Error %@", [error userInfo]);
+                            }
+                        }];
+
+                    }
                 }
             }
         } else {
