@@ -24,6 +24,8 @@
 	<string>このアプリは、限定イベントのために位置情報サービスを使用します</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>このアプリは、限定イベントのために位置情報サービスを使用します</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>このアプリは、限定イベントのために位置情報サービスを使用します</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>このアプリは、限定イベントのためにBluetoothを使用します</string>
 	<key>UILaunchStoryboardName</key>
