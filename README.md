@@ -5,7 +5,6 @@ Currently
 1. TbBTBasicSample
 2. TbSWAMPSample 
 
-そのままビルドインストールする場合は、
 are compatible sample for the latest version of SWAMP SDK
 
  - そのままビルドインストールする場合は、Tb_SWAMP_iOS_SDK > Supporting Files > TbBTDeveloperPreference.plist ファイル内の、[DeveloperAppCode] に任意文字を入力してビルドしてください。
