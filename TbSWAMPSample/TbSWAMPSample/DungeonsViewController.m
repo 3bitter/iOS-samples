@@ -158,10 +158,12 @@ extern NSString *kAlwaysLocServiceDenied;
     
     _swampUsed = YES;
     if (_swampUsed// User confirmed to use SWAMP option
-        && [TbBTManager isBeaconEventConditionMet] // Can be use beacon (if bluetooth is off, no)
+        && _bluetoothStateDetermined
+        && [TbBTManager isBeaconEventConditionMet] // Can be use beacon
         && [self prepareLocManager] // Prepare Location manager if not exists
         && [TbBTManager sharedManager]) {  // Prepared TbBTManager before
-        [self startSearch];
+       // [self startSearch];
+            [self checkBluetoothState];
     } else if (NSFoundationVersionNumber_iOS_8_0 > NSFoundationVersionNumber) {
         [self prepareLocManager];
         [self prepareBeaconManager];
@@ -293,7 +295,9 @@ extern NSString *kAlwaysLocServiceDenied;
     if (!available) {
         NSLog(@"Bluetooth not available");
         //[self showCustomAlert];
-        [self showDefaultAlertWithCBFramework];
+       // [self showDefaultAlertWithCBFramework];
+        // Control center off mode check
+         [self performSelectorOnMainThread:@selector(confirmBluetoothIsReallyOff) withObject:nil waitUntilDone:NO];
     } else { // Now Bluetooth is ON
         NSLog(@"Bluetooth is available");
         _bluetoothStateDetermined = YES;
@@ -302,7 +306,22 @@ extern NSString *kAlwaysLocServiceDenied;
 }
     
 #pragma mark beacon based part
-    
+
+- (void)confirmBluetoothIsReallyOff {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.inCheckProcess = YES;
+    NSDate *stopTime = [NSDate dateWithTimeIntervalSinceNow:0.5];
+    appDelegate.stopCheckRangingTimer = [[NSTimer alloc] initWithFireDate:stopTime interval:0 repeats:NO block:^(NSTimer *timer){
+        NSLog(@"BLE can be used. Stop ranging for check");
+        [_btManager stopRangingTbBTStaticBeacons:appDelegate.locManager];
+        appDelegate.inCheckProcess = NO;
+        [self performSelectorOnMainThread:@selector(startSearch) withObject:nil waitUntilDone:NO];
+    }];
+    [[NSRunLoop mainRunLoop] addTimer:appDelegate.stopCheckRangingTimer forMode:NSRunLoopCommonModes];
+    NSLog(@"Start ranging for check");
+    [_btManager startRangingTbBTStaticBeacons:appDelegate.locManager];
+}
+
 - (void)startSearch {
     NSLog(@"%s", __func__);
     _searching = YES;

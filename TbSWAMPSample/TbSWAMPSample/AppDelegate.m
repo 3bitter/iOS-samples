@@ -570,6 +570,11 @@ NSString *kBeaconMappedContentsPrepared = @"BeaconMappedContentPrepared";
 - (void)locationManager:(CLLocationManager *)manager rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region withError:(NSError *)error {
     NSLog(@"Faield to range");
     [manager stopRangingBeaconsInRegion:region];
+    if (_inCheckProcess) {
+        NSLog(@"Bluetooth is really off (checked)");
+        [_stopCheckRangingTimer invalidate];
+        _inCheckProcess = NO;
+    }
     if (UIApplicationStateActive == [UIApplication sharedApplication].applicationState) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kBeaconRangingFailed object:self];
     }

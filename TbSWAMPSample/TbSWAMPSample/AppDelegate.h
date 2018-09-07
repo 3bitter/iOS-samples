@@ -19,7 +19,9 @@
 @property (assign, nonatomic) BOOL skipSWAMPExec; // Optional
 
 @property (assign, nonatomic) BOOL cancelTimerStopped;
-
+// For bluetooth off by control center (BluetoothStatePowerOff but beacons can be ranged)
+@property (strong, nonatomic) NSTimer *stopCheckRangingTimer;
+@property (assign, nonatomic) BOOL inCheckProcess;
 
 @end
 
